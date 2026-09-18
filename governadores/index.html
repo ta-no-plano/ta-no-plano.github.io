@@ -1,0 +1,1774 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Tá no Plano? · Governador de Pernambuco 2026</title>
+  <meta name="description" content="Compare os planos de governo dos candidatos ao governo de Pernambuco em 2026. PDFs coletados no DivulgaCandContas do TSE.">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+
+    :root {
+      --c-joao: #e11d48;
+      --c-raquel: #2563eb;
+      --c-hallais: #d97706;
+      --c-ivan: #15803d;
+    }
+
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      background: #f8fafc;
+      color: #0f172a;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      letter-spacing: -.02em;
+      display: flex;
+      align-items: center;
+      gap: .55rem;
+    }
+    .brand-mark {
+      width: 1.7rem;
+      height: 1.7rem;
+      border-radius: 8px;
+      background: #0f766e;
+      color: #fff;
+      font-size: 1rem;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+    }
+    .brand-year {
+      font-size: .72rem;
+      font-weight: 700;
+      color: #0f766e;
+      background: #f0fdfa;
+      border-radius: 999px;
+      padding: .12rem .45rem;
+    }
+    .hero {
+      background:
+        radial-gradient(1200px 280px at 10% -20%, rgba(15, 118, 110, .08), transparent 60%),
+        #fff;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .hero h1 {
+      font-weight: 700;
+      letter-spacing: -.03em;
+      font-size: clamp(1.85rem, 4vw, 2.65rem);
+      line-height: 1.12;
+    }
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #0f766e;
+      margin-bottom: .75rem;
+    }
+    .source-list {
+      display: flex;
+      flex-direction: column;
+      gap: .55rem;
+      margin: 1.15rem 0 1.2rem;
+    }
+    .source-banner {
+      display: flex;
+      gap: .75rem;
+      align-items: flex-start;
+      background: #f0fdfa;
+      border: 1px solid #99f6e4;
+      border-radius: 14px;
+      padding: .85rem 1rem;
+    }
+    .source-banner i {
+      color: #0f766e;
+      font-size: 1.2rem;
+      margin-top: .1rem;
+    }
+    .source-banner strong { display: block; font-size: .9rem; }
+    .source-banner p { margin: .15rem 0 0; font-size: .82rem; color: #334155; line-height: 1.45; }
+    .source-ai {
+      background: #f8fafc;
+      border-color: #e2e8f0;
+    }
+    .source-ai i { color: #475569; }
+    .stats-panel {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 1rem;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, .05);
+    }
+    .stat-pill {
+      background: #f8fafc;
+      border-radius: 14px;
+      padding: .9rem 1rem;
+      height: 100%;
+    }
+    .stat-pill strong {
+      display: block;
+      font-size: 1.45rem;
+      line-height: 1.1;
+      letter-spacing: -.03em;
+      color: #0f172a;
+    }
+
+    .candidate-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, .05);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .candidate-card::before {
+      content: "";
+      display: block;
+      height: 4px;
+      background: var(--accent);
+    }
+    .candidate-card .card-body {
+      padding: 1rem .95rem .9rem;
+      background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 9%, white) 0%, #fff 38%);
+    }
+    .candidate-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 28px -20px rgba(15, 23, 42, .45);
+    }
+    .avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: -.03em;
+      color: var(--accent);
+      background: #fff;
+      border: 1px solid color-mix(in srgb, var(--accent) 28%, white);
+    }
+    .candidate-name {
+      font-size: .95rem;
+      font-weight: 700;
+      letter-spacing: -.02em;
+      line-height: 1.2;
+      margin: 0;
+      overflow-wrap: break-word;
+      word-break: normal;
+      hyphens: auto;
+    }
+    .party-pill {
+      display: inline-flex;
+      align-items: center;
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: color-mix(in srgb, var(--accent) 14%, white);
+      border-radius: 999px;
+      padding: .12rem .45rem;
+    }
+    .candidate-meta { font-size: .72rem; color: #64748b; }
+    .candidate-score {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: .7rem .75rem;
+    }
+    .score-num {
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: -.03em;
+      line-height: 1;
+    }
+    .candidate-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .5rem;
+    }
+    .candidate-actions .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .35rem;
+      width: 100%;
+      min-width: 0;
+      min-height: 44px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: .82rem;
+      white-space: nowrap;
+      padding: .55rem .7rem;
+    }
+    .candidate-actions .btn i { font-size: 1rem; line-height: 1; }
+    .candidate-actions .btn-plano {
+      color: #fff;
+      background: var(--accent);
+      border: 1px solid var(--accent);
+    }
+    .candidate-actions .btn-plano:hover,
+    .candidate-actions .btn-plano:focus-visible {
+      color: #fff;
+      background: color-mix(in srgb, var(--accent) 82%, black);
+      border-color: color-mix(in srgb, var(--accent) 82%, black);
+    }
+    .candidate-actions .btn-tse {
+      color: var(--accent);
+      background: #fff;
+      border: 1px solid color-mix(in srgb, var(--accent) 32%, #e2e8f0);
+    }
+    .candidate-actions .btn-tse:hover,
+    .candidate-actions .btn-tse:focus-visible {
+      color: var(--accent);
+      background: color-mix(in srgb, var(--accent) 8%, white);
+      border-color: var(--accent);
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .3rem;
+      min-width: 7.4rem;
+      padding: .28rem .65rem;
+      border-radius: 999px;
+      font-size: .72rem;
+      font-weight: 700;
+      color: #fff;
+      border: 0;
+      line-height: 1.2;
+    }
+    .status-fav { background: #047857; }
+    .status-vague { background: #ca8a04; }
+    .status-doubt { background: #c2410c; }
+    .status-bad { background: #b91c1c; }
+    .status-none { background: #64748b; }
+
+    .legend-card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-left: 3px solid var(--legend, #94a3b8);
+      border-radius: 14px;
+      padding: .8rem .9rem .85rem;
+      height: 100%;
+    }
+    .legend-card p {
+      margin: .4rem 0 0;
+      font-size: .78rem;
+      color: #64748b;
+      line-height: 1.4;
+    }
+    .legend-fav { --legend: #047857; }
+    .legend-vague { --legend: #ca8a04; }
+    .legend-doubt { --legend: #c2410c; }
+    .legend-bad { --legend: #b91c1c; }
+    .legend-none { --legend: #64748b; }
+
+    .guide-panel {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, .05);
+      padding: 1.2rem 1.25rem 1.1rem;
+    }
+    .guide-steps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .45rem .9rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .guide-steps li {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .85rem;
+      color: #475569;
+    }
+    .guide-steps b {
+      width: 1.35rem;
+      height: 1.35rem;
+      border-radius: 50%;
+      background: #0f766e;
+      color: #fff;
+      font-size: .7rem;
+      font-weight: 700;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+    .guide-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .55rem;
+      align-items: center;
+      padding-top: 1rem;
+      margin-top: 1rem;
+      border-top: 1px solid #f1f5f9;
+    }
+    .search-wrap {
+      position: relative;
+      flex: 1 1 16rem;
+      min-width: 12rem;
+    }
+    .search-wrap i {
+      position: absolute;
+      left: .85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #94a3b8;
+      pointer-events: none;
+    }
+    .search-wrap .form-control {
+      border-radius: 999px;
+      padding-left: 2.25rem;
+      border-color: #e2e8f0;
+      background: #f8fafc;
+    }
+    .search-wrap .form-control:focus {
+      background: #fff;
+      border-color: #0f766e;
+      box-shadow: 0 0 0 .2rem rgba(15, 118, 110, .12);
+    }
+    .guide-tools .form-select {
+      flex: 0 1 11.5rem;
+      border-radius: 999px;
+      border-color: #e2e8f0;
+      background-color: #f8fafc;
+      font-size: .875rem;
+    }
+    .axis-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      flex: 1 1 22rem;
+      gap: .2rem;
+      background: #f1f5f9;
+      border-radius: 16px;
+      padding: .22rem;
+    }
+    .tab-btn {
+      border: 0;
+      background: transparent;
+      border-radius: 999px;
+      padding: .35rem .75rem;
+      font-size: .8rem;
+      font-weight: 600;
+      color: #475569;
+      line-height: 1.2;
+      cursor: pointer;
+    }
+    .tab-btn:hover { color: #0f172a; background: #fff; }
+    .tab-btn.active { background: #0f172a; color: #fff; }
+    .legend-card .chip { min-width: 0; }
+
+    .table-shell {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      overflow: clip;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, .05);
+    }
+    .table-shell .table {
+      margin: 0;
+      border-collapse: separate;
+      border-spacing: 0;
+      --bs-table-bg: transparent;
+      --bs-table-border-color: #f1f5f9;
+    }
+    .table thead th {
+      position: sticky;
+      top: 56px;
+      z-index: 4;
+      background: #fff;
+      color: #0f172a;
+      font-size: .78rem;
+      letter-spacing: 0;
+      text-transform: none;
+      white-space: nowrap;
+      font-weight: 700;
+      border-bottom: 0;
+      padding: .85rem .55rem .75rem;
+      vertical-align: middle;
+    }
+    .table thead th.col-theme {
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      font-size: .7rem;
+      color: #64748b;
+      font-weight: 600;
+      text-align: left;
+      padding-left: 1.1rem;
+    }
+    .th-cand {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      color: var(--accent);
+      background: color-mix(in srgb, var(--accent) 12%, white);
+      border-radius: 999px;
+      padding: .32rem .75rem;
+      font-weight: 700;
+      font-size: .78rem;
+    }
+    .th-cand::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    .table thead th.col-cand {
+      box-shadow: inset 0 -3px 0 var(--accent);
+    }
+    td.criteria-title {
+      background: #fff;
+      min-width: 248px;
+      width: 26%;
+      font-weight: 600;
+      font-size: .92rem;
+      padding: .95rem 1.1rem !important;
+      border-right: 1px solid #f1f5f9;
+    }
+    .criteria-desc { display: block; font-size: .78rem; color: #64748b; font-weight: 400; margin-top: .28rem; line-height: 1.4; }
+    .table tbody tr.data-row td.cell-status {
+      padding: .55rem .4rem;
+      background: color-mix(in srgb, var(--accent) 5%, white);
+    }
+    .table tbody tr.data-row:hover td.criteria-title { background: #f8fafc; }
+    .table tbody tr.data-row:hover td.cell-status {
+      background: color-mix(in srgb, var(--accent) 11%, white);
+    }
+    td.cell-status[data-candidate="João Campos"],
+    th.col-cand.cand-joao { --accent: var(--c-joao); }
+    td.cell-status[data-candidate="Raquel Lyra"],
+    th.col-cand.cand-raquel { --accent: var(--c-raquel); }
+    td.cell-status[data-candidate="Renan Hallais"],
+    th.col-cand.cand-hallais { --accent: var(--c-hallais); }
+    td.cell-status[data-candidate="Ivan Moraes"],
+    th.col-cand.cand-ivan { --accent: var(--c-ivan); }
+
+    .category-header-row td,
+    .table tbody tr.category-header-row:hover td {
+      background: #0f766e !important;
+      color: #fff !important;
+      box-shadow: none !important;
+      --bs-table-bg: #0f766e;
+      --bs-table-bg-state: #0f766e;
+      --bs-table-hover-bg: #0f766e;
+      --bs-table-accent-bg: #0f766e;
+      border-color: #0f766e !important;
+    }
+    .category-header-row td {
+      position: sticky;
+      top: calc(56px + 3.55rem);
+      z-index: 3;
+      font-weight: 700;
+      font-size: .78rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .75rem 1.1rem !important;
+    }
+
+    .cell-btn {
+      background: transparent;
+      border: 0;
+      width: 100%;
+      min-height: 52px;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+    .cell-btn:hover, .cell-btn:focus-visible {
+      background: color-mix(in srgb, var(--accent) 16%, white);
+      outline: 2px solid color-mix(in srgb, var(--accent) 45%, white);
+    }
+    .cell-hint {
+      display: block;
+      font-size: .65rem;
+      color: #64748b;
+      font-weight: 600;
+      margin-top: .15rem;
+      opacity: 0;
+    }
+    .cell-btn:hover .cell-hint,
+    .cell-btn:focus-visible .cell-hint { opacity: 1; }
+    .mobile-item { border: 1px solid #e2e8f0; border-radius: 16px; }
+    .mobile-cand {
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .score-bar {
+      height: 6px;
+      border-radius: 99px;
+      background: #e2e8f0;
+      overflow: hidden;
+    }
+    .score-bar > span {
+      display: block;
+      height: 100%;
+      background: var(--accent);
+    }
+
+    .source-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-left: 3px solid #0f766e;
+      border-radius: 12px;
+      padding: 1rem 1.1rem;
+    }
+    .drawer-how {
+      margin-bottom: 1.1rem;
+    }
+    .drawer-how-label {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: #0f766e;
+      margin-bottom: .4rem;
+    }
+    .drawer-how p {
+      margin: 0;
+      font-size: .95rem;
+      line-height: 1.55;
+      color: #1e293b;
+    }
+    .source-quote {
+      margin: .75rem 0 0;
+      font-size: .92rem;
+      color: #334155;
+      line-height: 1.55;
+    }
+    .compare-btn {
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      background: #fff;
+      padding: .65rem .8rem;
+      width: 100%;
+      text-align: left;
+    }
+    .compare-btn:hover, .compare-btn:focus-visible {
+      background: #f1f5f9;
+      outline: 2px solid #94a3b8;
+    }
+    .compare-btn.is-current {
+      border-color: var(--accent, #0f766e);
+      background: color-mix(in srgb, var(--accent, #0f766e) 8%, white);
+    }
+    .compare-name, #drawerTitle { color: var(--accent, #0f172a); font-weight: 700; }
+    #detailPanel.offcanvas { width: min(28rem, 100vw); }
+
+    .criteria-help {
+      display: inline-block;
+      margin-top: .35rem;
+      font-size: .72rem;
+      font-weight: 600;
+      color: #0f766e;
+      text-decoration: none;
+      background: none;
+      border: 0;
+      padding: 0;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .criteria-help:hover { text-decoration: underline; color: #115e59; }
+    #criterionModal .modal-body p { color: #334155; line-height: 1.55; }
+    #criterionModal { z-index: 1095; }
+    #criterios, .criterion-card { scroll-margin-top: 4.75rem; }
+    .criterion-card {
+      padding: .85rem 0;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .criterion-card:last-child { border-bottom: 0; padding-bottom: 0; }
+    .criterion-card h4 {
+      font-size: .95rem;
+      font-weight: 700;
+      margin: 0 0 .4rem;
+    }
+    .criterion-card p { margin: 0 0 .4rem; font-size: .88rem; color: #334155; line-height: 1.5; }
+    .criterion-card p:last-child { margin-bottom: 0; }
+    .criterion-label {
+      display: block;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: #0f766e;
+      margin-bottom: .15rem;
+    }
+    .accordion-button { font-weight: 600; font-size: .9rem; }
+    .accordion-button:not(.collapsed) { background: #f0fdfa; color: #115e59; box-shadow: none; }
+    .accordion-item { border-color: #e2e8f0; }
+
+    footer a { font-weight: 600; }
+  
+    .race-switch {
+      display: inline-flex;
+      gap: .2rem;
+      background: #f1f5f9;
+      border-radius: 999px;
+      padding: .2rem;
+      margin-bottom: .85rem;
+    }
+    .race-switch a {
+      border-radius: 999px;
+      padding: .28rem .8rem;
+      font-size: .78rem;
+      font-weight: 700;
+      color: #475569;
+      text-decoration: none;
+    }
+    .race-switch a.is-on { background: #0f172a; color: #fff; }
+
+    .mobile-cat {
+      background: #0f766e;
+      color: #fff;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      border-radius: 12px;
+      padding: .7rem .9rem;
+      margin: .25rem 0 0;
+    }
+    .mobile-theme-tag {
+      display: none;
+    }
+    .mobile-detail-btn {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: .65rem;
+      width: 100%;
+      min-height: 48px;
+      padding: .55rem .7rem;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      background: #fff;
+      text-align: left;
+      touch-action: manipulation;
+    }
+    .mobile-detail-btn:active { background: #f8fafc; }
+    .mobile-cand-line {
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+      min-width: 0;
+    }
+    .mobile-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      background: var(--accent);
+    }
+    .mobile-cand-name {
+      font-size: .86rem;
+      font-weight: 700;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+    .mobile-page {
+      font-size: .72rem;
+      font-weight: 600;
+      color: #94a3b8;
+      white-space: nowrap;
+    }
+    .mobile-detail-btn .chip { min-width: 0; flex-shrink: 0; }
+    .mobile-help {
+      display: inline-flex;
+      align-items: center;
+      min-height: 40px;
+      padding: .25rem 0;
+      margin-bottom: .35rem;
+    }
+
+    @media (max-width: 991.98px) {
+      html { -webkit-text-size-adjust: 100%; }
+      body { padding-bottom: env(safe-area-inset-bottom, 0); }
+      .navbar { padding-top: .4rem; padding-bottom: .4rem; }
+      .navbar-toggler {
+        min-width: 44px;
+        min-height: 44px;
+        padding: .35rem;
+        border: 0;
+      }
+      .navbar-nav .nav-link {
+        padding: .9rem 0;
+        font-weight: 600;
+        border-bottom: 1px solid #f1f5f9;
+      }
+      .navbar-nav .nav-item:last-child .nav-link { border-bottom: 0; }
+      .hero { padding-bottom: .25rem; }
+      .hero .lead { font-size: .95rem; }
+      .source-banner { padding: .7rem .8rem; }
+      .source-banner p { font-size: .78rem; }
+      .hero .btn { min-height: 44px; }
+      .candidate-card:hover {
+        transform: none;
+        box-shadow: 0 1px 2px rgba(15, 23, 42, .05);
+      }
+      .guide-steps {
+        width: 100%;
+        flex-direction: column;
+        gap: .4rem;
+      }
+      .guide-panel { padding: 1rem .9rem .85rem; }
+      .legend-grid { --bs-columns: 1; }
+      .legend-card {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: .7rem;
+        padding: .7rem .8rem;
+      }
+      .legend-card .chip { flex-shrink: 0; }
+      .legend-card p { margin: 0; font-size: .8rem; line-height: 1.4; }
+      .guide-tools {
+        position: sticky;
+        top: 56px;
+        z-index: 6;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(8.5rem, 11rem);
+        background: #fff;
+        margin: .85rem -0.9rem -.85rem;
+        padding: .7rem .9rem .65rem;
+        border-top: 1px solid #f1f5f9;
+        box-shadow: 0 8px 16px -12px rgba(15, 23, 42, .35);
+        gap: .5rem;
+      }
+      .search-wrap { min-width: 0; width: auto; flex: none; }
+      .guide-tools > .form-select { min-width: 0; width: 100%; flex: none; }
+      .search-wrap .form-control, .guide-tools .form-select { min-height: 44px; }
+      .axis-tabs {
+        grid-column: 1 / -1;
+        flex: none;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        width: 100%;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        gap: .25rem;
+        padding: .28rem;
+      }
+      .axis-tabs::-webkit-scrollbar { display: none; }
+      .tab-btn {
+        flex: 0 0 auto;
+        min-height: 36px;
+        padding: .4rem .8rem;
+      }
+      #mobile-list {
+        display: block;
+        margin-top: .25rem;
+      }
+      #mobile-list > * + * { margin-top: 1rem; }
+      .mobile-theme-tag {
+        display: block;
+        margin: 0 0 .35rem;
+        font-size: .68rem;
+        font-weight: 700;
+        letter-spacing: .06em;
+        text-transform: uppercase;
+        color: #0f766e;
+      }
+      #detailPanel.offcanvas {
+        --bs-offcanvas-width: 100vw;
+        --bs-offcanvas-height: min(92dvh, 100%);
+        top: auto;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-width: 100%;
+        height: var(--bs-offcanvas-height);
+        border-left: 0;
+        border-top: 1px solid #e2e8f0;
+        border-radius: 18px 18px 0 0;
+        transform: translateY(100%);
+      }
+      #detailPanel.offcanvas.showing,
+      #detailPanel.offcanvas.show:not(.hiding) { transform: none; }
+      #detailPanel.offcanvas.hiding { transform: translateY(100%); }
+      #detailPanel .offcanvas-header {
+        position: relative;
+        padding-top: 1.4rem;
+      }
+      #detailPanel .offcanvas-header::before {
+        content: "";
+        position: absolute;
+        top: .5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2.6rem;
+        height: .28rem;
+        border-radius: 99px;
+        background: #cbd5e1;
+      }
+      #criterionModal .modal-dialog { margin: .75rem; }
+    }
+
+    @media (max-width: 575.98px) {
+      .candidate-card .card-body {
+        display: flex;
+        flex-direction: column;
+        gap: .7rem;
+        padding: .9rem .9rem .85rem;
+      }
+      .candidate-card .card-body > .d-flex:first-child {
+        margin-bottom: 0 !important;
+        align-items: center !important;
+      }
+      .candidate-score { margin-bottom: 0 !important; padding: .55rem .7rem; }
+      .candidate-actions {
+        width: 100%;
+        grid-template-columns: 1fr 1fr;
+      }
+      .candidate-actions .btn { min-height: 42px; }
+      .avatar { width: 40px; height: 40px; }
+      .candidate-name { font-size: 1rem; }
+      .score-num { font-size: 1.05rem; }
+      .candidate-score .mb-2 { margin-bottom: .35rem !important; }
+      .hero .d-flex.flex-wrap .btn { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <a class="visually-hidden-focusable btn btn-dark m-2" href="#comparativo">Ir para o comparativo</a>
+
+  <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
+    <div class="container-xl">
+      <a class="navbar-brand" href="../index.html">
+        <span class="brand-mark">?</span>
+        Tá no Plano?
+        <span class="brand-year">2026</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain" aria-controls="navMain" aria-expanded="false" aria-label="Abrir menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav ms-auto gap-lg-2">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Presidente</a></li>
+          <li class="nav-item"><a class="nav-link active" href="#comparativo">Governador PE</a></li>
+          <li class="nav-item"><a class="nav-link" href="#candidatos">Candidatos</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://divulgacandcontas.tse.jus.br" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i>TSE</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container-xl py-4 py-lg-5">
+      <div class="row g-4 g-lg-5 align-items-center">
+        <div class="col-lg-7">
+          <div class="race-switch" role="navigation" aria-label="Cargo">
+            <a href="../index.html">Presidente</a>
+            <a class="is-on" href="#comparativo">Governador PE</a>
+          </div>
+          <p class="hero-kicker"><i class="bi bi-check2-circle"></i> Governo de Pernambuco · planos oficiais</p>
+          <h1 class="mb-3">O que cada candidato a governador colocou no plano</h1>
+          <p class="lead text-secondary mb-0 fs-6">Mesmo quadro do comparativo presidencial, agora com os quatro principais planos protocolados no TSE para Pernambuco. As cores mostram se o tema aparece no PDF — não são nota do candidato.</p>
+          <div class="source-list">
+            <div class="source-banner">
+              <i class="bi bi-shield-check" aria-hidden="true"></i>
+              <div>
+                <strong>PDFs do DivulgaCandContas</strong>
+                <p>João Campos, Raquel Lyra, Renan Hallais e Ivan Moraes. O plano da Raquel chegou como PDF de imagem: os trechos foram transcritos do documento registrado no TSE; o arquivo original continua no botão do plano.</p>
+              </div>
+            </div>
+            <div class="source-banner source-ai">
+              <i class="bi bi-stars" aria-hidden="true"></i>
+              <div>
+                <strong>Resumos com inteligência artificial</strong>
+                <p>Os textos comparativos foram elaborados com IAs, como o Gemini, a partir dos PDFs oficiais. Confira sempre o trecho e, quando houver, a página.</p>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex flex-wrap gap-2">
+            <a class="btn btn-dark px-3" href="#comparativo">Ver o comparativo</a>
+            <a class="btn btn-outline-secondary px-3" href="../index.html">Ir ao quadro presidencial</a>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="stats-panel">
+            <p class="small text-secondary text-uppercase fw-semibold mb-3" style="letter-spacing:.06em">Nesta leitura</p>
+            <div class="row g-2">
+              <div class="col-6"><div class="stat-pill"><strong>4</strong><span class="small text-secondary">planos em PDF do TSE</span></div></div>
+              <div class="col-6"><div class="stat-pill"><strong>288</strong><span class="small text-secondary">páginas no conjunto</span></div></div>
+              <div class="col-6"><div class="stat-pill"><strong>24</strong><span class="small text-secondary">critérios de Pernambuco</span></div></div>
+              <div class="col-6"><div class="stat-pill"><strong>5</strong><span class="small text-secondary">níveis de menção</span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="container-fluid px-3 px-xl-5 py-4 py-lg-5">
+    <section id="candidatos" class="mb-4 mb-lg-5">
+      <div class="mb-3">
+        <h2 class="h5 mb-1 fw-semibold">Candidatos e planos</h2>
+        <p class="small text-secondary mb-0">Quatro chapas ao Palácio das Princesas. Abra o PDF lido aqui ou a ficha no TSE.</p>
+      </div>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3">
+        <div class="col">
+          <article class="card candidate-card h-100" style="--accent: var(--c-joao)">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex align-items-start gap-2 mb-3">
+                <div class="avatar">JC</div>
+                <div class="min-w-0">
+                  <h3 class="candidate-name">João Campos</h3>
+                  <div class="d-flex flex-wrap align-items-center gap-1 mt-1">
+                    <span class="party-pill">PSB</span>
+                    <span class="candidate-meta">30 páginas</span>
+                  </div>
+                </div>
+              </div>
+              <div class="candidate-score mb-3" data-score-for="João Campos"></div>
+              <div class="candidate-actions mt-auto">
+                <a class="btn btn-sm btn-plano" href="Plano de Governo Joao Campos.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>Plano</a>
+                <a class="btn btn-sm btn-tse" href="https://divulgacandcontas.tse.jus.br/divulga/#/candidato/NORDESTE/PE/20322002026/170002537230/2026/PE" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i>TSE</a>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="col">
+          <article class="card candidate-card h-100" style="--accent: var(--c-raquel)">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex align-items-start gap-2 mb-3">
+                <div class="avatar">RL</div>
+                <div class="min-w-0">
+                  <h3 class="candidate-name">Raquel Lyra</h3>
+                  <div class="d-flex flex-wrap align-items-center gap-1 mt-1">
+                    <span class="party-pill">PSD</span>
+                    <span class="candidate-meta">106 páginas</span>
+                  </div>
+                </div>
+              </div>
+              <div class="candidate-score mb-3" data-score-for="Raquel Lyra"></div>
+              <div class="candidate-actions mt-auto">
+                <a class="btn btn-sm btn-plano" href="pje-Plano Reduzido - Raquel Lyra.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>Plano</a>
+                <a class="btn btn-sm btn-tse" href="https://divulgacandcontas.tse.jus.br/divulga/#/candidato/NORDESTE/PE/20322002026/170002537227/2026/PE" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i>TSE</a>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="col">
+          <article class="card candidate-card h-100" style="--accent: var(--c-hallais)">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex align-items-start gap-2 mb-3">
+                <div class="avatar">RH</div>
+                <div class="min-w-0">
+                  <h3 class="candidate-name">Renan Hallais</h3>
+                  <div class="d-flex flex-wrap align-items-center gap-1 mt-1">
+                    <span class="party-pill">Missão</span>
+                    <span class="candidate-meta">66 páginas</span>
+                  </div>
+                </div>
+              </div>
+              <div class="candidate-score mb-3" data-score-for="Renan Hallais"></div>
+              <div class="candidate-actions mt-auto">
+                <a class="btn btn-sm btn-plano" href="17859605574968KESeHs0D - Renan HALLAIS.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>Plano</a>
+                <a class="btn btn-sm btn-tse" href="https://divulgacandcontas.tse.jus.br/divulga/#/candidato/NORDESTE/PE/20322002026/170002540337/2026/PE" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i>TSE</a>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="col">
+          <article class="card candidate-card h-100" style="--accent: var(--c-ivan)">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex align-items-start gap-2 mb-3">
+                <div class="avatar">IM</div>
+                <div class="min-w-0">
+                  <h3 class="candidate-name">Ivan Moraes</h3>
+                  <div class="d-flex flex-wrap align-items-center gap-1 mt-1">
+                    <span class="party-pill">PSOL/REDE</span>
+                    <span class="candidate-meta">86 páginas</span>
+                  </div>
+                </div>
+              </div>
+              <div class="candidate-score mb-3" data-score-for="Ivan Moraes"></div>
+              <div class="candidate-actions mt-auto">
+                <a class="btn btn-sm btn-plano" href="PLANO DE GOVERNO IVAN MORAES  BEM VIVER EM PERNAMBUCO  OK.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>Plano</a>
+                <a class="btn btn-sm btn-tse" href="https://divulgacandcontas.tse.jus.br/divulga/#/candidato/NORDESTE/PE/20322002026/170002538097/2026/PE" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i>TSE</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="comparativo">
+      <div class="guide-panel mb-3">
+        <div class="d-flex flex-wrap justify-content-between align-items-start gap-3 mb-3">
+          <div>
+            <h2 class="h5 fw-semibold mb-1">Como usar</h2>
+            <p class="small text-secondary mb-0">Os selos resumem o PDF com apoio de IA — não são nota do candidato. Se o nome do tema for estranho, clique em <strong>O que é isso?</strong>.</p>
+          </div>
+          <ol class="guide-steps">
+            <li><b>1</b> Escolha um tema</li>
+            <li><b>2</b> Clique no selo</li>
+            <li><b>3</b> Abra a página do plano</li>
+          </ol>
+        </div>
+        <div class="legend-grid row row-cols-1 row-cols-md-2 row-cols-lg-5 g-2">
+          <div class="col"><div class="legend-card legend-fav"><span class="chip status-fav"><i class="bi bi-check-lg"></i> Tem no plano</span><p>Cita o tema e diz como vai fazer: programa, obra, lei ou meta.</p></div></div>
+          <div class="col"><div class="legend-card legend-vague"><span class="chip status-vague"><i class="bi bi-dash-lg"></i> Só cita</span><p>Fala do tema, sem dizer como vai fazer.</p></div></div>
+          <div class="col"><div class="legend-card legend-doubt"><span class="chip status-doubt"><i class="bi bi-exclamation-lg"></i> Com ressalva</span><p>Menciona o tema com condição ou outro modelo.</p></div></div>
+          <div class="col"><div class="legend-card legend-bad"><span class="chip status-bad"><i class="bi bi-x-lg"></i> É contra</span><p>O plano propõe o contrário do critério.</p></div></div>
+          <div class="col"><div class="legend-card legend-none"><span class="chip status-none"><i class="bi bi-slash-circle"></i> Não cita</span><p>O assunto não aparece neste PDF.</p></div></div>
+        </div>
+        <div class="guide-tools">
+          <div class="search-wrap">
+            <i class="bi bi-search"></i>
+            <input class="form-control" id="search" type="search" placeholder="Buscar tema, candidato ou trecho" aria-label="Buscar no comparativo">
+          </div>
+          <select class="form-select" id="statusFilter" aria-label="Filtrar pelo tipo de menção">
+            <option value="all">Todos os selos</option>
+            <option value="fav">Tem no plano</option>
+            <option value="vague">Só cita</option>
+            <option value="doubt">Com ressalva</option>
+            <option value="bad">É contra</option>
+            <option value="none">Não cita</option>
+          </select>
+          <div class="axis-tabs" role="tablist" aria-label="Eixos">
+            <button class="tab-btn active" data-axis="all" type="button">Todos</button>
+            <button class="tab-btn" data-axis="social" type="button">Social</button>
+            <button class="tab-btn" data-axis="educacao" type="button">Educação</button>
+            <button class="tab-btn" data-axis="saude" type="button">Saúde</button>
+            <button class="tab-btn" data-axis="seguranca" type="button">Segurança</button>
+            <button class="tab-btn" data-axis="territorio" type="button">Território</button>
+            <button class="tab-btn" data-axis="estado" type="button">Estado</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="criterios" class="d-none" aria-hidden="true">
+                <article class="criterion-card" id="criterio-renda" data-title="Transferência de renda e proteção social">
+                  <h4>Transferência de renda e proteção social</h4>
+                  <span class="criterion-label">Em português</span>
+                  <p>É o dinheiro ou o serviço que o Estado dá a quem está na pobreza: Chapéu de Palha, renda básica, Bom Prato, CRAS. A pergunta é se existe programa estadual — e se ele vem com condição de curso ou trabalho.</p>
+                  <span class="criterion-label">O que procuramos no PDF</span>
+                  <p>Programa, meta ou obra com nome — não só o tema no sumário.</p>
+                </article>
+                <article class="criterion-card" id="criterio-creche" data-title="Creche e educação infantil">
+                  <h4>Creche e educação infantil</h4>
+                  <span class="criterion-label">Em português</span>
+                  <p>Vaga para criança pequena, em geral em parceria com o município. Sem creche, a mãe costuma sair do trabalho. Procuramos número de vagas, obras ou prioridade nomeada — não só “cuidar da infância”.</p>
+                  <span class="criterion-label">O que procuramos no PDF</span>
+                  <p>Programa, meta ou obra com nome — não só o tema no sumário.</p>
+                </article>
+                <article class="criterion-card" id="criterio-mulher" data-title="Violência contra a mulher">
+                  <h4>Violência contra a mulher</h4>
+                  <span class="criterion-label">Em português</span>
+                  <p>Delegacia da Mulher, Sala Lilás, medida protetiva, meta de feminicídio. Qualificação para mulher empreender sem essa rede de proteção conta pouco neste critério.</p>
+                  <span class="criterion-label">O que procuramos no PDF</span>
+                  <p>Programa, meta ou obra com nome — não só o tema no sumário.</p>
+                </article>
+                <article class="criterion-card" id="criterio-moradia" data-title="Moradia e habitação">
+                  <h4>Moradia e habitação</h4>
+                  <span class="criterion-label">Em português</span>
+                  <p>Casa nova, escritura, urbanização de encosta ou aluguel social. Banco de terreno para escola não é o mesmo que moradia para família.</p>
+                  <span class="criterion-label">O que procuramos no PDF</span>
+                  <p>Programa, meta ou obra com nome — não só o tema no sumário.</p>
+                </article>
+                <article class="criterion-card" id="criterio-alfabet" data-title="Alfabetização na idade certa">
+                  <h4>Alfabetização na idade certa</h4>
+                  <span class="criterion-label">Em português</span>
+                  <p>A criança ler e escrever até o 2º ano, com pacto entre Estado e prefeitura. Alfabetizar adulto na EJA é outra política — entra só como menção próxima.</p>
+                  <span class="criterion-label">O que procuramos no PDF</span>
+                  <p>Programa, meta ou obra com nome — não só o tema no sumário.</p>
+                </article>
+                <article class="criterion-card" id="criterio-integral" data-title="Escola em tempo integral">
+                  <h4>Escola em tempo integral</h4>
+                  <span class="criterion-label">Em português</span>
+                  <p>O aluno fica o dia inteiro na escola pública. Abrir a quadra à noite para o bairro ou creche integral não é a mesma coisa.</p>
+                  <span class="criterion-label">O que procuramos no PDF</span>
+                  <p>Programa, meta ou obra com nome — não só o tema no sumário.</p>
+                </article>
+                <article class="criterion-card" id="criterio-tecnica" data-title="Educação profissional e técnica">
+                  <h4>Educação profissional e técnica</h4>
+                  <span class="criterion-label">Em português</span>
+                  <p>ETE, curso dual com empresa, TrilhaTec, SENAI. Universidade estadual sozinha não fecha este critério.</p>
+                  <span class="criterion-label">O que procuramos no PDF</span>
+                  <p>Programa, meta ou obra com nome — não só o tema no sumário.</p>
+                </article>
+                <article class="criterion-card" id="criterio-filas" data-title="Filas de exames e cirurgias">
+                  <h4>Filas de exames e cirurgias</h4>
+                  <span class="criterion-label">Em português</span>
+                  <p>Como o Estado encurta a espera por consulta, exame e cirurgia: regulação, confirmação de vaga, mutirão ou programa nomeado. Hospital novo sozinho não fecha esta linha.</p>
+                  <span class="criterion-label">O que procuramos no PDF</span>
+                  <p>SISREG, fila única, Cuida PE, Sem Sonda, navegação do paciente ou meta de zerar espera.</p>
+                </article>
+                <article class="criterion-card" id="criterio-hospital" data-title="Hospitais no interior">
+                  <h4>Hospitais no interior</h4>
+                  <span class="criterion-label">Em português</span>
+                  <p>Quem mora no Sertão ou no Agreste precisa ir ao Recife? Procuramos hospital regional, maternidade ou UPAE com cidade e obra — não só “desafogar a capital”.</p>
+                  <span class="criterion-label">O que procuramos no PDF</span>
+                  <p>Hospital, maternidade ou UPAE nomeados no Agreste, Sertão ou São Francisco.</p>
+                </article>
+                <article class="criterion-card" id="criterio-aps" data-title="Atenção primária e Saúde da Família">
+                  <h4>Atenção primária e Saúde da Família</h4>
+                  <span class="criterion-label">Em português</span>
+                  <p>O posto perto de casa é municipal; o Estado entra com dinheiro, equipe ou reforma da UBS. Sem ESF ou cofinanciamento, a frase “fortalecer a básica” fica solta.</p>
+                  <span class="criterion-label">O que procuramos no PDF</span>
+                  <p>ESF, UBS, Qualifica APS, Requalifica UBS ou cofinanciamento da atenção básica.</p>
+                </article>
+                <article class="criterion-card" id="criterio-farmacia" data-title="Medicamentos e entrega em casa">
+                  <h4>Medicamentos e entrega em casa</h4>
+                  <span class="criterion-label">Em português</span>
+                  <p>Farmácia estadual, Remédio na Porta ou entrega ao crônico e ao idoso. Citar desperdício de remédio no hospital, sem programa de acesso, não fecha o selo verde.</p>
+                  <span class="criterion-label">O que procuramos no PDF</span>
+                  <p>Farmácia Estadual, Remédio na Porta ou entrega domiciliar nomeada.</p>
+                </article>
+                <article class="criterion-card" id="criterio-saude-mulher" data-title="Saúde da mulher e maternidade">
+                  <h4>Saúde da mulher e maternidade</h4>
+                  <span class="criterion-label">Em português</span>
+                  <p>Mãe Coruja, Colo de Mãe, maternidade de alto risco, carreta de exame. Não é a mesma linha de violência contra a mulher.</p>
+                  <span class="criterion-label">O que procuramos no PDF</span>
+                  <p>Programa materno-infantil, maternidade nomeada ou rastreio de câncer da mulher.</p>
+                </article>
+                <article class="criterion-card" id="criterio-mental" data-title="Saúde mental">
+                  <h4>Saúde mental</h4>
+                  <span class="criterion-label">Em português</span>
+                  <p>CAPS, Atitude, redução de danos, leito em hospital geral. Emergência psiquiátrica na capital sem rede no território é só parte da resposta.</p>
+                  <span class="criterion-label">O que procuramos no PDF</span>
+                  <p>Programa, meta ou obra com nome — não só o tema no sumário.</p>
+                </article>
+                <article class="criterion-card" id="criterio-seg" data-title="Policiamento e redução da violência">
+                  <h4>Policiamento e redução da violência</h4>
+                  <span class="criterion-label">Em português</span>
+                  <p>Como o plano decidiria onde pôr policial, câmera e meta de homicídio. Pode ser Pacto pela Vida, Juntos pela Segurança ou gestão por dados com controle da polícia.</p>
+                  <span class="criterion-label">O que procuramos no PDF</span>
+                  <p>Programa, meta ou obra com nome — não só o tema no sumário.</p>
+                </article>
+                <article class="criterion-card" id="criterio-prisao" data-title="Sistema prisional">
+                  <h4>Sistema prisional</h4>
+                  <span class="criterion-label">Em português</span>
+                  <p>Presídio novo, fim da superlotação, bloqueio de celular ou ressocialização. Citar a cadeia só como compradora de merenda não conta.</p>
+                  <span class="criterion-label">O que procuramos no PDF</span>
+                  <p>Programa, meta ou obra com nome — não só o tema no sumário.</p>
+                </article>
+                <article class="criterion-card" id="criterio-faccao-pe" data-title="Facções e crime organizado">
+                  <h4>Facções e crime organizado</h4>
+                  <span class="criterion-label">Em português</span>
+                  <p>Como o governo do Estado enfrentaria PCC, CV e o comando da cadeia: pacto, inteligência, DENARC ou só o nome “crime organizado”.</p>
+                  <span class="criterion-label">O que procuramos no PDF</span>
+                  <p>Programa com nome, integração de polícias ou corte da comunicação da facção — não só o diagnóstico do medo.</p>
+                </article>
+                <article class="criterion-card" id="criterio-cameras-pe" data-title="Câmeras e inteligência">
+                  <h4>Câmeras e inteligência</h4>
+                  <span class="criterion-label">Em português</span>
+                  <p>Videomonitoramento de rua, reconhecimento facial ou câmera no peito do policial. Precisa dizer onde e para quê.</p>
+                  <span class="criterion-label">O que procuramos no PDF</span>
+                  <p>Cidade, rodovia, central de operação ou regra de uso da imagem.</p>
+                </article>
+                <article class="criterion-card" id="criterio-efetivo" data-title="Efetivo e concursos">
+                  <h4>Efetivo e concursos</h4>
+                  <span class="criterion-label">Em português</span>
+                  <p>Repor PM, Civil, Penal, perito e bombeiro. “Valorizar o policial” sem concurso, meta ou batalhão novo vira Só cita.</p>
+                  <span class="criterion-label">O que procuramos no PDF</span>
+                  <p>Concurso, percentual do efetivo legal, batalhão novo ou plano de carreira com critério.</p>
+                </article>
+                <article class="criterion-card" id="criterio-agua" data-title="Água e segurança hídrica">
+                  <h4>Água e segurança hídrica</h4>
+                  <span class="criterion-label">Em português</span>
+                  <p>Adutora, cisterna, barragem, ramal do São Francisco. Pernambuco é semiárido: sem obra de água, o resto do plano rural não se sustenta.</p>
+                  <span class="criterion-label">O que procuramos no PDF</span>
+                  <p>Programa, meta ou obra com nome — não só o tema no sumário.</p>
+                </article>
+                <article class="criterion-card" id="criterio-saneamento" data-title="Saneamento">
+                  <h4>Saneamento</h4>
+                  <span class="criterion-label">Em português</span>
+                  <p>Esgoto tratado, Marco Legal até 2033, fiscalizar a concessionária. Água na torneira sem coleta de esgoto não fecha o critério.</p>
+                  <span class="criterion-label">O que procuramos no PDF</span>
+                  <p>Programa, meta ou obra com nome — não só o tema no sumário.</p>
+                </article>
+                <article class="criterion-card" id="criterio-mobilidade" data-title="Mobilidade e rodovias">
+                  <h4>Mobilidade e rodovias</h4>
+                  <span class="criterion-label">Em português</span>
+                  <p>Transnordestina, BR-232, metrô, ônibus elétrico ou Tarifa Zero. Estrada vicinal só para o agro entra no critério da agricultura.</p>
+                  <span class="criterion-label">O que procuramos no PDF</span>
+                  <p>Programa, meta ou obra com nome — não só o tema no sumário.</p>
+                </article>
+                <article class="criterion-card" id="criterio-emprego" data-title="Emprego, Suape e desenvolvimento">
+                  <h4>Emprego, Suape e desenvolvimento</h4>
+                  <span class="criterion-label">Em português</span>
+                  <p>Porto, ZPE, indústria, Porto Digital ou economia solidária com compra pública. A pergunta é como o plano gera trabalho formal no Estado.</p>
+                  <span class="criterion-label">O que procuramos no PDF</span>
+                  <p>Programa, meta ou obra com nome — não só o tema no sumário.</p>
+                </article>
+                <article class="criterion-card" id="criterio-agro" data-title="Agricultura familiar e semiárido">
+                  <h4>Agricultura familiar e semiárido</h4>
+                  <span class="criterion-label">Em português</span>
+                  <p>IPA, ATER, semente, cisterna rural, Chapéu de Palha. Só fruta irrigada para exportar, sem o familiar, deixa o critério pela metade.</p>
+                  <span class="criterion-label">O que procuramos no PDF</span>
+                  <p>Programa, meta ou obra com nome — não só o tema no sumário.</p>
+                </article>
+                <article class="criterion-card" id="criterio-corrupcao" data-title="Transparência e combate à corrupção">
+                  <h4>Transparência e combate à corrupção</h4>
+                  <span class="criterion-label">Em português</span>
+                  <p>Dado aberto, auditoria, concurso, critério técnico para cargo. Discurso contra “oligarquia” sem instrumento conta pouco.</p>
+                  <span class="criterion-label">O que procuramos no PDF</span>
+                  <p>Programa, meta ou obra com nome — não só o tema no sumário.</p>
+                </article>
+      </div>
+
+      <div class="table-shell d-none d-lg-block">
+        <table class="table align-middle" id="tabela">
+          <thead>
+            <tr>
+              <th class="col-theme" scope="col">Tema</th>
+              <th class="col-cand cand-joao" scope="col"><span class="th-cand">João</span></th>
+              <th class="col-cand cand-raquel" scope="col"><span class="th-cand">Raquel</span></th>
+              <th class="col-cand cand-hallais" scope="col"><span class="th-cand">Hallais</span></th>
+              <th class="col-cand cand-ivan" scope="col"><span class="th-cand">Ivan</span></th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr class="category-header-row" data-category="social">
+            <td colspan="5"><i class="bi bi-people me-2"></i>Política social</td>
+          </tr>
+          <tr class="data-row" data-category="social">
+            <td class="criteria-title">Transferência de renda e proteção social<span class="criteria-desc">Chapéu de Palha, renda básica, auxílio condicionado ou só CRAS.</span><a class="criteria-help" href="#criterio-renda">O que é isso?</a></td>
+            <td class="cell-status" data-status="fav" data-candidate="João Campos" data-detail="Ampliar o Chapéu de Palha para meio salário-mínimo, com cursos, e retomar transferências para mães, crianças e adolescentes. Também fortalece CRAS, CREAS e cofinanciamento do SUAS. O caminho é renda estadual mais rede de assistência, não só o Bolsa Família federal." data-pdf="Plano de Governo Joao Campos.pdf" data-page="8" data-section="Desenvolvimento Social" data-quote="Retomar, expandir e criar programas com a finalidade de transferência de renda e apoio socio-econômico para mães pernambucanas, crianças e adolescentes em situação de vulnerabilidade" data-how="Ampliar o Chapéu de Palha para meio salário-mínimo, com cursos, e retomar transferências para mães, crianças e adolescentes. Também fortalece CRAS, CREAS e cofinanciamento do SUAS. O caminho é renda estadual mais rede de assistência, não só o Bolsa Família federal."></td>
+            <td class="cell-status" data-status="vague" data-candidate="Raquel Lyra" data-detail="Nomeia Bom Prato e Mães de Pernambuco e pede ampliar/fortalecer. Não diz valor, regra de entrada nem como a rede cresce." data-pdf="pje-Plano Reduzido - Raquel Lyra.pdf" data-section="Segurança, cidadania e direitos humanos" data-quote="Ampliar a rede do Programa Bom Prato, atendendo pessoas em insegurança alimentar e nutricional, povos e comunidades tradicionais e populações historicamente vulnerabilizadas. Fortalecer o Programa Mães de Pernambuco" data-how="O plano no TSE cita dois programas já existentes e pede ampliar e fortalecer. Não descreve valor, cadastro, município-alvo nem fonte. Sem o como, o selo é Só cita — mesmo com nome de programa."></td>
+            <td class="cell-status" data-status="doubt" data-candidate="Renan Hallais" data-detail="Quer um estado com baixa necessidade do Bolsa Família. O Auxílio + Qualificação amarra o benefício estadual à frequência em curso técnico. Há meta de reduzir 20% as famílias em extrema pobreza. O caminho é contraprestação: a renda estadual não fica solta." data-pdf="17859605574968KESeHs0D - Renan HALLAIS.pdf" data-page="11" data-section="Assistência Social — Auxílio + Qualificação" data-quote="Implementar o programa “Auxílio + Qualificação”, condicionando benefícios estaduais complementares à matrícula e frequência em trilhas técnicas por perfil" data-how="Quer um estado com baixa necessidade do Bolsa Família. O Auxílio + Qualificação amarra o benefício estadual à frequência em curso técnico. Há meta de reduzir 20% as famílias em extrema pobreza. O caminho é contraprestação: a renda estadual não fica solta."></td>
+            <td class="cell-status" data-status="vague" data-candidate="Ivan Moraes" data-detail="Nomeia a Renda Básica Universal como mudança estruturante. Não diz valor, quem entra, quem paga nem calendário." data-pdf="PLANO DE GOVERNO IVAN MORAES  BEM VIVER EM PERNAMBUCO  OK.pdf" data-page="2" data-section="Bem Viver em Pernambuco" data-quote="Propomos mudanças estruturantes, como a implementação da Renda Básica Universal, a Tarifa Zero no transporte metropolitano e uma política firme de Justiça Climática." data-how="O PDF afirma a Renda Básica Universal. Não descreve valor, cadastro, fonte orçamentária nem fase de implantação. Citar o nome do direito, sem o como, fica em Só cita."></td>
+          </tr>
+          <tr class="data-row" data-category="social">
+            <td class="criteria-title">Creche e educação infantil<span class="criteria-desc">Vaga em creche, parceria com município ou só menção à primeira infância.</span><a class="criteria-help" href="#criterio-creche">O que é isso?</a></td>
+            <td class="cell-status" data-status="fav" data-candidate="João Campos" data-detail="Implantar novas creches e concluir as que a gestão atual não entregou, em parceria com os municípios. A educação é tratada da primeira vaga na creche ao primeiro emprego. O caminho é construir e apoiar a rede municipal." data-pdf="Plano de Governo Joao Campos.pdf" data-page="9" data-section="Educação e Esportes" data-quote="Implantar novas creches em Pernambuco, ampliando o acesso à educação infantil e concluindo unidades que a atual gestão não entregou, fortalecendo a parceria com os municípios" data-how="Implantar novas creches e concluir as que a gestão atual não entregou, em parceria com os municípios. A educação é tratada da primeira vaga na creche ao primeiro emprego. O caminho é construir e apoiar a rede municipal."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Raquel Lyra" data-detail="O plano no TSE promete concluir e equipar 250 creches, com 60 mil vagas, em colaboração com os municípios. É continuidade da meta do mandato atual. O caminho é terminar as obras já anunciadas." data-pdf="pje-Plano Reduzido - Raquel Lyra.pdf" data-section="Educação, ciência e tecnologia" data-quote="Concluir a construção e equipagem das 250 novas creches em regime de colaboração com os municípios, garantindo a criação de 60 mil vagas na educação infantil em todo o estado" data-how="O plano no TSE promete concluir e equipar 250 creches, com 60 mil vagas, em colaboração com os municípios. É continuidade da meta do mandato atual. O caminho é terminar as obras já anunciadas."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Renan Hallais" data-detail="Prioriza creche em tempo integral para mães solo e gestantes do Mãe Coruja, com salas de cuidado nos CRAS. Não há meta estadual de novas unidades. O caminho é vaga prioritária para quem está na assistência, não universalização." data-pdf="17859605574968KESeHs0D - Renan HALLAIS.pdf" data-page="12" data-section="Mãe Empreendedora" data-quote="Ofertar salas de cuidado infantil nos Cantos Mãe Coruja e nos CRAS (rede da SAS), e garantir prioridade em creches de tempo integral para romper a tripla jornada" data-how="Prioriza creche em tempo integral para mães solo e gestantes do Mãe Coruja, com salas de cuidado nos CRAS. Não há meta estadual de novas unidades. O caminho é vaga prioritária para quem está na assistência, não universalização."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Ivan Moraes" data-detail="Expandir creches públicas nas periferias, no campo e nos territórios mais pobres, para mães estudarem e trabalharem. Também institui política estadual de apoio à educação infantil nos municípios. O caminho é vaga pública, não voucher." data-pdf="PLANO DE GOVERNO IVAN MORAES  BEM VIVER EM PERNAMBUCO  OK.pdf" data-page="67" data-section="Políticas para as mulheres" data-quote="Expandir a oferta de creches públicas em Pernambuco, com prioridade para periferias urbanas, áreas rurais e territórios de maior vulnerabilidade social" data-how="Expandir creches públicas nas periferias, no campo e nos territórios mais pobres, para mães estudarem e trabalharem. Também institui política estadual de apoio à educação infantil nos municípios. O caminho é vaga pública, não voucher."></td>
+          </tr>
+          <tr class="data-row" data-category="social">
+            <td class="criteria-title">Violência contra a mulher<span class="criteria-desc">DEAM, Sala Lilás, feminicídio ou só autonomia econômica.</span><a class="criteria-help" href="#criterio-mulher">O que é isso?</a></td>
+            <td class="cell-status" data-status="fav" data-candidate="João Campos" data-detail="DEAMs 24h, Salas Lilás, gratificação para quem atende vítimas e núcleos do DHPP para feminicídio. Também cria o Pernambuco Tá com Elas para renda. O caminho é delegacia mais autonomia econômica." data-pdf="Plano de Governo Joao Campos.pdf" data-page="14" data-section="Políticas para as Mulheres" data-quote="Fortalecer e expandir a rede de Delegacias da Mulher, garantindo atendimento 24 horas, presença de policiais mulheres e novas unidades no interior. Associar núcleos do DHPP às DEAMs" data-how="DEAMs 24h, Salas Lilás, gratificação para quem atende vítimas e núcleos do DHPP para feminicídio. Também cria o Pernambuco Tá com Elas para renda. O caminho é delegacia mais autonomia econômica."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Raquel Lyra" data-detail="O plano no TSE liga feminicídio a renda e qualificação, e prevê Salas Lilás, DEAM 24h, 197 Mulher, Qualifica Mulher e Mães na Creche. O caminho é rede de denúncia mais crédito e curso." data-pdf="pje-Plano Reduzido - Raquel Lyra.pdf" data-section="Segurança, cidadania e direitos humanos" data-quote="Expandir as Salas Lilás nas delegacias e a cobertura do Plantão 24h nas Delegacias Especializadas de Atendimento à Mulher. Fortalecer o Programa 197 Mulher" data-how="O plano no TSE liga feminicídio a renda e qualificação, e prevê Salas Lilás, DEAM 24h, 197 Mulher, Qualifica Mulher e Mães na Creche. O caminho é rede de denúncia mais crédito e curso."></td>
+            <td class="cell-status" data-status="none" data-candidate="Renan Hallais" data-detail="Neste PDF não há capítulo nem proposta de DEAM, Sala Lilás, feminicídio ou Patrulha Maria da Penha. Mulheres aparecem sobretudo como mães solo na assistência, com creche e qualificação." data-pdf="17859605574968KESeHs0D - Renan HALLAIS.pdf" data-section="" data-quote="" data-how="Neste PDF não há capítulo nem proposta de DEAM, Sala Lilás, feminicídio ou Patrulha Maria da Penha. Mulheres aparecem sobretudo como mães solo na assistência, com creche e qualificação."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Ivan Moraes" data-detail="Diagnostica o recorde de mortes de mulheres e propõe metas de feminicídio, reforço do DHPP, formação Maria da Penha e câmeras corporais. O caminho é gestão por dados mais investigação, com crítica à letalidade policial." data-pdf="PLANO DE GOVERNO IVAN MORAES  BEM VIVER EM PERNAMBUCO  OK.pdf" data-page="17" data-section="Segurança pública" data-quote="Implantar uma gestão da segurança pública orientada por dados e resultados, com metas específicas para cada território e tipo de crime, acompanhando indicadores como redução de roubos, homicídios, feminicídios e violência armada" data-how="Diagnostica o recorde de mortes de mulheres e propõe metas de feminicídio, reforço do DHPP, formação Maria da Penha e câmeras corporais. O caminho é gestão por dados mais investigação, com crítica à letalidade policial."></td>
+          </tr>
+          <tr class="data-row" data-category="social">
+            <td class="criteria-title">Moradia e habitação<span class="criteria-desc">Casa nova, regularização, urbanização de risco ou só banco de imóveis.</span><a class="criteria-help" href="#criterio-moradia">O que é isso?</a></td>
+            <td class="cell-status" data-status="fav" data-candidate="João Campos" data-detail="Ampliar o MCMV com terrenos e projetos municipais, Banco de Imóveis Públicos, regularização e melhorias habitacionais. Também urbaniza comunidades em risco climático. O caminho é casa federal mais titulação estadual." data-pdf="Plano de Governo Joao Campos.pdf" data-page="26" data-section="Habitabilidade" data-quote="Ampliar a produção de moradias do Minha Casa, Minha Vida em Pernambuco, articulando com o Governo Federal a expansão dos investimentos e das contratações no Estado." data-how="Ampliar o MCMV com terrenos e projetos municipais, Banco de Imóveis Públicos, regularização e melhorias habitacionais. Também urbaniza comunidades em risco climático. O caminho é casa federal mais titulação estadual."></td>
+            <td class="cell-status" data-status="vague" data-candidate="Raquel Lyra" data-detail="O banco de imóveis do plano serve a equipamentos públicos, não a um programa habitacional nomeado. A Condepe/Fidem apoiaria municípios em habitação. Falta meta de casas, MCMV ou regularização de família." data-pdf="pje-Plano Reduzido - Raquel Lyra.pdf" data-section="Gestão e meio ambiente" data-quote="Criar um banco estadual de imóveis públicos disponíveis para a implantação de escolas, creches, unidades de saúde, equipamentos de segurança, cozinhas comunitárias, áreas de lazer e outros serviços essenciais" data-how="O banco de imóveis do plano serve a equipamentos públicos, não a um programa habitacional nomeado. A Condepe/Fidem apoiaria municípios em habitação. Falta meta de casas, MCMV ou regularização de família."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Renan Hallais" data-detail="Integra habitação, drenagem e urbanismo: quem pode ficar é urbanizado e regularizado; quem está em risco é reassentado. Também recupera imóveis vazios no centro. O caminho é bairro completo, não só chave." data-pdf="17859605574968KESeHs0D - Renan HALLAIS.pdf" data-page="63" data-section="Urbanismo e Habitação" data-quote="Os projetos habitacionais não se limitarão à entrega de casas, vamos construir bairros completos, com saneamento, escolas, unidades de saúde, transporte, iluminação, áreas de convivência e acesso ao trabalho." data-how="Integra habitação, drenagem e urbanismo: quem pode ficar é urbanizado e regularizado; quem está em risco é reassentado. Também recupera imóveis vazios no centro. O caminho é bairro completo, não só chave."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Ivan Moraes" data-detail="Urbanização com saneamento e ZEIS, assistência técnica gratuita e cooperativas. Prioriza quem já mora no território. O caminho é regularizar e urbanizar, não desfavelizar." data-pdf="PLANO DE GOVERNO IVAN MORAES  BEM VIVER EM PERNAMBUCO  OK.pdf" data-page="45" data-section="Cidade e habitação" data-quote="O programa deverá articular ações de saneamento, infraestrutura urbana, drenagem, melhoria habitacional e assistência técnica pública e gratuita, além de apoiar iniciativas de autogestão, cooperativas habitacionais" data-how="Urbanização com saneamento e ZEIS, assistência técnica gratuita e cooperativas. Prioriza quem já mora no território. O caminho é regularizar e urbanizar, não desfavelizar."></td>
+          </tr>
+          <tr class="category-header-row" data-category="educacao">
+            <td colspan="5"><i class="bi bi-book me-2"></i>Educação</td>
+          </tr>
+          <tr class="data-row" data-category="educacao">
+            <td class="criteria-title">Alfabetização na idade certa<span class="criteria-desc">Criança lendo até o 2º ano, pacto com municípios ou só EJA.</span><a class="criteria-help" href="#criterio-alfabet">O que é isso?</a></td>
+            <td class="cell-status" data-status="fav" data-candidate="João Campos" data-detail="Pacto com municípios: apoio técnico, pedagógico e financeiro para a criança ler na idade certa. Também liga alfabetização ao Chapéu de Palha para adultos. O caminho é colaboração Estado–prefeitura." data-pdf="Plano de Governo Joao Campos.pdf" data-page="9" data-section="Educação e Esportes" data-quote="Fortalecer a política estadual de alfabetização na idade certa, em regime de colaboração com os municípios, garantindo apoio técnico, pedagógico e financeiro às redes municipais." data-how="Pacto com municípios: apoio técnico, pedagógico e financeiro para a criança ler na idade certa. Também liga alfabetização ao Chapéu de Palha para adultos. O caminho é colaboração Estado–prefeitura."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Raquel Lyra" data-detail="Fortalece o Criança Alfabetizada rumo a 100% na idade certa, com busca ativa de crianças com deficiência fora da escola. O caminho é aprofundar o programa já em curso." data-pdf="pje-Plano Reduzido - Raquel Lyra.pdf" data-section="Educação, ciência e tecnologia" data-quote="Fortalecer o Programa Criança Alfabetizada para aproximar Pernambuco da meta de ter 100% das crianças lendo e escrevendo na idade certa e realizar campanhas intersetoriais de busca ativa" data-how="Fortalece o Criança Alfabetizada rumo a 100% na idade certa, com busca ativa de crianças com deficiência fora da escola. O caminho é aprofundar o programa já em curso."></td>
+            <td class="cell-status" data-status="vague" data-candidate="Renan Hallais" data-detail="O diagnóstico cita a meta da idade certa. As propostas do capítulo vão para UPE, ETEs, mentoria e carreira docente — sem um programa próprio de alfabetização infantil. Adultos ganham alfabetização + curso técnico na assistência." data-pdf="17859605574968KESeHs0D - Renan HALLAIS.pdf" data-page="30" data-section="Educação — diagnóstico" data-quote="O índice de Criança Alfabetizada avançou de 28% para 66% entre 2021 e 2025, um progresso real que merece reconhecimento, mas ainda distante da meta de que toda criança pernambucana leia e escreva na idade certa." data-how="O diagnóstico cita a meta da idade certa. As propostas do capítulo vão para UPE, ETEs, mentoria e carreira docente — sem um programa próprio de alfabetização infantil. Adultos ganham alfabetização + curso técnico na assistência."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Ivan Moraes" data-detail="Pacto Estado–municípios até o 2º ano, com formação de alfabetizadores, material, diagnóstico e recomposição. Também cita EJA no interior. O caminho é pactuação com a rede municipal." data-pdf="PLANO DE GOVERNO IVAN MORAES  BEM VIVER EM PERNAMBUCO  OK.pdf" data-page="26" data-section="Educação" data-quote="Estado e os municípios para garantir a alfabetização e a aprendizagem adequada em matemática até o final do segundo ano do ensino fundamental. O programa deverá oferecer formação continuada para professores alfabetizadores" data-how="Pacto Estado–municípios até o 2º ano, com formação de alfabetizadores, material, diagnóstico e recomposição. Também cita EJA no interior. O caminho é pactuação com a rede municipal."></td>
+          </tr>
+          <tr class="data-row" data-category="educacao">
+            <td class="criteria-title">Escola em tempo integral<span class="criteria-desc">Ensino médio ou fundamental o dia inteiro, não só creche integral.</span><a class="criteria-help" href="#criterio-integral">O que é isso?</a></td>
+            <td class="cell-status" data-status="fav" data-candidate="João Campos" data-detail="Universalizar o ensino médio integral e ampliar o integral nos anos finais do fundamental, com os municípios. Também valoriza professores. O caminho é jornada completa na rede estadual." data-pdf="Plano de Governo Joao Campos.pdf" data-page="9" data-section="Educação e Esportes" data-quote="Universalizar a oferta do Ensino Médio em tempo integral em Pernambuco, e permitir que o estado retome o protagonismo nacional no Ensino Médio e nesta modalidade de ensino." data-how="Universalizar o ensino médio integral e ampliar o integral nos anos finais do fundamental, com os municípios. Também valoriza professores. O caminho é jornada completa na rede estadual."></td>
+            <td class="cell-status" data-status="vague" data-candidate="Raquel Lyra" data-detail="Pede avançar na expansão do tempo integral e continuar o Juntos pela Educação. Não diz série, meta de matrícula nem como financia a jornada." data-pdf="pje-Plano Reduzido - Raquel Lyra.pdf" data-section="Educação, ciência e tecnologia" data-quote="dar continuidade ao programa Juntos pela Educação […] além de avançar na expansão do ensino em tempo integral" data-how="O documento registra a intenção de expandir o integral. Falta o como: quantas escolas, qual série, que recurso. Sem isso o selo é Só cita."></td>
+            <td class="cell-status" data-status="vague" data-candidate="Renan Hallais" data-detail="Abre a escola à noite e no fim de semana para a comunidade; cita escola em tempo integral só em bairros novos. Não promete universalizar o EMI. O caminho é uso comunitário, não jornada do aluno." data-pdf="17859605574968KESeHs0D - Renan HALLAIS.pdf" data-page="31" data-section="Escola de Portas Abertas" data-quote="Abertura sistemática das escolas estaduais para uso comunitário fora do horário letivo (noites e fins de semana), com quadras, auditórios, laboratórios e salas de aula à disposição da comunidade." data-how="Abre a escola à noite e no fim de semana para a comunidade; cita escola em tempo integral só em bairros novos. Não promete universalizar o EMI. O caminho é uso comunitário, não jornada do aluno."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Ivan Moraes" data-detail="Expandir o integral na rede estadual, começando pelos territórios mais pobres, e cobra estrutura para convivência e cultura. O caminho é jornada ampliada com prioridade social." data-pdf="PLANO DE GOVERNO IVAN MORAES  BEM VIVER EM PERNAMBUCO  OK.pdf" data-page="26" data-section="Educação" data-quote="ampliar a oferta de educação integral em tempo integral na rede estadual, priorizando escolas localizadas em territórios de maior vulnerabilidade social." data-how="Expandir o integral na rede estadual, começando pelos territórios mais pobres, e cobra estrutura para convivência e cultura. O caminho é jornada ampliada com prioridade social."></td>
+          </tr>
+          <tr class="data-row" data-category="educacao">
+            <td class="criteria-title">Educação profissional e técnica<span class="criteria-desc">ETE, SENAI, dual escola-empresa ou só menção a emprego.</span><a class="criteria-help" href="#criterio-tecnica">O que é isso?</a></td>
+            <td class="cell-status" data-status="fav" data-candidate="João Campos" data-detail="Modernizar ETEs, interiorizar IFPE e UPE, Embarque Digital com 10 mil vagas e campus da moda em Caruaru. O caminho é escola técnica ligada à vocação de cada região." data-pdf="Plano de Governo Joao Campos.pdf" data-page="9" data-section="Educação e Esportes" data-quote="Modernizar as ETEs, com laboratórios, equipamentos, softwares e ambientes de aprendizagem mais conectados às vocações econômicas de cada região." data-how="Modernizar ETEs, interiorizar IFPE e UPE, Embarque Digital com 10 mil vagas e campus da moda em Caruaru. O caminho é escola técnica ligada à vocação de cada região."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Raquel Lyra" data-detail="Concluir 15 ETEs, restaurar o Liceu e o Ginásio Pernambucano e ampliar o TrilhaTec para o ensino médio e a EJA. O caminho é terminar escolas técnicas e curso rápido." data-pdf="pje-Plano Reduzido - Raquel Lyra.pdf" data-section="Educação, ciência e tecnologia" data-quote="Concluir a construção e a equipagem de 15 novas Escolas Técnicas Estaduais (ETEs) […] Fortalecer o Programa TrilhaTec, ampliando a oferta anual de vagas em cursos de aperfeiçoamento" data-how="Concluir 15 ETEs, restaurar o Liceu e o Ginásio Pernambucano e ampliar o TrilhaTec para o ensino médio e a EJA. O caminho é terminar escolas técnicas e curso rápido."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Renan Hallais" data-detail="Modelo dual nas ETEs, P-TECH com empresa e faculdade, QualificaPE modular e mentoria com o Porto Digital. Começa em ao menos 5 ETEs. O caminho é aluno remunerado na empresa." data-pdf="17859605574968KESeHs0D - Renan HALLAIS.pdf" data-page="33" data-section="Sistema Dual PE" data-quote="Sistema Dual PE — Aprendizagem Escola-Empresa nas ETEs: adaptação do modelo alemão, alternando formação técnica na escola com aprendizagem prática remunerada nas empresas parceiras" data-how="Modelo dual nas ETEs, P-TECH com empresa e faculdade, QualificaPE modular e mentoria com o Porto Digital. Começa em ao menos 5 ETEs. O caminho é aluno remunerado na empresa."></td>
+            <td class="cell-status" data-status="vague" data-candidate="Ivan Moraes" data-detail="Detalha UPE, permanência e 10% do PIB na educação federal. Não nomeia expansão de ETE nem sistema dual. O caminho mais próximo é ensino superior estadual, não rede técnica de médio." data-pdf="PLANO DE GOVERNO IVAN MORAES  BEM VIVER EM PERNAMBUCO  OK.pdf" data-page="87" data-section="Universidade de Pernambuco" data-quote="Garantir financiamento estável e previsível para a Universidade de Pernambuco (UPE), assegurando autonomia, manutenção da infraestrutura, realização de concursos públicos e valorização de professores" data-how="Detalha UPE, permanência e 10% do PIB na educação federal. Não nomeia expansão de ETE nem sistema dual. O caminho mais próximo é ensino superior estadual, não rede técnica de médio."></td>
+          </tr>
+          <tr class="category-header-row" data-category="saude">
+            <td colspan="5"><i class="bi bi-heart-pulse me-2"></i>Saúde</td>
+          </tr>
+          <tr class="data-row" data-category="saude">
+            <td class="criteria-title">Filas de exames e cirurgias<span class="criteria-desc">Regulação, mutirão ou programa que zera espera.</span><a class="criteria-help" href="#criterio-filas">O que é isso?</a></td>
+            <td class="cell-status" data-status="fav" data-candidate="João Campos" data-detail="Prontuário integrado, telemedicina, inteligência de dados, regulação e navegação do paciente para reduzir filas e dar transparência." data-pdf="Plano de Governo Joao Campos.pdf" data-page="11" data-section="Regulação e navegação do paciente" data-quote="Prontuário integrado, telemedicina, inteligência de dados, qualificação do processo regulatório e navegação do paciente serão instrumentos para reduzir filas, acompanhar tratamentos e dar mais transparência ao funcionamento da rede." data-how="Usar prontuário, telemedicina, dado e navegação do paciente para encurtar a espera e acompanhar o tratamento. O caminho é regular e acompanhar, não só abrir leito. O PDF não nomeia 'fila única' nem um centro com esse título."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Raquel Lyra" data-detail="Cuida PE cofinancia cirurgia eletiva na rede municipal e o Pernambuco Sem Sonda quer zerar a fila de quem depende de sonda vesical." data-pdf="pje-Plano Reduzido - Raquel Lyra.pdf" data-section="Saúde e qualidade de vida" data-quote="Criar o Programa Pernambuco Sem Sonda com o objetivo de zerar a fila de cirurgias de pacientes com doenças benignas da próstata dependentes de sonda vesical." data-how="Zerar a fila da sonda com o Sem Sonda e cofinanciar eletiva municipal pelo Cuida PE, com telemedicina e REDS para agilizar diagnóstico. O caminho é programa nomeado + meta de zerar uma fila concreta. O PDF do TSE é de imagem; o trecho veio do plano registrado, sem número de página."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Renan Hallais" data-detail="Integra REDS e SISREG num fluxo só e cria sistema estadual de confirmação, lembrete e realocação de vaga para reduzir falta." data-pdf="17859605574968KESeHs0D - Renan HALLAIS.pdf" data-page="54" data-section="SISREG e confirmação de vaga" data-quote="Adotar Estadualmente um Sistema Ativo de Confirmação, Lembrete e Realocação de Vagas a) Contratar ou desenvolver módulo de comunicação ativa integrado ao SISREG estadual" data-how="Juntar REDS e SISREG no mesmo prontuário e avisar o paciente para a vaga não morrer vazia. O caminho é gestão da marcação, não mutirão. Quem opera é a regulação estadual com o município que já tem sistema próprio."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Ivan Moraes" data-detail="Organiza filas com transparência e regionalização e pede telessaúde e regulação digital, sem abrir mão do canal presencial." data-pdf="PLANO DE GOVERNO IVAN MORAES  BEM VIVER EM PERNAMBUCO  OK.pdf" data-page="5" data-section="Atenção especializada" data-quote="Na atenção especializada, o principal problema é a demora no acesso a consultas, exames, cirurgias e procedimentos. […] com organização de filas, transparência, regionalização" data-how="Regionalizar a especializada, tornar a fila pública e investir em telessaúde e regulação digital (p.8), com canal presencial para idoso. O caminho é transparência + digital, sem programa tipo Sem Sonda. Não há meta de tempo de espera."></td>
+          </tr>
+          <tr class="data-row" data-category="saude">
+            <td class="criteria-title">Hospitais no interior<span class="criteria-desc">Obra nomeada no Agreste, Sertão ou São Francisco.</span><a class="criteria-help" href="#criterio-hospital">O que é isso?</a></td>
+            <td class="cell-status" data-status="fav" data-candidate="João Campos" data-detail="Hospital da Criança do Agreste em Caruaru e hospital em Petrolina para trauma, cardiologia e neurologia." data-pdf="Plano de Governo Joao Campos.pdf" data-page="11" data-section="Hospitais de referência no interior" data-quote="Implantar o Hospital da Criança do Agreste, em Caruaru, garantindo atendimento integral à saúde infantil, com consultas especializadas, exames, atendimento odontológico, Centro TEA, cirurgias, internação e UTI pediátrica." data-how="Abrir hospital da criança em Caruaru e um hospital em Petrolina como referência de trauma, cardiologia e neurologia. O caminho é alta complexidade no Agreste e no São Francisco, para a família não descer ao Recife. UPAE não é nomeada neste trecho."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Raquel Lyra" data-detail="Concluir Dominguinhos em Garanhuns, HRA em Caruaru, maternidades de Ouricuri, Igarassu, Garanhuns e Serra Talhada, e UPAE-R no interior." data-pdf="pje-Plano Reduzido - Raquel Lyra.pdf" data-section="Saúde e qualidade de vida" data-quote="Concluir requalificação do Hospital da Restauração (HR), concluir a construção do Hospital Mestre Dominguinhos, em Garanhuns, finalizar a construção do novo prédio e a ampliação do Hospital Regional do Agreste (HRA), em Caruaru" data-how="Terminar as obras da gestão — Dominguinhos, HRA, maternidades do Sertão e Mata, UPAE-R de Caruaru, Serra Talhada e Petrolina — e requalificar hospital regional para desafogar o Recife. O caminho é concluir o que já está no canteiro. O PDF do TSE é de imagem; sem número de página."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Renan Hallais" data-detail="Concluir o Dominguinhos em Garanhuns com auditoria pública e expandir telerradiologia para o interior emitir laudo em tempo real." data-pdf="17859605574968KESeHs0D - Renan HALLAIS.pdf" data-page="55" data-section="Hospital no interior e telerradiologia" data-quote="Concluir as obras do Hospital Mestre Dominguinhos, em Garanhuns. Fiscalizar publicamente o cronograma e o custo dessas obras" data-how="Entregar o Dominguinhos sem atraso nem aditivo acima da correção, com auditoria independente, e ligar o interior à central de telerradiologia da capital. Também quer fixar especialista no Sertão, citando o parto de alto risco fechado em Salgueiro. O caminho é uma obra nomeada + laudo digital, não uma rede nova de hospitais."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Ivan Moraes" data-detail="Hospital universitário da UFPE em Caruaru e maternidades de alto risco nas macrorregiões, com papel para Garanhuns e Serra Talhada." data-pdf="PLANO DE GOVERNO IVAN MORAES  BEM VIVER EM PERNAMBUCO  OK.pdf" data-page="8" data-section="Hospital universitário em Caruaru" data-quote="Criar um hospital universitário vinculado ao curso de Medicina da UFPE em Caruaru, em parceria com o governo federal, garantindo assistência especializada, formação profissional e fortalecimento do SUS no Agreste." data-how="Abrir HU da UFPE em Caruaru e interiorizar a especializada em cidades com curso de medicina — Caruaru, Garanhuns e Serra Talhada. O caminho é universidade + Estado + União no Agreste, não só reforma na capital."></td>
+          </tr>
+          <tr class="data-row" data-category="saude">
+            <td class="criteria-title">Atenção primária e Saúde da Família<span class="criteria-desc">ESF, UBS ou cofinanciamento estadual da básica.</span><a class="criteria-help" href="#criterio-aps">O que é isso?</a></td>
+            <td class="cell-status" data-status="fav" data-candidate="João Campos" data-detail="Política estadual para expandir a ESF, com prioridade a área rural, difícil acesso e vazio assistencial." data-pdf="Plano de Governo Joao Campos.pdf" data-page="12" data-section="Fortalecimento da Atenção Primária" data-quote="Criar uma política estadual de fortalecimento da Atenção Primária para expansão da Estratégia de Saúde da Família, priorizando áreas rurais, comunidades de difícil acesso e territórios com vazios assistenciais." data-how="O Estado financia a expansão da ESF onde o posto não chega. O caminho é política estadual com recorte territorial. Não há meta de número de equipes neste trecho."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Raquel Lyra" data-detail="Qualifica APS reestrutura equipes da ESF; Pernambuco Sorrindo na saúde bucal e Planifica PE nas macrorregiões II e III." data-pdf="pje-Plano Reduzido - Raquel Lyra.pdf" data-section="Saúde e qualidade de vida" data-quote="Avançar com a implementação do Programa Qualifica APS, apoiando na reestruturação das equipes da Estratégia de Saúde da Família (ESF)." data-how="Qualifica APS nas equipes da ESF, em parceria com o município, mais Pernambuco Sorrindo e Planifica PE. O caminho é programa estadual que mexe na UBS municipal. O PDF do TSE é de imagem; sem número de página."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Renan Hallais" data-detail="Cofinanciamento estadual do Requalifica UBS federal, ampliando ESF e enfermagem para crônico não virar internação." data-pdf="17859605574968KESeHs0D - Renan HALLAIS.pdf" data-page="55" data-section="Requalifica UBS" data-quote="O Estado vai criar um programa próprio de cofinanciamento e complementação ao Requalifica UBS federal, ampliando as equipes de Saúde da Família e Enfermagem, com foco em acompanhar doenças crônicas antes que se convertam em internações evitáveis." data-how="Pagar a contrapartida do município pobre para aderir ao Requalifica UBS e crescer a ESF. O caminho é dinheiro estadual na UBS, com foco em crônico. Quem opera é o município; o Estado entra com o cofinanciamento."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Ivan Moraes" data-detail="Universalizar a atenção básica com cofinanciamento, exame, telessaúde e parceria com o Agora Tem federal." data-pdf="PLANO DE GOVERNO IVAN MORAES  BEM VIVER EM PERNAMBUCO  OK.pdf" data-page="6" data-section="Universalizar a atenção básica" data-quote="Universalizar a atenção básica: A política estadual deve apoiar os municípios para que as unidades básicas deixem de ser apenas porta de entrada e passem a ser espaços efetivos de cuidado, prevenção, acompanhamento." data-how="Cofinanciar a UBS para ela resolver no território, com equipamento, exame e telessaúde, em parceria com o Agora Tem. O caminho é Estado + município + programa federal. Não nomeia a ESF neste trecho, mas descreve a unidade básica resolutiva."></td>
+          </tr>
+          <tr class="data-row" data-category="saude">
+            <td class="criteria-title">Medicamentos e entrega em casa<span class="criteria-desc">Farmácia estadual, Remédio na Porta ou só desperdício.</span><a class="criteria-help" href="#criterio-farmacia">O que é isso?</a></td>
+            <td class="cell-status" data-status="fav" data-candidate="João Campos" data-detail="Fortalecer a Farmácia Estadual e entregar remédio em casa para crônico, idoso e quem tem mobilidade reduzida." data-pdf="Plano de Governo Joao Campos.pdf" data-page="12" data-section="Farmácia Estadual" data-quote="Fortalecer a Farmácia Estadual, garantindo o abastecimento e a entrega de remédios em domicílio para pacientes que dependem de tratamentos contínuos, especialmente pessoas com condições crônicas, idosos e pacientes com mobilidade reduzida." data-how="Abastecer a farmácia do Estado e levar o remédio até a casa de quem não consegue ir buscar. O caminho é logística de entrega + estoque. Não há lista de itens neste trecho."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Raquel Lyra" data-detail="Ampliar a assistência farmacêutica estadual pelo Programa Remédio na Porta." data-pdf="pje-Plano Reduzido - Raquel Lyra.pdf" data-section="Saúde e qualidade de vida" data-quote="Ampliar a assistência farmacêutica estadual por meio do Programa Remédio na Porta." data-how="Crescer o Remédio na Porta, a entrega domiciliar da farmácia estadual. O caminho é programa já nomeado. O PDF do TSE é de imagem; sem número de página nem lista de medicamentos neste trecho."></td>
+            <td class="cell-status" data-status="vague" data-candidate="Renan Hallais" data-detail="Quer evitar desperdício de medicamento ao reorganizar a rede. Não cria farmácia estadual nem entrega em casa." data-pdf="17859605574968KESeHs0D - Renan HALLAIS.pdf" data-page="53" data-section="Saúde Pública" data-quote="O objetivo é reduzir a superlotação, enfrentar filas e evitar o desperdício de medicamentos, materiais e vagas de atendimento." data-how="O plano cita medicamento como desperdício a cortar na reorganização da rede. Não descreve Farmácia Estadual, Remédio na Porta nem entrega ao crônico. Por isso o selo é Só cita."></td>
+            <td class="cell-status" data-status="none" data-candidate="Ivan Moraes" data-detail="O capítulo de saúde não formula farmácia estadual, entrega domiciliar nem lista de medicamentos." data-pdf="PLANO DE GOVERNO IVAN MORAES  BEM VIVER EM PERNAMBUCO  OK.pdf" data-page="" data-section="" data-quote="" data-how="Este PDF não descreve farmácia estadual, Remédio na Porta nem entrega de remédio. O capítulo vai para básica, RAPS e hospital universitário, sem este caminho."></td>
+          </tr>
+          <tr class="data-row" data-category="saude">
+            <td class="criteria-title">Saúde da mulher e maternidade<span class="criteria-desc">Mãe Coruja, maternidade ou rastreio de câncer.</span><a class="criteria-help" href="#criterio-saude-mulher">O que é isso?</a></td>
+            <td class="cell-status" data-status="fav" data-candidate="João Campos" data-detail="Expandir o Mãe Coruja em todo o estado e acompanhar gestante, puérpera e criança na primeira infância." data-pdf="Plano de Governo Joao Campos.pdf" data-page="11" data-section="Programa Mãe Coruja" data-quote="Fortalecer e expandir o Programa Mãe Coruja, ampliando sua presença em todo o estado e qualificando o acompanhamento integrado de gestantes, puérperas, crianças na primeira infância e suas famílias." data-how="Levar o Mãe Coruja a todo o estado e integrar o cuidado da gestante e do bebê. Também amplia saúde da mulher no ciclo de vida (p.14). O caminho é programa estadual já conhecido, com expansão territorial."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Raquel Lyra" data-detail="Colo de Mãe, Carretas da Mulher, Útero é Vida (HPV) e conclusão das maternidades de Ouricuri, Igarassu, Garanhuns e Serra Talhada." data-pdf="pje-Plano Reduzido - Raquel Lyra.pdf" data-section="Saúde e qualidade de vida" data-quote="Consolidar o Programa Colo de Mãe, fortalecendo a Política de Atenção Integral à Saúde Materno-Infantil, assegurando o monitoramento intersetorial de gestantes, puérperas e crianças." data-how="Manter Colo de Mãe e Carretas da Mulher, expandir o Útero é Vida (testagem de HPV) e concluir quatro maternidades no interior. O caminho é programa + obra. O PDF do TSE é de imagem; sem número de página."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Renan Hallais" data-detail="Rastreio de câncer de mama, colo de útero e próstata na atenção primária." data-pdf="17859605574968KESeHs0D - Renan HALLAIS.pdf" data-page="56" data-section="Rastreamento na Atenção Primária" data-quote="rastreamento e diagnóstico precoce de câncer de mama, colo de útero e próstata na Atenção Primária." data-how="Fazer o rastreio de câncer da mulher (e de próstata) no posto, não no hospital. O caminho é diagnóstico precoce na APS. Não nomeia Mãe Coruja nem maternidade nova neste trecho."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Ivan Moraes" data-detail="Maternidades de alto risco nas macrorregiões, para gestante grave não precisar cruzar o estado." data-pdf="PLANO DE GOVERNO IVAN MORAES  BEM VIVER EM PERNAMBUCO  OK.pdf" data-page="7" data-section="Maternidades de alto risco" data-quote="Implantar e fortalecer maternidades de alto risco nas macrorregiões de saúde de Pernambuco, garantindo cuidado regionalizado para gestantes e bebês em situação de maior gravidade, reduzindo deslocamentos." data-how="Abrir ou fortalecer maternidade de alto risco em cada macrorregião. O caminho é regionalizar o parto grave. Não nomeia Mãe Coruja nem carreta de exame."></td>
+          </tr>
+          <tr class="data-row" data-category="saude">
+            <td class="criteria-title">Saúde mental<span class="criteria-desc">CAPS, Atitude, redução de danos ou só emergência psiquiátrica.</span><a class="criteria-help" href="#criterio-mental">O que é isso?</a></td>
+            <td class="cell-status" data-status="fav" data-candidate="João Campos" data-detail="CAPS 24h, incentivo aos municípios, telessaúde em saúde mental e retomada do Programa Atitude (redução de danos). O caminho é rede territorial mais o Atitude no interior." data-pdf="Plano de Governo Joao Campos.pdf" data-page="12" data-section="Saúde — RAPS" data-quote="Fortalecer a Rede de Atenção Psicossocial, com a implantação de CAPS regionais 24 horas e incentivos aos municípios com recursos estaduais para ajudar na implantação de CAPS e centros de convivência" data-how="CAPS 24h, incentivo aos municípios, telessaúde em saúde mental e retomada do Programa Atitude (redução de danos). O caminho é rede territorial mais o Atitude no interior."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Raquel Lyra" data-detail="RAPS com desinstitucionalização, leitos em hospital geral e reestruturação do HUP (emergência 24h e CAT)." data-pdf="pje-Plano Reduzido - Raquel Lyra.pdf" data-section="Saúde e qualidade de vida" data-quote="Consolidar a Linha de Cuidado da Rede de Atenção Psicossocial (RAPS), assegurando um acolhimento humanizado, descentralizado e focado na desinstitucionalização." data-how="Consolidar a RAPS, abrir leito integral em hospital geral nos municípios e reestruturar o HUP (emergência 24h e CAT). O caminho agora é rede + hospital de referência, não só o HUP. O PDF do TSE é de imagem; sem número de página."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Renan Hallais" data-detail="CAPS III 24h nos maiores polos, Consultório na Rua e busca ativa. Quer evitar que a crise vá para a emergência geral. O caminho é coparticipação estadual no custeio do CAPS." data-pdf="17859605574968KESeHs0D - Renan HALLAIS.pdf" data-page="56" data-section="Rede de Atenção Psicossocial" data-quote="Fortalecer e Integrar a Rede de Atenção Psicossocial (RAPS) - Com expansão e custeio estadual coparticipativo dos CAPS III de funcionamento 24 horas nos maiores polos demográficos" data-how="CAPS III 24h nos maiores polos, Consultório na Rua e busca ativa. Quer evitar que a crise vá para a emergência geral. O caminho é coparticipação estadual no custeio do CAPS."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Ivan Moraes" data-detail="Novos CAPS, leitos em hospital geral, centros de convivência, redução de danos nas 12 GERES e política de cannabis medicinal. Recusa comunidade terapêutica moralista. O caminho é cuidado laico no território." data-pdf="PLANO DE GOVERNO IVAN MORAES  BEM VIVER EM PERNAMBUCO  OK.pdf" data-page="6" data-section="Saúde e políticas de drogas" data-quote="Implantar uma política estadual de cofinanciamento da Rede de Atenção Psicossocial, com apoio à abertura e manutenção de novos CAPS, ampliação das equipes de redução de danos e fortalecimento dos consultórios na rua." data-how="Novos CAPS, leitos em hospital geral, centros de convivência, redução de danos nas 12 GERES e política de cannabis medicinal. Recusa comunidade terapêutica moralista. O caminho é cuidado laico no território."></td>
+          </tr>
+          <tr class="category-header-row" data-category="seguranca">
+            <td colspan="5"><i class="bi bi-shield me-2"></i>Segurança</td>
+          </tr>
+          <tr class="data-row" data-category="seguranca">
+            <td class="criteria-title">Policiamento e redução da violência<span class="criteria-desc">Metas, concurso, câmera, Pacto pela Vida ou outro modelo.</span><a class="criteria-help" href="#criterio-seg">O que é isso?</a></td>
+            <td class="cell-status" data-status="fav" data-candidate="João Campos" data-detail="Retoma o método do Pacto pela Vida: metas, Pacto Anti-Facção, videomonitoramento nas divisas, BIEsp, Compaz e patrulha escolar. O caminho é gestão por resultado com o governador no comando." data-pdf="Plano de Governo Joao Campos.pdf" data-page="12" data-section="Segurança Cidadã" data-quote="Retomar o comando da segurança pública, com liderança direta do governador, metas territoriais, acompanhamento permanente da violência e do crime organizado." data-how="Retoma o método do Pacto pela Vida: metas, Pacto Anti-Facção, videomonitoramento nas divisas, BIEsp, Compaz e patrulha escolar. O caminho é gestão por resultado com o governador no comando."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Raquel Lyra" data-detail="Expande o Juntos pela Segurança, concursos, sete batalhões, Acides e câmeras com IA no Recife, Caruaru e Petrolina. O caminho é continuidade do programa atual mais efetivo e câmera." data-pdf="pje-Plano Reduzido - Raquel Lyra.pdf" data-section="Segurança, cidadania e direitos humanos" data-quote="Expandir a atuação do Programa Juntos pela Segurança […] realizar concursos públicos para a reposição dos efetivos […] ampliar a rede estadual de videomonitoramento, com […] câmeras com inteligência artificial" data-how="Expande o Juntos pela Segurança, concursos, sete batalhões, Acides e câmeras com IA no Recife, Caruaru e Petrolina. O caminho é continuidade do programa atual mais efetivo e câmera."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Renan Hallais" data-detail="Concursos planejados até 85% do efetivo legal, SmartPE com reconhecimento facial e integração das polícias. O caminho é recompor gente e centralizar inteligência." data-pdf="17859605574968KESeHs0D - Renan HALLAIS.pdf" data-page="59" data-section="Segurança Pública" data-quote="Instituição de plano plurianual de concursos públicos para PMPE, PCPE, POLITEC, CBMPE e Polícia Penal […] Meta de atingir 85% do efetivo legal em todas as forças de segurança até o final do mandato." data-how="Concursos planejados até 85% do efetivo legal, SmartPE com reconhecimento facial e integração das polícias. O caminho é recompor gente e centralizar inteligência."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Ivan Moraes" data-detail="Gestão por dados, DHPP, câmeras corporais, controle externo da polícia e iluminação urbana contra roubo. Critica a letalidade. O caminho é meta de crime mais controle da força, não só mais batalhão." data-pdf="PLANO DE GOVERNO IVAN MORAES  BEM VIVER EM PERNAMBUCO  OK.pdf" data-page="17" data-section="Segurança pública" data-quote="Implantar uma gestão da segurança pública orientada por dados e resultados […] com metas específicas para cada território e tipo de crime, acompanhando indicadores como redução de roubos, homicídios, feminicídios" data-how="Gestão por dados, DHPP, câmeras corporais, controle externo da polícia e iluminação urbana contra roubo. Critica a letalidade. O caminho é meta de crime mais controle da força, não só mais batalhão."></td>
+          </tr>
+          <tr class="data-row" data-category="seguranca">
+            <td class="criteria-title">Sistema prisional<span class="criteria-desc">Presídio novo, controle de facção na cadeia ou só ressocialização.</span><a class="criteria-help" href="#criterio-prisao">O que é isso?</a></td>
+            <td class="cell-status" data-status="fav" data-candidate="João Campos" data-detail="Requalifica presídios com educação, trabalho e qualificação para reduzir reincidência. Não nomeia presídio novo. O caminho é ressocialização, não vaga nova anunciada." data-pdf="Plano de Governo Joao Campos.pdf" data-page="13" data-section="Segurança Cidadã" data-quote="Requalificar o sistema prisional e as políticas de ressocialização de Pernambuco, fortalecendo as ações de educação, trabalho, qualificação profissional, com foco na redução da reincidência." data-how="Requalifica presídios com educação, trabalho e qualificação para reduzir reincidência. Não nomeia presídio novo. O caminho é ressocialização, não vaga nova anunciada."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Raquel Lyra" data-detail="Tacaimbó I e II, Araçoiaba, Itaquitinga III–V e central de custódia. O caminho é construir vaga para o déficit prisional." data-pdf="pje-Plano Reduzido - Raquel Lyra.pdf" data-section="Segurança, cidadania e direitos humanos" data-quote="Construir o novo Complexo Prisional de Tacaimbó (I e II), concluir as obras do Complexo de Presídios de Araçoiaba e da nova Central de Audiência de Custódia." data-how="Tacaimbó I e II, Araçoiaba, Itaquitinga III–V e central de custódia. O caminho é construir vaga para o déficit prisional."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Renan Hallais" data-detail="Diagnostica o dobro de presos por vaga e celular na cadeia. Quer retomar o controle, cortar comunicação ilícita e integrar a Polícia Penal. O caminho é autoridade na unidade, mais do que presídio novo nomeado." data-pdf="17859605574968KESeHs0D - Renan HALLAIS.pdf" data-page="58" data-section="Segurança Pública" data-quote="No sistema prisional, o Estado retomará o controle das unidades, combaterá a comunicação ilícita e impedirá que presídios continuem servindo como base de comando do crime organizado." data-how="Diagnostica o dobro de presos por vaga e celular na cadeia. Quer retomar o controle, cortar comunicação ilícita e integrar a Polícia Penal. O caminho é autoridade na unidade, mais do que presídio novo nomeado."></td>
+            <td class="cell-status" data-status="none" data-candidate="Ivan Moraes" data-detail="Presídios aparecem só como compradores de comida da agricultura familiar. Não há proposta de vaga, ressocialização ou controle de facção neste PDF." data-pdf="PLANO DE GOVERNO IVAN MORAES  BEM VIVER EM PERNAMBUCO  OK.pdf" data-section="" data-quote="" data-how="Presídios aparecem só como compradores de comida da agricultura familiar. Não há proposta de vaga, ressocialização ou controle de facção neste PDF."></td>
+          </tr>
+          <tr class="data-row" data-category="seguranca">
+            <td class="criteria-title">Facções e crime organizado<span class="criteria-desc">Pacto, inteligência, DENARC ou só o nome da ameaça.</span><a class="criteria-help" href="#criterio-faccao-pe">O que é isso?</a></td>
+            <td class="cell-status" data-status="fav" data-candidate="João Campos" data-detail="Pacto Anti-Facção, DENARC nas bases regionais, FICCO/PE e videomonitoramento nas divisas." data-pdf="Plano de Governo Joao Campos.pdf" data-page="13" data-section="Pacto Anti-Facção" data-quote="Criar o Pacto Anti-Facção, uma política estadual permanente para enfrentar as organizações criminosas em toda a sua cadeia de atuação." data-how="Criar o Pacto Anti-Facção como política permanente, concentrar o DENARC no tráfico que financia a organização, abrir bases regionais e atuar com a FICCO/PE e a União nos crimes que atravessam o Estado. Também monitora divisas e rodovias. O caminho é pacto + investigação + fronteira estadual."></td>
+            <td class="cell-status" data-status="vague" data-candidate="Raquel Lyra" data-detail="O Juntos pela Segurança fala em combater a criminalidade e integrar o Sistema de Justiça. Não nomeia facção, DENARC nem pacto antifacção." data-pdf="pje-Plano Reduzido - Raquel Lyra.pdf" data-section="Segurança, cidadania e direitos humanos" data-quote="Expandir a atuação do Programa Juntos pela Segurança, aprimorando o combate à criminalidade e a integração com o Sistema de Justiça" data-how="O plano no TSE expande o Juntos pela Segurança contra a criminalidade em geral. Não descreve instrumento específico contra facção — nem isolamento de liderança, nem corte de caixa, nem núcleo especializado. Por isso o selo é Só cita neste critério."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Renan Hallais" data-detail="Retomar o controle dos presídios para a facção não mandar da cadeia, SmartPE para achar foragido e defesa no Congresso de lei interestadual contra a expansão das facções." data-pdf="17859605574968KESeHs0D - Renan HALLAIS.pdf" data-page="58" data-section="Controle das unidades e crime organizado" data-quote="No sistema prisional, o Estado retomará o controle das unidades, combaterá a comunicação ilícita e impedirá que presídios continuem servindo como base de comando do crime organizado." data-how="Cortar o comando da facção de dentro da cadeia (bloqueio de comunicação) e usar o SmartPE — reconhecimento facial e dados integrados — para localizar foragido e área de domínio territorial. Também pede lei federal que reconheça o caráter interestadual das facções. O caminho é cadeia + inteligência + articulação no Congresso."></td>
+            <td class="cell-status" data-status="vague" data-candidate="Ivan Moraes" data-detail="Cita enfrentar o crime organizado como objetivo da política de segurança. As propostas concretas são meta de homicídio, DHPP e armas — sem pacto ou núcleo antifacção." data-pdf="PLANO DE GOVERNO IVAN MORAES  BEM VIVER EM PERNAMBUCO  OK.pdf" data-page="17" data-section="Segurança pública" data-quote="Uma política capaz de proteger a população, cuidar dos profissionais de segurança, enfrentar o crime organizado, reduzir os crimes do cotidiano, retirar armas de circulação" data-how="O PDF lista o crime organizado entre os fins da política. O como detalhado é gestão por dados, DHPP e retirada de armas — caminho de violência em geral, não de desmonte da organização. Falta o instrumento específico deste critério."></td>
+          </tr>
+          <tr class="data-row" data-category="seguranca">
+            <td class="criteria-title">Câmeras e inteligência<span class="criteria-desc">Videomonitoramento, reconhecimento facial ou câmera corporal.</span><a class="criteria-help" href="#criterio-cameras-pe">O que é isso?</a></td>
+            <td class="cell-status" data-status="fav" data-candidate="João Campos" data-detail="Rede de videomonitoramento e inteligência nas divisas e rodovias, mais Centro de Operações Metropolitano no modelo do COP do Recife." data-pdf="Plano de Governo Joao Campos.pdf" data-page="13" data-section="Monitoramento digital" data-quote="Implantar o programa de monitoramento digital, a partir de uma rede integrada de videomonitoramento e inteligência nas divisas e principais rodovias para identificar criminosos, combater o tráfico e a expansão das facções" data-how="Implantar monitoramento digital nas divisas e rodovias e um Centro de Operações Metropolitano, inspirado no COP do Recife, juntando segurança, mobilidade e defesa civil. O caminho é câmera na rota do crime + sala única. Quem opera é o Estado com municípios da RMR."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Raquel Lyra" data-detail="Câmeras com IA e leitura de placa, geridas por centrais no Recife, Caruaru e Petrolina." data-pdf="pje-Plano Reduzido - Raquel Lyra.pdf" data-section="Segurança, cidadania e direitos humanos" data-quote="ampliar a rede estadual de videomonitoramento, com a instalação e operação plena de câmeras com inteligência artificial e reconhecimento de placas (OCR) geridas por centrais no Recife, em Caruaru e em Petrolina" data-how="Expandir o videomonitoramento estadual com câmera de IA e OCR, operada em três centrais. O caminho é onde (RMR, Agreste e Sertão) e com qual tecnologia. Quem opera são as centrais do Estado."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Renan Hallais" data-detail="SmartPE: reconhecimento facial, IA, leitura de placa e integração dos bancos da PM, Civil, POLITEC, Penal e Justiça." data-pdf="17859605574968KESeHs0D - Renan HALLAIS.pdf" data-page="59" data-section="SmartPE" data-quote="Implantar plataforma estadual com reconhecimento facial, inteligência artificial, leitura automática de placas e videomonitoramento, inspirada no modelo SmartSampa" data-how="Criar o SmartPE no modelo SmartSampa, com face, placa e câmera, e integrar PM, Civil, POLITEC, Penal, SDS, TJ e MP em tempo real. O caminho é uma plataforma só. O PDF não discute regra de privacidade."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Ivan Moraes" data-detail="Ampliar câmeras corporais nos policiais e usar dado de roubo para reposicionar o efetivo. Não propõe reconhecimento facial de rua." data-pdf="PLANO DE GOVERNO IVAN MORAES  BEM VIVER EM PERNAMBUCO  OK.pdf" data-page="17" data-section="Câmeras corporais" data-quote="Ampliar a implementação das câmeras corporais portáteis junto aos policiais." data-how="Filmar a abordagem com câmera no peito do policial e cruzar dado de roubo para redistribuir o efetivo. O caminho é controle da força e mapa do crime, não mil câmeras de rua. Quem usa a imagem é a própria polícia, sob a política de dados do plano."></td>
+          </tr>
+          <tr class="data-row" data-category="seguranca">
+            <td class="criteria-title">Efetivo e concursos<span class="criteria-desc">Concurso, batalhão novo ou só “valorizar o policial”.</span><a class="criteria-help" href="#criterio-efetivo">O que é isso?</a></td>
+            <td class="cell-status" data-status="vague" data-candidate="João Campos" data-detail="Fala em valorizar profissionais, diálogo permanente e fortalecer as polícias. Não nomeia concurso, meta de efetivo nem batalhão novo." data-pdf="Plano de Governo Joao Campos.pdf" data-page="12" data-section="Segurança Cidadã" data-quote="Fortalecer o enfrentamento às facções criminosas e à impunidade, ampliando a capacidade operacional e investigativa das forças de segurança, e garantindo valorização dos profissionais de segurança pública." data-how="O PDF promete valorização, mesa de diálogo e atualização da formação. Não diz quantos concursos, qual déficit nem onde abre vaga. Ampliar BIEsp e BEPI é presença territorial, não reposição de quadro. Por isso o selo é Só cita neste critério."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Raquel Lyra" data-detail="Concursos para repor o efetivo, sete batalhões novos da PM, 4º BIEsp, BPTur no Recife e conclusão da Acides." data-pdf="pje-Plano Reduzido - Raquel Lyra.pdf" data-section="Segurança, cidadania e direitos humanos" data-quote="realizar concursos públicos para a reposição dos efetivos das forças de segurança [...] concluir sete novos Batalhões da Polícia Militar e implantar 4° Biesp e as obras do 1º Batalhão de Policiamento Turístico" data-how="Reabrir concurso e entregar sete batalhões, o 4º BIEsp, o BPTur e a Academia Integrada (Acides). O caminho é gente nova + prédio novo. Quem é reposto são as forças estaduais."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Renan Hallais" data-detail="Plano plurianual de concursos para PM, Civil, POLITEC, Bombeiros e Penal, com meta de 85% do efetivo legal até o fim do mandato." data-pdf="17859605574968KESeHs0D - Renan HALLAIS.pdf" data-page="59" data-section="Recomposição do efetivo" data-quote="Instituição de plano plurianual de concursos públicos para PMPE, PCPE, POLITEC, CBMPE e Polícia Penal [...] Meta de atingir 85% do efetivo legal em todas as forças de segurança até o final do mandato." data-how="Concurso planejado no PPA, convocar quem já passou antes de abrir prova nova, e publicar painel de efetivo real. A meta é 85% do quadro legal. O caminho é número + calendário, não só valorização."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Ivan Moraes" data-detail="Remuneração, plano de carreira com critério objetivo, distribuição do efetivo por dado de crime e instalações adequadas." data-pdf="PLANO DE GOVERNO IVAN MORAES  BEM VIVER EM PERNAMBUCO  OK.pdf" data-page="17" data-section="Valorização policial" data-quote="Valorizar a atividade policial, garantindo remuneração adequada e planos de carreira com critérios mais objetivos de promoção; garantir também critérios mais objetivos para distribuição do efetivo e para transferências." data-how="Pagar melhor, promover por critério e mover o efetivo segundo o mapa de roubo — não por indicação. Também cobra equipamento de proteção e prédio adequado. Não nomeia concurso nem meta percentual. O caminho é carreira e alocação, mais do que vaga nova."></td>
+          </tr>
+          <tr class="category-header-row" data-category="territorio">
+            <td colspan="5"><i class="bi bi-geo-alt me-2"></i>Água, cidade e trabalho</td>
+          </tr>
+          <tr class="data-row" data-category="territorio">
+            <td class="criteria-title">Água e segurança hídrica<span class="criteria-desc">Adutora, cisterna, barragem, São Francisco ou só diagnóstico da seca.</span><a class="criteria-help" href="#criterio-agua">O que é isso?</a></td>
+            <td class="cell-status" data-status="fav" data-candidate="João Campos" data-detail="2ª etapa da Adutora do Agreste, barragens, cisternas, poços, dessalinização e justiça tarifária no rodízio. O caminho é obra estruturante mais solução rural permanente." data-pdf="Plano de Governo Joao Campos.pdf" data-page="24" data-section="Infraestrutura e Recursos Hídricos" data-quote="Executar um conjunto de obras hídricas prioritárias […] incluindo a conclusão da Barragem do Engenho Pereira e a viabilização da Barragem Engenho Maranhão e da segunda etapa da Adutora do Agreste." data-how="2ª etapa da Adutora do Agreste, barragens, cisternas, poços, dessalinização e justiça tarifária no rodízio. O caminho é obra estruturante mais solução rural permanente."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Raquel Lyra" data-detail="Concluir Adutora do Agreste e Tupanatinga, barragens de cheia e nova barragem em São Bento do Una. O caminho é terminar adutora e construir reservatório no Agreste." data-pdf="pje-Plano Reduzido - Raquel Lyra.pdf" data-section="Meio ambiente e cidades" data-quote="Concluir a primeira etapa da Adutora do Agreste e finalizar o Sistema Adutor dos Poços de Tupanatinga, no Agreste. […] Construir a Barragem São Bento do Una" data-how="Concluir Adutora do Agreste e Tupanatinga, barragens de cheia e nova barragem em São Bento do Una. O caminho é terminar adutora e construir reservatório no Agreste."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Renan Hallais" data-detail="Cobra ramais do São Francisco, dessaliniza, faz cisterna e barragem, e no saneamento retoma Igarapeba e Barra de Guabiraba. O caminho é federal (PISF) mais obra estadual parada." data-pdf="17859605574968KESeHs0D - Renan HALLAIS.pdf" data-page="9" data-section="Segurança Hídrica para o Agreste e o Sertão" data-quote="Cobrar do governo federal o cronograma dos ramais do PISF ainda pendentes no Nordeste […] expansão da dessalinização, a construção de cisternas e barragens" data-how="Cobra ramais do São Francisco, dessaliniza, faz cisterna e barragem, e no saneamento retoma Igarapeba e Barra de Guabiraba. O caminho é federal (PISF) mais obra estadual parada."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Ivan Moraes" data-detail="Cisternas e barragens subterrâneas, articuladas à terra e à reforma agrária. 85% dos municípios com racionamento entram no diagnóstico. O caminho é convivência com o semiárido, não só adutora." data-pdf="PLANO DE GOVERNO IVAN MORAES  BEM VIVER EM PERNAMBUCO  OK.pdf" data-page="13" data-section="Agricultura e convivência com o Semiárido" data-quote="Ampliar a construção de cisternas para consumo humano, cisternas-calçadão, cisternas de enxurrada, barragens subterrâneas e sistemas comunitários de abastecimento." data-how="Cisternas e barragens subterrâneas, articuladas à terra e à reforma agrária. 85% dos municípios com racionamento entram no diagnóstico. O caminho é convivência com o semiárido, não só adutora."></td>
+          </tr>
+          <tr class="data-row" data-category="territorio">
+            <td class="criteria-title">Saneamento<span class="criteria-desc">Esgoto, Marco Legal 2033, fiscalizar concessionária ou só lixo.</span><a class="criteria-help" href="#criterio-saneamento">O que é isso?</a></td>
+            <td class="cell-status" data-status="fav" data-candidate="João Campos" data-detail="Fiscaliza as metas do marco legal, urbaniza com esgoto intradomiciliar e liga saneamento à moradia. Também cita justiça tarifária na Compesa. O caminho é regular a concessionária e priorizar o mais pobre." data-pdf="Plano de Governo Joao Campos.pdf" data-page="26" data-section="Habitabilidade" data-quote="Monitorar o cumprimento das metas de universalização do saneamento em Pernambuco, fortalecendo a regulação e a fiscalização das concessionárias e priorizando os territórios mais vulneráveis." data-how="Fiscaliza as metas do marco legal, urbaniza com esgoto intradomiciliar e liga saneamento à moradia. Também cita justiça tarifária na Compesa. O caminho é regular a concessionária e priorizar o mais pobre."></td>
+            <td class="cell-status" data-status="vague" data-candidate="Raquel Lyra" data-detail="Cita o Marco Legal do Saneamento até 2033 e investimentos. Não diz meta de esgoto, bairro nem como fiscaliza a concessionária." data-pdf="pje-Plano Reduzido - Raquel Lyra.pdf" data-section="Meio ambiente e cidades" data-quote="ampliar o acesso à água nos domicílios formalizados e assegurar investimentos para cumprir o Marco Legal do Saneamento até 2033" data-how="O plano no TSE promete investir para cumprir o prazo federal. Não descreve obra de esgoto, percentual de coleta nem regra sobre a concessionária. O prazo sozinho não mostra o como."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Renan Hallais" data-detail="Arpe forte para auditar o leilão, sensores contra 48% de perda, Sanea Rural e conexões intradomiciliares. Meta explícita de esgoto até 2033. O caminho é regular o privado e universalizar o rural." data-pdf="17859605574968KESeHs0D - Renan HALLAIS.pdf" data-page="48" data-section="Saneamento Básico" data-quote="Priorizar a reforma e ampliação tecnológica de ETAs e ETEs nas bacias mais poluídas […] com meta de elevar a cobertura de coleta de esgoto acima de 34% e o índice de tratamento acima de 28,4% até 2033" data-how="Arpe forte para auditar o leilão, sensores contra 48% de perda, Sanea Rural e conexões intradomiciliares. Meta explícita de esgoto até 2033. O caminho é regular o privado e universalizar o rural."></td>
+            <td class="cell-status" data-status="vague" data-candidate="Ivan Moraes" data-detail="Diagnostica 51% sem esgoto. A urbanização posterior cita saneamento, sem meta, regulador ou obra nomeada." data-pdf="PLANO DE GOVERNO IVAN MORAES  BEM VIVER EM PERNAMBUCO  OK.pdf" data-page="2" data-section="Diagnóstico socioambiental" data-quote="51% da população vive sem coleta de esgoto e 85% dos municípios enfrentam algum nível de racionamento hídrico." data-how="O PDF mostra o tamanho do atraso e, mais adiante, junta saneamento à urbanização. Não diz meta de coleta, quem fiscaliza nem qual bacia entra primeiro. Diagnóstico sem instrumento fica em Só cita."></td>
+          </tr>
+          <tr class="data-row" data-category="territorio">
+            <td class="criteria-title">Mobilidade e rodovias<span class="criteria-desc">Transnordestina, BR-232, metrô, ônibus ou Tarifa Zero.</span><a class="criteria-help" href="#criterio-mobilidade">O que é isso?</a></td>
+            <td class="cell-status" data-status="fav" data-candidate="João Campos" data-detail="Transnordestina Salgueiro–Suape, Arco Metropolitano, triplicar BR-101, requalificar o metrô e novas licitações de ônibus com desempenho. O caminho é ferrovia e viário pesado." data-pdf="Plano de Governo Joao Campos.pdf" data-page="24" data-section="Infraestrutura" data-quote="Assumir a liderança da expansão ferroviária estadual, garantindo a execução do ramal Salgueiro–Suape da Transnordestina, com abertura simultânea de uma nova frente de obras a partir de Suape" data-how="Transnordestina Salgueiro–Suape, Arco Metropolitano, triplicar BR-101, requalificar o metrô e novas licitações de ônibus com desempenho. O caminho é ferrovia e viário pesado."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Raquel Lyra" data-detail="BR-232, PE-60, Arco, Viaduto da Vitarella, ramal da Transnordestina a Suape, 100 ônibus elétricos e reforma de terminais. O caminho é concluir obra rodoviária e eletrificar ônibus." data-pdf="pje-Plano Reduzido - Raquel Lyra.pdf" data-section="Desenvolvimento econômico e infraestrutura" data-quote="Viabilizar, em parceria com o governo federal, a duplicação dos trechos seguintes da BR-232 a partir de Belo Jardim até Serra Talhada, executar as obras do Arco Metropolitano […] Articular […] a recuperação do Metrô do Recife, efetivar a operação de 100 novos ônibus elétricos" data-how="BR-232, PE-60, Arco, Viaduto da Vitarella, ramal da Transnordestina a Suape, 100 ônibus elétricos e reforma de terminais. O caminho é concluir obra rodoviária e eletrificar ônibus."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Renan Hallais" data-detail="Cobra a Transnordestina, redireciona o PE na Estrada para vicinais produtivas e, na mobilidade urbana, desregulamenta micromobilidade e barra taxa sobre app. O caminho é carga e ferrovia, com menos regulação de app." data-pdf="17859605574968KESeHs0D - Renan HALLAIS.pdf" data-page="8" data-section="Logística e Infraestrutura" data-quote="Integrar as cadeias produtivas ao Porto de Suape e cobrar do governo federal o cronograma de conclusão da Transnordestina" data-how="Cobra a Transnordestina, redireciona o PE na Estrada para vicinais produtivas e, na mobilidade urbana, desregulamenta micromobilidade e barra taxa sobre app. O caminho é carga e ferrovia, com menos regulação de app."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Ivan Moraes" data-detail="Tarifa Zero no transporte metropolitano, com alerta de que sem mudar a remuneração da empresa a fila piora. O caminho é gratuidade mais contrato por qualidade, não só passagem zero." data-pdf="PLANO DE GOVERNO IVAN MORAES  BEM VIVER EM PERNAMBUCO  OK.pdf" data-page="2" data-section="Bem Viver em Pernambuco" data-quote="a implementação da Renda Básica Universal, a Tarifa Zero no transporte metropolitano e uma política firme de Justiça Climática." data-how="Tarifa Zero no transporte metropolitano, com alerta de que sem mudar a remuneração da empresa a fila piora. O caminho é gratuidade mais contrato por qualidade, não só passagem zero."></td>
+          </tr>
+          <tr class="data-row" data-category="territorio">
+            <td class="criteria-title">Emprego, Suape e desenvolvimento<span class="criteria-desc">ZPE, indústria, Porto Digital ou economia solidária.</span><a class="criteria-help" href="#criterio-emprego">O que é isso?</a></td>
+            <td class="cell-status" data-status="fav" data-candidate="João Campos" data-detail="ZPE em Suape, novos distritos, ADEPE, PRODEPE na reforma tributária e unidades do Porto Digital no interior. O caminho é reindustrializar e interiorizar emprego formal." data-pdf="Plano de Governo Joao Campos.pdf" data-page="21" data-section="Desenvolvimento Econômico" data-quote="Viabilizar a Zona de Processamento de Exportação em Suape, com condições tributárias, regulatórias e logísticas competitivas. A ZPE priorizará projetos de baixo carbono, tecnologia limpa, hidrogênio e amônia verdes" data-how="ZPE em Suape, novos distritos, ADEPE, PRODEPE na reforma tributária e unidades do Porto Digital no interior. O caminho é reindustrializar e interiorizar emprego formal."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Raquel Lyra" data-detail="GNL e ZPE em Suape, ramal ferroviário e expansão do PE Produz. Também Nerd e internacionalização de empresas de tecnologia. O caminho é complexo portuário mais edital de indústria." data-pdf="pje-Plano Reduzido - Raquel Lyra.pdf" data-section="Desenvolvimento econômico e infraestrutura" data-quote="Viabilizar a construção do Terminal de Regaseificação de GNL no Porto de Suape, apoiar a criação da Zona de Processamento de Exportação no Complexo Industrial Portuário de Suape e apoiar a implantação do ramal da Ferrovia Transnordestina de Salgueiro a Suape" data-how="GNL e ZPE em Suape, ramal ferroviário e expansão do PE Produz. Também Nerd e internacionalização de empresas de tecnologia. O caminho é complexo portuário mais edital de indústria."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Renan Hallais" data-detail="Fornecedor local para Stellantis e Suape, competitividade do polo de confecções e sandbox tecnológico. O caminho é adensar cadeia já instalada, com contrapartida de emprego." data-pdf="17859605574968KESeHs0D - Renan HALLAIS.pdf" data-page="26" data-section="Economia e Indústria" data-quote="fortalecimento do fornecimento local à cadeia da Stellantis (Polo Automotivo de Goiana) e ao complexo de Suape, com programa de desenvolvimento de fornecedores pernambucanos" data-how="Fornecedor local para Stellantis e Suape, competitividade do polo de confecções e sandbox tecnológico. O caminho é adensar cadeia já instalada, com contrapartida de emprego."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Ivan Moraes" data-detail="Reconhece Suape e o Porto Digital, mas prioriza economia solidária, compras públicas e trabalho digno. Incentivos fiscais teriam contrapartida social. O caminho é Estado que condiciona o grande investimento." data-pdf="PLANO DE GOVERNO IVAN MORAES  BEM VIVER EM PERNAMBUCO  OK.pdf" data-page="8" data-section="Economia" data-quote="Pernambuco reúne ativos econômicos estratégicos, como o Complexo Industrial Portuário de Suape, o Polo Automotivo e o Porto Digital […] O compromisso é construir um novo ciclo de desenvolvimento" data-how="Reconhece Suape e o Porto Digital, mas prioriza economia solidária, compras públicas e trabalho digno. Incentivos fiscais teriam contrapartida social. O caminho é Estado que condiciona o grande investimento."></td>
+          </tr>
+          <tr class="data-row" data-category="territorio">
+            <td class="criteria-title">Agricultura familiar e semiárido<span class="criteria-desc">IPA, cisterna rural, Chapéu de Palha ou só agronegócio de exportação.</span><a class="criteria-help" href="#criterio-agro">O que é isso?</a></td>
+            <td class="cell-status" data-status="fav" data-candidate="João Campos" data-detail="Novo IPA, Centro Conecta Agro, Regulariza Agro, Caminhos do Campo e Vale AgroTech do São Francisco. Também amplia o Chapéu de Palha. O caminho é ATER + estrada vicinal + titulação." data-pdf="Plano de Governo Joao Campos.pdf" data-page="22" data-section="Desenvolvimento Agrário" data-quote="Reestruturar o IPA e retomar sua relevância para a pesquisa agropecuária, a inovação e a assistência técnica continuada." data-how="Novo IPA, Centro Conecta Agro, Regulariza Agro, Caminhos do Campo e Vale AgroTech do São Francisco. Também amplia o Chapéu de Palha. O caminho é ATER + estrada vicinal + titulação."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Raquel Lyra" data-detail="Terra Plantar (sementes) e crédito fundiário. Menos detalhe de IPA ou irrigação no resumo. O caminho é semente e crédito, na linha da gestão atual." data-pdf="pje-Plano Reduzido - Raquel Lyra.pdf" data-section="Desenvolvimento econômico e infraestrutura" data-quote="Ampliar a execução do Programa Terra Plantar, garantindo a distribuição de sementes aos agricultores familiares pernambucanos e consolidar a liderança nacional de Pernambuco no Crédito Fundiário" data-how="Terra Plantar (sementes) e crédito fundiário. Menos detalhe de IPA ou irrigação no resumo. O caminho é semente e crédito, na linha da gestão atual."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Renan Hallais" data-detail="Concurso no IPA, ATER no sertão, fundo de crédito, PAA/PNAE e palma adaptada à seca. Primeiro capítulo do plano. O caminho é técnico de campo + água + mercado institucional." data-pdf="17859605574968KESeHs0D - Renan HALLAIS.pdf" data-page="7" data-section="Agronomia e Desenvolvimento Rural" data-quote="Realizar concurso público para repor o quadro técnico do IPA, com metas de atendimento por técnico e por território, priorizando eficiência e resultado; b) Priorizar a ATER no Agreste e no Sertão" data-how="Concurso no IPA, ATER no sertão, fundo de crédito, PAA/PNAE e palma adaptada à seca. Primeiro capítulo do plano. O caminho é técnico de campo + água + mercado institucional."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Ivan Moraes" data-detail="Agroecologia, cisternas, compras públicas da agricultura familiar e defesa da Caatinga contra agronegócio predatório. O caminho é campesino e agroecológico, não exportação irrigada como eixo." data-pdf="PLANO DE GOVERNO IVAN MORAES  BEM VIVER EM PERNAMBUCO  OK.pdf" data-page="13" data-section="Agricultura familiar" data-quote="Fortalecer a agricultura familiar e a agroecologia: Reestruturar a Secretaria Executiva […] Ampliar a construção de cisternas" data-how="Agroecologia, cisternas, compras públicas da agricultura familiar e defesa da Caatinga contra agronegócio predatório. O caminho é campesino e agroecológico, não exportação irrigada como eixo."></td>
+          </tr>
+          <tr class="category-header-row" data-category="estado">
+            <td colspan="5"><i class="bi bi-building me-2"></i>Gestão do Estado</td>
+          </tr>
+          <tr class="data-row" data-category="estado">
+            <td class="criteria-title">Transparência e combate à corrupção<span class="criteria-desc">Dados abertos, auditoria, concurso ou só discurso contra oligarquia.</span><a class="criteria-help" href="#criterio-corrupcao">O que é isso?</a></td>
+            <td class="cell-status" data-status="fav" data-candidate="João Campos" data-detail="Gestão por metas, dados abertos, concursos planejados e plataforma única de serviços. Não nomeia um plano anticorrupção. O caminho é resultado público e servidor efetivo." data-pdf="Plano de Governo Joao Campos.pdf" data-page="28" data-section="Gestão Integrada" data-quote="Retomar a Gestão por Resultados, Metas e Transparência para estabelecer objetivos claros nas principais áreas do Governo, acompanhar permanentemente os resultados e garantir à população acesso transparente às informações da gestão." data-how="Gestão por metas, dados abertos, concursos planejados e plataforma única de serviços. Não nomeia um plano anticorrupção. O caminho é resultado público e servidor efetivo."></td>
+            <td class="cell-status" data-status="vague" data-candidate="Raquel Lyra" data-detail="O eixo se chama combate à corrupção, mas o texto detalha Coopera e PE.GOV — serviço digital e regularização de empresa, sem auditoria ou investigação." data-pdf="pje-Plano Reduzido - Raquel Lyra.pdf" data-section="Gestão, transparência e combate à corrupção" data-quote="Consolidar o Programa de Autorregularização e Conformidade Tributária (Coopera) […] e expandir o ecossistema Pernambuco Digital, consolidando o PE.GOV como porta de acesso aos serviços estaduais" data-how="O título do eixo cita corrupção. O como escrito é portal de serviço e autorregularização tributária. Sem controle de gasto, auditoria ou regra de cargo, o critério de transparência/corrupção fica só nomeado."></td>
+            <td class="cell-status" data-status="vague" data-candidate="Renan Hallais" data-detail="Once-Only e ranking de eficiência modernizam o atendimento. A carta acusa oligarquia, mas não há plano de integridade, auditoria ou punição de desvio." data-pdf="17859605574968KESeHs0D - Renan HALLAIS.pdf" data-page="15" data-section="Ciência e Tecnologia" data-quote="Instituir por lei o Princípio Once-Only (“apenas uma vez”): o cidadão não é mais obrigado a apresentar documento que o Estado já possua" data-how="O PDF ensina o Estado a não pedir o mesmo documento duas vezes e a publicar indicador. Isso é gestão digital, não o caminho de combate à corrupção deste critério. A denúncia de oligarquia na carta não vira instrumento."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Ivan Moraes" data-detail="Audita OSS, veta indicação política em hospital, concursos e combate sonegação dos grandes. Publica renúncia fiscal. O caminho é critério técnico e auditoria de contrato." data-pdf="PLANO DE GOVERNO IVAN MORAES  BEM VIVER EM PERNAMBUCO  OK.pdf" data-page="8" data-section="Gestão da saúde e da fazenda" data-quote="Auditar os contratos com Organizações Sociais de Saúde: Criar mecanismos rigorosos de controle, transparência e avaliação dos contratos […] Estabelecer critérios técnicos para escolha de direções de hospitais" data-how="Audita OSS, veta indicação política em hospital, concursos e combate sonegação dos grandes. Publica renúncia fiscal. O caminho é critério técnico e auditoria de contrato."></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="mobile-list" class="d-lg-none vstack gap-3 mb-4"></div>
+    </section>
+  </main>
+
+  <footer class="border-top bg-white py-4 mt-3">
+    <div class="container-xl text-center text-secondary small">
+      <p class="mb-1">PDFs coletados no TSE (DivulgaCandContas). Resumos com IAs, como o Gemini. O plano da Raquel Lyra é PDF de imagem: os trechos foram transcritos do documento registrado.</p>
+      <p class="mb-0">Voltar ao <a href="../index.html">comparativo presidencial</a> · <a href="https://divulgacandcontas.tse.jus.br" target="_blank" rel="noopener">TSE DivulgaCandContas</a>.</p>
+    </div>
+  </footer>
+
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="detailPanel" aria-labelledby="drawerTitle">
+    <div class="offcanvas-header border-bottom">
+      <div>
+        <div class="small text-secondary text-uppercase fw-semibold" id="drawerAxis"></div>
+        <h2 class="offcanvas-title h4 mb-0" id="drawerTitle"></h2>
+      </div>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="mb-3" id="drawerChip"></div>
+      <div class="drawer-how">
+        <div class="drawer-how-label" id="drawerHowLabel">Como o plano pretende fazer</div>
+        <p id="drawerText"></p>
+      </div>
+      <div id="drawerSource" class="source-box mb-3"></div>
+      <div class="d-flex flex-wrap gap-2 mb-4">
+        <a id="drawerPdf" class="btn btn-sm btn-dark" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf me-1"></i>Abrir esta página no PDF</a>
+        <a id="drawerTse" class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right me-1"></i>Ficha no TSE</a>
+        <button type="button" class="btn btn-sm btn-outline-secondary" id="copySource"><i class="bi bi-clipboard me-1"></i>Copiar trecho</button>
+      </div>
+      <h3 class="h6 text-secondary text-uppercase mb-2">Os 4 neste tema</h3>
+      <div id="drawerCompare" class="vstack gap-2 mb-3"></div>
+      <p class="text-secondary mb-0 small">Resumo montado com IA a partir do PDF oficial do TSE. Não é notícia nem avaliação de governo anterior. Confira o trecho na página indicada.</p>
+    </div>
+  </div>
+
+  <div class="modal fade" id="criterionModal" tabindex="-1" aria-labelledby="criterionModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title h5 mb-0" id="criterionModalTitle">O que é isso?</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+        </div>
+        <div class="modal-body" id="criterionModalBody"></div>
+        <div class="modal-footer justify-content-between">
+          <p class="small text-secondary mb-0">Isso não é nota do candidato. Só explica o nome da linha.</p>
+          <button type="button" class="btn btn-dark btn-sm" data-bs-dismiss="modal">Entendi</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const LABELS = { fav: "Tem no plano", vague: "Só cita", doubt: "Com ressalva", bad: "É contra", none: "Não cita" };
+    const ICONS = { fav: "bi-check-lg", vague: "bi-dash-lg", doubt: "bi-exclamation-lg", bad: "bi-x-lg", none: "bi-slash-circle" };
+    const ACCENTS = {
+      "João Campos": "var(--c-joao)",
+      "Raquel Lyra": "var(--c-raquel)",
+      "Renan Hallais": "var(--c-hallais)",
+      "Ivan Moraes": "var(--c-ivan)"
+    };
+    const SHORT_NAMES = {
+      "João Campos": "João",
+      "Raquel Lyra": "Raquel",
+      "Renan Hallais": "Hallais",
+      "Ivan Moraes": "Ivan"
+    };
+    const TSE = {
+      "João Campos": "https://divulgacandcontas.tse.jus.br/divulga/#/candidato/NORDESTE/PE/20322002026/170002537230/2026/PE",
+      "Raquel Lyra": "https://divulgacandcontas.tse.jus.br/divulga/#/candidato/NORDESTE/PE/20322002026/170002537227/2026/PE",
+      "Renan Hallais": "https://divulgacandcontas.tse.jus.br/divulga/#/candidato/NORDESTE/PE/20322002026/170002540337/2026/PE",
+      "Ivan Moraes": "https://divulgacandcontas.tse.jus.br/divulga/#/candidato/NORDESTE/PE/20322002026/170002538097/2026/PE"
+    };
+    const panelEl = document.getElementById("detailPanel");
+    const panel = window.bootstrap ? new bootstrap.Offcanvas(panelEl) : null;
+    let activeTd = null;
+
+    function chipHtml(status) {
+      return `<span class="chip status-${status}"><i class="bi ${ICONS[status]}"></i> ${LABELS[status]}</span>`;
+    }
+    function pdfHref(td) {
+      const file = td.dataset.pdf || "";
+      if (!file) return "#";
+      const url = encodeURI(file);
+      return td.dataset.page ? `${url}#page=${td.dataset.page}` : url;
+    }
+    function escapeHtml(value) {
+      return String(value || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    }
+    function sourceHtml(td) {
+      if (td.dataset.quote) {
+        const related = td.dataset.status === "none"
+          ? `<p class="small text-secondary mb-2">Não há proposta para este critério. O trecho abaixo é o mais próximo no PDF.</p>`
+          : "";
+        const page = td.dataset.page
+          ? `<div class="small text-secondary">Página ${escapeHtml(td.dataset.page)} do PDF</div>`
+          : `<div class="small text-secondary">PDF de imagem: trecho transcrito do plano registrado no TSE</div>`;
+        return `
+          <div class="small text-uppercase text-secondary fw-semibold mb-1">Onde está no plano</div>
+          ${related}
+          <div class="fw-semibold">${escapeHtml(td.dataset.section || "Capítulo do plano")}</div>
+          ${page}
+          <p class="source-quote mb-0">“${escapeHtml(td.dataset.quote)}”</p>
+        `;
+      }
+      return `
+        <div class="small text-uppercase text-secondary fw-semibold mb-1">Onde está no plano</div>
+        <p class="mb-0">Não há trecho correspondente neste PDF. O selo <strong>Não cita</strong> vale para este tema.</p>
+      `;
+    }
+    function openCriterion(id) {
+      const card = document.getElementById(id);
+      const modalEl = document.getElementById("criterionModal");
+      if (!card || !modalEl) return;
+      document.getElementById("criterionModalTitle").textContent = card.querySelector("h4")?.textContent || "O que é isso?";
+      const clone = card.cloneNode(true);
+      clone.querySelector("h4")?.remove();
+      document.getElementById("criterionModalBody").innerHTML = clone.innerHTML;
+      if (window.bootstrap) bootstrap.Modal.getOrCreateInstance(modalEl).show();
+    }
+    function fillCompare(td) {
+      const wrap = document.getElementById("drawerCompare");
+      const cells = [...td.closest("tr").querySelectorAll("td.cell-status")];
+      wrap.innerHTML = cells.map(cell => {
+        const page = cell.dataset.page ? ` · p. ${cell.dataset.page}` : "";
+        const current = cell === td ? " is-current" : "";
+        const accent = ACCENTS[cell.dataset.candidate] || "#0f172a";
+        return `<button type="button" class="compare-btn${current}" data-index="${cell.dataset.index}" style="--accent:${accent}">
+          <div class="d-flex justify-content-between align-items-center gap-2">
+            <span class="small compare-name">${cell.dataset.candidate}${page}</span>
+            ${chipHtml(cell.dataset.status)}
+          </div>
+        </button>`;
+      }).join("");
+    }
+    function openDetail(td) {
+      activeTd = td;
+      const tr = td.closest("tr");
+      const titleNode = tr && tr.querySelector(".criteria-title");
+      const axis = titleNode ? titleNode.childNodes[0].textContent.trim() : "";
+      document.getElementById("drawerAxis").textContent = axis;
+      document.getElementById("drawerTitle").textContent = td.dataset.candidate || "";
+      document.getElementById("drawerTitle").style.setProperty("--accent", ACCENTS[td.dataset.candidate] || "#0f172a");
+      document.getElementById("drawerChip").innerHTML = chipHtml(td.dataset.status);
+      const howLabels = {
+        fav: "Como o plano pretende fazer",
+        vague: "O que o plano cita — e o que falta",
+        doubt: "O caminho proposto, com ressalva",
+        bad: "O que o plano propõe no sentido contrário",
+        none: "Por que o selo é Não cita"
+      };
+      document.getElementById("drawerHowLabel").textContent = howLabels[td.dataset.status] || "O que o plano diz";
+      document.getElementById("drawerText").textContent = td.dataset.how || td.dataset.detail || "Trecho não encontrado.";
+      document.getElementById("drawerSource").innerHTML = sourceHtml(td);
+      const pdfLink = document.getElementById("drawerPdf");
+      pdfLink.href = pdfHref(td);
+      pdfLink.textContent = "";
+      pdfLink.insertAdjacentHTML("afterbegin", `<i class="bi bi-file-earmark-pdf me-1"></i>${td.dataset.page ? "Abrir esta página no PDF" : "Abrir o plano completo"}`);
+      document.getElementById("drawerTse").href = TSE[td.dataset.candidate] || "https://divulgacandcontas.tse.jus.br";
+      document.getElementById("copySource").innerHTML = `<i class="bi bi-clipboard me-1"></i>Copiar trecho`;
+      fillCompare(td);
+      if (panel) panel.show();
+    }
+
+    document.addEventListener("click", (event) => {
+      const compare = event.target.closest(".compare-btn");
+      if (compare) {
+        const td = document.querySelector(`td.cell-status[data-index="${compare.dataset.index}"]`);
+        if (td) openDetail(td);
+        return;
+      }
+      const btn = event.target.closest(".cell-btn, .mobile-detail-btn");
+      if (!btn) return;
+      const td = btn.closest("td.cell-status") || document.querySelector(`td.cell-status[data-index="${btn.dataset.index}"]`);
+      if (td) openDetail(td);
+    });
+
+    document.getElementById("copySource").addEventListener("click", async () => {
+      if (!activeTd) return;
+      const tr = activeTd.closest("tr");
+      const titleNode = tr && tr.querySelector(".criteria-title");
+      const axis = titleNode ? titleNode.childNodes[0].textContent.trim() : "";
+      const bits = [
+        `${activeTd.dataset.candidate} · ${axis}`,
+        LABELS[activeTd.dataset.status],
+        activeTd.dataset.how || "",
+        activeTd.dataset.page ? `Página ${activeTd.dataset.page} — ${activeTd.dataset.section}` : (activeTd.dataset.quote ? "Trecho transcrito do plano no TSE" : "Sem trecho neste PDF"),
+        activeTd.dataset.quote ? `“${activeTd.dataset.quote}”` : ""
+      ].filter(Boolean).join("\n");
+      try {
+        await navigator.clipboard.writeText(bits);
+        document.getElementById("copySource").innerHTML = `<i class="bi bi-check2 me-1"></i>Copiado`;
+      } catch (err) {
+        document.getElementById("copySource").innerHTML = `<i class="bi bi-clipboard me-1"></i>Não foi possível copiar`;
+      }
+    });
+
+    document.querySelectorAll("td.cell-status").forEach((td, index) => {
+      td.dataset.index = String(index);
+      const btn = document.createElement("button");
+      btn.className = "cell-btn";
+      btn.type = "button";
+      const pageHint = td.dataset.page ? `p. ${td.dataset.page} · Clique para ler` : "Clique para ler";
+      btn.innerHTML = `${chipHtml(td.dataset.status)}<span class="cell-hint">${pageHint}</span>`;
+      btn.setAttribute("aria-label", `${td.dataset.candidate}: ${LABELS[td.dataset.status]}. ${pageHint}.`);
+      td.classList.add("text-center");
+      td.appendChild(btn);
+    });
+
+    const scores = {};
+    document.querySelectorAll("td.cell-status").forEach(td => {
+      const name = td.dataset.candidate;
+      if (!scores[name]) scores[name] = { total: 0, none: 0 };
+      scores[name].total += 1;
+      if (td.dataset.status === "none") scores[name].none += 1;
+    });
+    document.querySelectorAll("[data-score-for]").forEach(el => {
+      const s = scores[el.dataset.scoreFor];
+      if (!s) return;
+      const cited = s.total - s.none;
+      const pct = Math.round((cited / s.total) * 100);
+      el.innerHTML = `
+        <div class="d-flex justify-content-between align-items-baseline gap-2 mb-2">
+          <span class="score-num">${cited}<span class="candidate-meta fw-semibold">/${s.total}</span></span>
+          <span class="candidate-meta">temas no plano</span>
+        </div>
+        <div class="score-bar" aria-hidden="true"><span style="width:${pct}%"></span></div>
+      `;
+    });
+
+    const rows = [...document.querySelectorAll("#tabela tbody tr")];
+    const mobile = document.getElementById("mobile-list");
+    const themeTitles = {};
+    rows.forEach((row) => {
+      if (row.classList.contains("category-header-row")) {
+        const wrap = document.createElement("h3");
+        wrap.className = "mobile-cat mobile-row";
+        wrap.dataset.category = row.dataset.category;
+        wrap.textContent = row.textContent.trim();
+        themeTitles[row.dataset.category] = wrap.textContent;
+        mobile.appendChild(wrap);
+        return;
+      }
+      const title = row.querySelector(".criteria-title");
+      const card = document.createElement("article");
+      card.className = "mobile-item bg-white p-3 mobile-row";
+      card.dataset.category = row.dataset.category;
+      const name = title.childNodes[0].textContent.trim();
+      const desc = title.querySelector(".criteria-desc")?.textContent || "";
+      const cells = [...row.querySelectorAll("td.cell-status")];
+      const details = cells.map(td => `${td.dataset.detail || ""} ${td.dataset.quote || ""} ${td.dataset.section || ""}`).join(" ");
+      card.dataset.search = `${name} ${desc} ${details} ${cells.map(td => td.dataset.candidate).join(" ")}`.toLowerCase();
+      card.dataset.statuses = cells.map(td => td.dataset.status).join(" ");
+      const help = title.querySelector(".criteria-help");
+      card.innerHTML = `
+        <p class="mobile-theme-tag">${themeTitles[row.dataset.category] || ""}</p>
+        <h4 class="h6 mb-1">${name}</h4>
+        <p class="small text-secondary mb-1">${desc}</p>
+        ${help ? `<a class="criteria-help mobile-help" href="${help.getAttribute("href")}">O que é isso?</a>` : ""}
+        <div class="vstack gap-2"></div>
+      `;
+      const stack = card.querySelector(".vstack");
+      cells.forEach(td => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        const accent = ACCENTS[td.dataset.candidate];
+        const shortName = SHORT_NAMES[td.dataset.candidate] || td.dataset.candidate;
+        btn.className = "mobile-detail-btn";
+        btn.style.setProperty("--accent", accent);
+        btn.innerHTML = `<span class="mobile-cand-line"><i class="mobile-dot" aria-hidden="true"></i><span class="mobile-cand-name">${shortName}</span>${td.dataset.page ? `<span class="mobile-page">p. ${td.dataset.page}</span>` : ""}</span>${chipHtml(td.dataset.status)}`;
+        btn.setAttribute("aria-label", `${td.dataset.candidate}: ${LABELS[td.dataset.status]}${td.dataset.page ? `, página ${td.dataset.page}` : ""}. Toque para ler.`);
+        btn.dataset.index = td.dataset.index;
+        stack.appendChild(btn);
+      });
+      mobile.appendChild(card);
+    });
+
+    const tabs = [...document.querySelectorAll(".tab-btn")];
+    let currentAxis = "all";
+    function applyFilters() {
+      const q = document.getElementById("search").value.trim().toLowerCase();
+      const status = document.getElementById("statusFilter").value;
+      rows.forEach(row => {
+        if (row.classList.contains("category-header-row")) return;
+        const axisOk = currentAxis === "all" || row.dataset.category === currentAxis;
+        const cells = [...row.querySelectorAll("td.cell-status")];
+        const extra = cells.map(el => `${el.dataset.detail || ""} ${el.dataset.quote || ""} ${el.dataset.section || ""}`).join(" ");
+        const searchOk = !q || (row.textContent + " " + extra).toLowerCase().includes(q);
+        const statusOk = status === "all" || cells.some(td => td.dataset.status === status);
+        row.style.display = axisOk && searchOk && statusOk ? "" : "none";
+      });
+      rows.forEach(row => {
+        if (!row.classList.contains("category-header-row")) return;
+        const cat = row.dataset.category;
+        const visible = rows.some(r => r.classList.contains("data-row") && r.dataset.category === cat && r.style.display !== "none");
+        const axisOk = currentAxis === "all" || cat === currentAxis;
+        row.style.display = axisOk && visible ? "" : "none";
+      });
+      document.querySelectorAll(".mobile-row").forEach(node => {
+        const axisOk = currentAxis === "all" || node.dataset.category === currentAxis;
+        const hay = (node.dataset.search || node.textContent).toLowerCase();
+        const searchOk = !q || hay.includes(q);
+        const statusOk = status === "all" || !node.dataset.statuses || node.dataset.statuses.split(" ").includes(status);
+        node.style.display = axisOk && searchOk && statusOk ? "" : "none";
+      });
+      document.querySelectorAll("h3.mobile-row").forEach(header => {
+        let next = header.nextElementSibling;
+        let visible = false;
+        while (next && !next.matches("h3.mobile-row")) {
+          if (next.classList.contains("mobile-item") && next.style.display !== "none") visible = true;
+          next = next.nextElementSibling;
+        }
+        header.style.display = visible ? "" : "none";
+      });
+    }
+    tabs.forEach(btn => btn.addEventListener("click", () => {
+      tabs.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      currentAxis = btn.dataset.axis;
+      applyFilters();
+    }));
+    document.getElementById("search").addEventListener("input", applyFilters);
+    document.getElementById("statusFilter").addEventListener("change", applyFilters);
+
+    document.querySelectorAll("#navMain .nav-link").forEach(link => {
+      link.addEventListener("click", () => {
+        const nav = document.getElementById("navMain");
+        if (nav && nav.classList.contains("show") && window.bootstrap) {
+          bootstrap.Collapse.getOrCreateInstance(nav).hide();
+        }
+      });
+    });
+    document.addEventListener("click", (event) => {
+      const help = event.target.closest(".criteria-help");
+      if (!help) return;
+      event.preventDefault();
+      const id = help.dataset.criterion || (help.getAttribute("href") || "").replace("#", "");
+      openCriterion(id);
+    });
+  </script>
+</body>
+</html>

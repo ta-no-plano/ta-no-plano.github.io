@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Tá no Plano? · Comparativo dos planos de governo 2026</title>
   <meta name="description" content="Compare os planos de governo dos presidenciáveis de 2026. PDFs coletados no DivulgaCandContas do TSE; resumos montados com IAs como o Gemini.">
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
@@ -164,9 +164,11 @@
       font-size: .95rem;
       font-weight: 700;
       letter-spacing: -.02em;
-      line-height: 1.2;
+      line-height: 1.25;
       margin: 0;
-      overflow-wrap: anywhere;
+      overflow-wrap: break-word;
+      word-break: normal;
+      hyphens: auto;
     }
     .party-pill {
       display: inline-flex;
@@ -196,29 +198,44 @@
     .candidate-actions {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: .4rem;
+      gap: .5rem;
     }
     .candidate-actions .btn {
-      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .35rem;
+      width: 100%;
+      min-width: 0;
+      min-height: 44px;
+      border-radius: 12px;
       font-weight: 600;
-      font-size: .78rem;
+      font-size: .82rem;
+      white-space: nowrap;
+      padding: .55rem .7rem;
     }
-    .btn-plano {
-      --bs-btn-color: #fff;
-      --bs-btn-bg: var(--accent);
-      --bs-btn-border-color: var(--accent);
-      --bs-btn-hover-color: #fff;
-      --bs-btn-hover-bg: color-mix(in srgb, var(--accent) 82%, black);
-      --bs-btn-hover-border-color: color-mix(in srgb, var(--accent) 82%, black);
-      --bs-btn-focus-shadow-rgb: 15, 23, 42;
+    .candidate-actions .btn i { font-size: 1rem; line-height: 1; }
+    .candidate-actions .btn-plano {
+      color: #fff;
+      background: var(--accent);
+      border: 1px solid var(--accent);
     }
-    .btn-tse {
-      --bs-btn-color: #334155;
-      --bs-btn-bg: #fff;
-      --bs-btn-border-color: #e2e8f0;
-      --bs-btn-hover-color: #0f172a;
-      --bs-btn-hover-bg: #f8fafc;
-      --bs-btn-hover-border-color: #cbd5e1;
+    .candidate-actions .btn-plano:hover,
+    .candidate-actions .btn-plano:focus-visible {
+      color: #fff;
+      background: color-mix(in srgb, var(--accent) 82%, black);
+      border-color: color-mix(in srgb, var(--accent) 82%, black);
+    }
+    .candidate-actions .btn-tse {
+      color: var(--accent);
+      background: #fff;
+      border: 1px solid color-mix(in srgb, var(--accent) 32%, #e2e8f0);
+    }
+    .candidate-actions .btn-tse:hover,
+    .candidate-actions .btn-tse:focus-visible {
+      color: var(--accent);
+      background: color-mix(in srgb, var(--accent) 8%, white);
+      border-color: var(--accent);
     }
 
     .chip {
@@ -603,6 +620,235 @@
     .accordion-item { border-color: #e2e8f0; }
 
     footer a { font-weight: 600; }
+    .race-switch {
+      display: inline-flex;
+      gap: .2rem;
+      background: #f1f5f9;
+      border-radius: 999px;
+      padding: .2rem;
+      margin-bottom: .85rem;
+    }
+    .race-switch a {
+      border-radius: 999px;
+      padding: .28rem .8rem;
+      font-size: .78rem;
+      font-weight: 700;
+      color: #475569;
+      text-decoration: none;
+    }
+    .race-switch a.is-on { background: #0f172a; color: #fff; }
+
+    .mobile-cat {
+      background: #0f766e;
+      color: #fff;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      border-radius: 12px;
+      padding: .7rem .9rem;
+      margin: .25rem 0 0;
+    }
+    .mobile-theme-tag {
+      display: none;
+    }
+    .mobile-detail-btn {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: .65rem;
+      width: 100%;
+      min-height: 48px;
+      padding: .55rem .7rem;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      background: #fff;
+      text-align: left;
+      touch-action: manipulation;
+    }
+    .mobile-detail-btn:active { background: #f8fafc; }
+    .mobile-cand-line {
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+      min-width: 0;
+    }
+    .mobile-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      background: var(--accent);
+    }
+    .mobile-cand-name {
+      font-size: .86rem;
+      font-weight: 700;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+    .mobile-page {
+      font-size: .72rem;
+      font-weight: 600;
+      color: #94a3b8;
+      white-space: nowrap;
+    }
+    .mobile-detail-btn .chip { min-width: 0; flex-shrink: 0; }
+    .mobile-help {
+      display: inline-flex;
+      align-items: center;
+      min-height: 40px;
+      padding: .25rem 0;
+      margin-bottom: .35rem;
+    }
+
+    @media (max-width: 991.98px) {
+      html { -webkit-text-size-adjust: 100%; }
+      body { padding-bottom: env(safe-area-inset-bottom, 0); }
+      .navbar { padding-top: .4rem; padding-bottom: .4rem; }
+      .navbar-toggler {
+        min-width: 44px;
+        min-height: 44px;
+        padding: .35rem;
+        border: 0;
+      }
+      .navbar-nav .nav-link {
+        padding: .9rem 0;
+        font-weight: 600;
+        border-bottom: 1px solid #f1f5f9;
+      }
+      .navbar-nav .nav-item:last-child .nav-link { border-bottom: 0; }
+      .hero { padding-bottom: .25rem; }
+      .hero .lead { font-size: .95rem; }
+      .source-banner { padding: .7rem .8rem; }
+      .source-banner p { font-size: .78rem; }
+      .hero .btn { min-height: 44px; }
+      .candidate-card:hover {
+        transform: none;
+        box-shadow: 0 1px 2px rgba(15, 23, 42, .05);
+      }
+      .guide-steps {
+        width: 100%;
+        flex-direction: column;
+        gap: .4rem;
+      }
+      .guide-panel { padding: 1rem .9rem .85rem; }
+      .legend-grid { --bs-columns: 1; }
+      .legend-card {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: .7rem;
+        padding: .7rem .8rem;
+      }
+      .legend-card .chip { flex-shrink: 0; }
+      .legend-card p { margin: 0; font-size: .8rem; line-height: 1.4; }
+      .guide-tools {
+        position: sticky;
+        top: 56px;
+        z-index: 6;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(8.5rem, 11rem);
+        background: #fff;
+        margin: .85rem -0.9rem -.85rem;
+        padding: .7rem .9rem .65rem;
+        border-top: 1px solid #f1f5f9;
+        box-shadow: 0 8px 16px -12px rgba(15, 23, 42, .35);
+        gap: .5rem;
+      }
+      .search-wrap { min-width: 0; width: auto; flex: none; }
+      .guide-tools > .form-select { min-width: 0; width: 100%; flex: none; }
+      .search-wrap .form-control, .guide-tools .form-select { min-height: 44px; }
+      .axis-tabs {
+        grid-column: 1 / -1;
+        flex: none;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        width: 100%;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        gap: .25rem;
+        padding: .28rem;
+      }
+      .axis-tabs::-webkit-scrollbar { display: none; }
+      .tab-btn {
+        flex: 0 0 auto;
+        min-height: 36px;
+        padding: .4rem .8rem;
+      }
+      #mobile-list {
+        display: block;
+        margin-top: .25rem;
+      }
+      #mobile-list > * + * { margin-top: 1rem; }
+      .mobile-theme-tag {
+        display: block;
+        margin: 0 0 .35rem;
+        font-size: .68rem;
+        font-weight: 700;
+        letter-spacing: .06em;
+        text-transform: uppercase;
+        color: #0f766e;
+      }
+      #detailPanel.offcanvas {
+        --bs-offcanvas-width: 100vw;
+        --bs-offcanvas-height: min(92dvh, 100%);
+        top: auto;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-width: 100%;
+        height: var(--bs-offcanvas-height);
+        border-left: 0;
+        border-top: 1px solid #e2e8f0;
+        border-radius: 18px 18px 0 0;
+        transform: translateY(100%);
+      }
+      #detailPanel.offcanvas.showing,
+      #detailPanel.offcanvas.show:not(.hiding) { transform: none; }
+      #detailPanel.offcanvas.hiding { transform: translateY(100%); }
+      #detailPanel .offcanvas-header {
+        position: relative;
+        padding-top: 1.4rem;
+      }
+      #detailPanel .offcanvas-header::before {
+        content: "";
+        position: absolute;
+        top: .5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2.6rem;
+        height: .28rem;
+        border-radius: 99px;
+        background: #cbd5e1;
+      }
+      #criterionModal .modal-dialog { margin: .75rem; }
+    }
+
+    @media (max-width: 575.98px) {
+      .candidate-card .card-body {
+        display: flex;
+        flex-direction: column;
+        gap: .7rem;
+        padding: .9rem .9rem .85rem;
+      }
+      .candidate-card .card-body > .d-flex:first-child {
+        margin-bottom: 0 !important;
+        align-items: center !important;
+      }
+      .candidate-score { margin-bottom: 0 !important; padding: .55rem .7rem; }
+      .candidate-actions {
+        width: 100%;
+        grid-template-columns: 1fr 1fr;
+      }
+      .candidate-actions .btn { min-height: 42px; }
+      .avatar { width: 40px; height: 40px; }
+      .candidate-name { font-size: 1rem; }
+      .score-num { font-size: 1.05rem; }
+      .candidate-score .mb-2 { margin-bottom: .35rem !important; }
+      .hero .d-flex.flex-wrap .btn { width: 100%; justify-content: center; }
+    }
   </style>
 </head>
 <body>
@@ -620,9 +866,10 @@
       </button>
       <div class="collapse navbar-collapse" id="navMain">
         <ul class="navbar-nav ms-auto gap-lg-2">
+          <li class="nav-item"><a class="nav-link active" href="#comparativo">Presidente</a></li>
+          <li class="nav-item"><a class="nav-link" href="governadores/">Governador PE</a></li>
           <li class="nav-item"><a class="nav-link" href="#candidatos">Candidatos</a></li>
-          <li class="nav-item"><a class="nav-link" href="#comparativo">Comparativo</a></li>
-          <li class="nav-item"><a class="nav-link" href="https://divulgacandcontas.tse.jus.br" target="_blank" rel="noopener">TSE</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://divulgacandcontas.tse.jus.br" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i>TSE</a></li>
         </ul>
       </div>
     </div>
@@ -632,6 +879,10 @@
     <div class="container-xl py-4 py-lg-5">
       <div class="row g-4 g-lg-5 align-items-center">
         <div class="col-lg-7">
+          <div class="race-switch" role="navigation" aria-label="Cargo">
+            <a class="is-on" href="#comparativo">Presidente</a>
+            <a href="governadores/">Governador PE</a>
+          </div>
           <p class="hero-kicker"><i class="bi bi-check2-circle"></i> Eleições presidenciais · planos oficiais</p>
           <h1 class="mb-3">Compare o que cada candidato colocou no plano de governo</h1>
           <p class="lead text-secondary mb-0 fs-6">Leitura simples dos PDFs protocolados na Justiça Eleitoral. As cores mostram se o tema aparece no documento — não são nota, ranking nem opinião sobre o candidato.</p>
@@ -653,7 +904,7 @@
           </div>
           <div class="d-flex flex-wrap gap-2">
             <a class="btn btn-dark px-3" href="#comparativo">Ver o comparativo</a>
-            <a class="btn btn-outline-secondary px-3" href="https://divulgacandcontas.tse.jus.br" target="_blank" rel="noopener">Abrir o DivulgaCandContas</a>
+            <a class="btn btn-outline-secondary px-3" href="https://divulgacandcontas.tse.jus.br" target="_blank" rel="noopener">Abrir portal do TSE</a>
           </div>
         </div>
         <div class="col-lg-5">
@@ -662,7 +913,7 @@
             <div class="row g-2">
               <div class="col-6"><div class="stat-pill"><strong>6</strong><span class="small text-secondary">planos em PDF do TSE</span></div></div>
               <div class="col-6"><div class="stat-pill"><strong>592</strong><span class="small text-secondary">páginas no conjunto</span></div></div>
-              <div class="col-6"><div class="stat-pill"><strong>23</strong><span class="small text-secondary">critérios comparados</span></div></div>
+              <div class="col-6"><div class="stat-pill"><strong>29</strong><span class="small text-secondary">critérios comparados</span></div></div>
               <div class="col-6"><div class="stat-pill"><strong>5</strong><span class="small text-secondary">níveis de menção</span></div></div>
             </div>
           </div>
@@ -677,7 +928,7 @@
         <h2 class="h5 mb-1 fw-semibold">Candidatos e planos</h2>
         <p class="small text-secondary mb-0">PDFs coletados no TSE. Abra o arquivo lido aqui ou a ficha oficial no DivulgaCandContas.</p>
       </div>
-      <div class="row row-cols-2 row-cols-md-3 row-cols-xl-6 g-3">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-6 g-3">
         <div class="col">
           <article class="card candidate-card h-100" style="--accent: var(--c-lula)">
             <div class="card-body d-flex flex-column">
@@ -693,8 +944,8 @@
               </div>
               <div class="candidate-score mb-3" data-score-for="Lula"></div>
               <div class="candidate-actions mt-auto">
-                <a class="btn btn-sm btn-plano" href="Lula%20-%200806JOB838PTlivroplanodegovernocompressed.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf me-1"></i>Plano</a>
-                <a class="btn btn-sm btn-tse" href="https://divulgacandcontas.tse.jus.br/divulga/#/candidato/BR/BR/20322002026/280002542548/2026/BR" target="_blank" rel="noopener">TSE</a>
+                <a class="btn btn-sm btn-plano" href="Lula%20-%200806JOB838PTlivroplanodegovernocompressed.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>Plano</a>
+                <a class="btn btn-sm btn-tse" href="https://divulgacandcontas.tse.jus.br/divulga/#/candidato/BR/BR/20322002026/280002542548/2026/BR" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i>TSE</a>
               </div>
             </div>
           </article>
@@ -714,8 +965,8 @@
               </div>
               <div class="candidate-score mb-3" data-score-for="Flávio Bolsonaro"></div>
               <div class="candidate-actions mt-auto">
-                <a class="btn btn-sm btn-plano" href="Flavio%20Bolsonaro%20-%20DiretrizesPlanodeGoverno20272030versaofinal.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf me-1"></i>Plano</a>
-                <a class="btn btn-sm btn-tse" href="https://divulgacandcontas.tse.jus.br/divulga/#/candidato/BR/BR/20322002026/280002551544/2026/BR" target="_blank" rel="noopener">TSE</a>
+                <a class="btn btn-sm btn-plano" href="Flavio%20Bolsonaro%20-%20DiretrizesPlanodeGoverno20272030versaofinal.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>Plano</a>
+                <a class="btn btn-sm btn-tse" href="https://divulgacandcontas.tse.jus.br/divulga/#/candidato/BR/BR/20322002026/280002551544/2026/BR" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i>TSE</a>
               </div>
             </div>
           </article>
@@ -735,8 +986,8 @@
               </div>
               <div class="candidate-score mb-3" data-score-for="Augusto Cury"></div>
               <div class="candidate-actions mt-auto">
-                <a class="btn btn-sm btn-plano" href="Augusto%20Cury%20-%20PLANO%20DE%20GOVERNOO%20BRASIL%20DOS%20NOSSOS%20SONHOS.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf me-1"></i>Plano</a>
-                <a class="btn btn-sm btn-tse" href="https://divulgacandcontas.tse.jus.br/divulga/#/candidato/BR/BR/20322002026/280002551547/2026/BR" target="_blank" rel="noopener">TSE</a>
+                <a class="btn btn-sm btn-plano" href="Augusto%20Cury%20-%20PLANO%20DE%20GOVERNOO%20BRASIL%20DOS%20NOSSOS%20SONHOS.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>Plano</a>
+                <a class="btn btn-sm btn-tse" href="https://divulgacandcontas.tse.jus.br/divulga/#/candidato/BR/BR/20322002026/280002551547/2026/BR" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i>TSE</a>
               </div>
             </div>
           </article>
@@ -756,8 +1007,8 @@
               </div>
               <div class="candidate-score mb-3" data-score-for="Renan Santos"></div>
               <div class="candidate-actions mt-auto">
-                <a class="btn btn-sm btn-plano" href="Renan%20Santos%20-%20Plano%20de%20Governo%20Missao%202026%20%20Finalcompressed.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf me-1"></i>Plano</a>
-                <a class="btn btn-sm btn-tse" href="https://divulgacandcontas.tse.jus.br/divulga/#/candidato/BR/BR/20322002026/280002540694/2026/BR" target="_blank" rel="noopener">TSE</a>
+                <a class="btn btn-sm btn-plano" href="Renan%20Santos%20-%20Plano%20de%20Governo%20Missao%202026%20%20Finalcompressed.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>Plano</a>
+                <a class="btn btn-sm btn-tse" href="https://divulgacandcontas.tse.jus.br/divulga/#/candidato/BR/BR/20322002026/280002540694/2026/BR" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i>TSE</a>
               </div>
             </div>
           </article>
@@ -777,8 +1028,8 @@
               </div>
               <div class="candidate-score mb-3" data-score-for="Ronaldo Caiado"></div>
               <div class="candidate-actions mt-auto">
-                <a class="btn btn-sm btn-plano" href="Ronaldo%20Caiado%20-%20Plano%20de%20Governo%20Presidente.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf me-1"></i>Plano</a>
-                <a class="btn btn-sm btn-tse" href="https://divulgacandcontas.tse.jus.br/divulga/#/candidato/BR/BR/20322002026/280002551932/2026/BR" target="_blank" rel="noopener">TSE</a>
+                <a class="btn btn-sm btn-plano" href="Ronaldo%20Caiado%20-%20Plano%20de%20Governo%20Presidente.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>Plano</a>
+                <a class="btn btn-sm btn-tse" href="https://divulgacandcontas.tse.jus.br/divulga/#/candidato/BR/BR/20322002026/280002551932/2026/BR" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i>TSE</a>
               </div>
             </div>
           </article>
@@ -798,8 +1049,8 @@
               </div>
               <div class="candidate-score mb-3" data-score-for="Romeu Zema"></div>
               <div class="candidate-actions mt-auto">
-                <a class="btn btn-sm btn-plano" href="Romeu%20Zema%20-%20planogoverno10120.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf me-1"></i>Plano</a>
-                <a class="btn btn-sm btn-tse" href="https://divulgacandcontas.tse.jus.br/divulga/#/candidato/BR/BR/20322002026/280002539826/2026/BR" target="_blank" rel="noopener">TSE</a>
+                <a class="btn btn-sm btn-plano" href="Romeu%20Zema%20-%20planogoverno10120.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>Plano</a>
+                <a class="btn btn-sm btn-tse" href="https://divulgacandcontas.tse.jus.br/divulga/#/candidato/BR/BR/20322002026/280002539826/2026/BR" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i>TSE</a>
               </div>
             </div>
           </article>
@@ -820,9 +1071,9 @@
             <li><b>3</b> Abra a página do plano</li>
           </ol>
         </div>
-        <div class="row row-cols-2 row-cols-lg-5 g-2">
+        <div class="legend-grid row row-cols-1 row-cols-md-2 row-cols-lg-5 g-2">
           <div class="col">
-            <div class="legend-card legend-fav"><span class="chip status-fav"><i class="bi bi-check-lg"></i> Tem no plano</span><p>Proposta, meta ou programa com nome.</p></div>
+            <div class="legend-card legend-fav"><span class="chip status-fav"><i class="bi bi-check-lg"></i> Tem no plano</span><p>Cita o tema e diz como vai fazer: programa, obra, lei ou meta.</p></div>
           </div>
           <div class="col">
             <div class="legend-card legend-vague"><span class="chip status-vague"><i class="bi bi-dash-lg"></i> Só cita</span><p>Fala do tema, sem dizer como vai fazer.</p></div>
@@ -995,6 +1246,27 @@
                   <span class="criterion-label">O que procuramos no PDF</span>
                   <p>Programa nomeado, fila zero, horários ociosos da rede privada, telemedicina ou meta de tempo de espera.</p>
                 </article>
+                <article class="criterion-card" id="criterio-aps" data-title="Atenção primária e Saúde da Família">
+                  <h4>Atenção primária e Saúde da Família</h4>
+                  <span class="criterion-label">Em português</span>
+                  <p>É o posto perto de casa: equipe da Estratégia Saúde da Família, UBS, prevenção e acompanhamento de hipertensão e diabetes. Sem essa porta, a fila do hospital cresce. Só dizer “cuidar antes de adoecer”, sem ESF, equipe ou meta, não fecha o selo verde.</p>
+                  <span class="criterion-label">O que procuramos no PDF</span>
+                  <p>Estratégia Saúde da Família, atenção primária, UBS, Mais Médicos ou meta de cobertura e resolução na básica.</p>
+                </article>
+                <article class="criterion-card" id="criterio-farmacia" data-title="Medicamentos e Farmácia Popular">
+                  <h4>Medicamentos e Farmácia Popular</h4>
+                  <span class="criterion-label">Em português</span>
+                  <p>É o remédio de graça ou barato na farmácia do SUS — Farmácia Popular, entrega em casa, lista de medicamentos gratuitos. Produzir vacina ou fármaco no Brasil é outra política: conta só se o plano ligar isso ao acesso de quem precisa do remédio.</p>
+                  <span class="criterion-label">O que procuramos no PDF</span>
+                  <p>Farmácia Popular, entrega domiciliar, lista gratuita ou programa nomeado de assistência farmacêutica.</p>
+                </article>
+                <article class="criterion-card" id="criterio-saude-mulher" data-title="Saúde da mulher e maternidade">
+                  <h4>Saúde da mulher e maternidade</h4>
+                  <span class="criterion-label">Em português</span>
+                  <p>Pré-natal, parto, câncer de mama e de colo, dignidade menstrual. Não é a mesma linha de violência contra a mulher: aqui o plano precisa dizer como o SUS cuida do ciclo de vida, não só da delegacia.</p>
+                  <span class="criterion-label">O que procuramos no PDF</span>
+                  <p>Maternidade, pré-natal, rastreio de câncer, Farmácia Popular com absorvente ou programa nomeado de saúde da mulher.</p>
+                </article>
                 <article class="criterion-card" id="criterio-mental" data-title="Saúde mental e prevenção do suicídio">
                   <h4>Saúde mental e prevenção do suicídio</h4>
                   <span class="criterion-label">Em português</span>
@@ -1024,6 +1296,27 @@
                   <p>Hoje, em regra, só responde como adulto quem tem 18 anos. Reduzir a maioridade para 16 (e, em alguns planos, punir graves a partir de 14) muda a Constituição. Endurecimento é pena mais dura, progressão mais difícil, fim de benefício. Não é a mesma linha que “prevenção na escola”.</p>
                   <span class="criterion-label">O que procuramos no PDF</span>
                   <p>Redução da maioridade penal, PEC dos 16 anos ou regime penal mais rígido escrito como proposta.</p>
+                </article>
+                <article class="criterion-card" id="criterio-prisional" data-title="Sistema prisional">
+                  <h4>Sistema prisional</h4>
+                  <span class="criterion-label">Em português</span>
+                  <p>Presídio federal, vaga nova, isolamento de chefes de facção ou pacto de execução penal. Só dizer que a cadeia está superlotada, sem obra, lei ou meta, não fecha o selo verde.</p>
+                  <span class="criterion-label">O que procuramos no PDF</span>
+                  <p>Presídio de segurança máxima, número de vagas, Pena Justa, bloqueio de celular ou controle da unidade.</p>
+                </article>
+                <article class="criterion-card" id="criterio-fronteira" data-title="Fronteiras e tráfico transnacional">
+                  <h4>Fronteiras e tráfico transnacional</h4>
+                  <span class="criterion-label">Em português</span>
+                  <p>Como o plano fecha a porta por onde entram arma, droga e dinheiro do crime: tropa, scanner, SISFRON ou cooperação com o país vizinho.</p>
+                  <span class="criterion-label">O que procuramos no PDF</span>
+                  <p>Fronteira seca, porto, aeroporto, efetivo, equipamento ou acordo internacional — não só a palavra “tráfico”.</p>
+                </article>
+                <article class="criterion-card" id="criterio-cameras" data-title="Câmeras, inteligência e reconhecimento facial">
+                  <h4>Câmeras, inteligência e reconhecimento facial</h4>
+                  <span class="criterion-label">Em português</span>
+                  <p>Tecnologia para achar foragido, integrar polícias ou filmar a abordagem. Câmera corporal (no peito do policial) e câmera de rua são caminhos diferentes — os dois valem se o plano disser como usa.</p>
+                  <span class="criterion-label">O que procuramos no PDF</span>
+                  <p>Câmera corporal, reconhecimento facial, videomonitoramento, drone ou sistema nacional de inteligência com regra de uso.</p>
                 </article>
               </div>
             </div>
@@ -1245,8 +1538,35 @@
             <td class="cell-status" data-status="fav" data-candidate="Flávio Bolsonaro" data-detail="Usar horários ociosos da rede privada para exames e atendimento, além de corrigir a tabela SUS e digitalizar o agendamento." data-pdf="Flavio Bolsonaro - DiretrizesPlanodeGoverno20272030versaofinal.pdf" data-page="37" data-section="Horários ociosos da rede privada" data-quote="Vamos contratar serviços e exames na rede privada nos horários ociosos: há aparelho parado enquanto gente espera meses pelo mesmo exame." data-how="Contratar serviços e exames na rede privada nos horários ociosos, porque há aparelho parado enquanto gente espera meses. Também garantir condições para corrigir a tabela SUS, de modo que a remuneração cubra o custo real, e digitalizar o agendamento no Brasil sem Fila. Ampliar a Estratégia Saúde da Família entra no mesmo capítulo. Quem paga é o recurso público comprando ociosidade privada e reajustando a tabela. O caminho é usar capacidade já instalada fora do SUS para encurtar a espera."></td>
             <td class="cell-status" data-status="fav" data-candidate="Augusto Cury" data-detail="Projeto Tele Saúde Brasil: transformar o país na maior plataforma pública de telemedicina, com meta de atendimento digital em até 30 minutos nos casos compatíveis." data-pdf="Augusto Cury - PLANO DE GOVERNOO BRASIL DOS NOSSOS SONHOS.pdf" data-page="161" data-section="Projeto 13 — Tele Saúde Brasil" data-quote="PROJETO 13 - TELE SAÚDE BRASIL: TRANSFORMAR O BRASIL NA MAIOR TELE MEDICINA DO MUNDO, DESAFOGANDO O SUS." data-how="Criar o Projeto Tele Saúde Brasil, para transformar o país na maior plataforma pública de telemedicina e desafogar o SUS. O resumo da célula traz meta de atendimento digital em até 30 minutos nos casos compatíveis. Terão prioridade crianças vulneráveis, idosos, baixa renda, gestantes, pessoas com deficiência e moradores de regiões remotas. Inteligência artificial e laudos digitais entram na proposta. O caminho é consulta remota para reduzir deslocamento, custo e fila, sem substituir o cuidado humano."></td>
             <td class="cell-status" data-status="fav" data-candidate="Renan Santos" data-detail="Capítulo 'SUS Fila Zero': troca a fila cronológica por prioridade de risco e cita sistema semelhante ao DoctorSV, de El Salvador, com inteligência artificial." data-pdf="Renan Santos - Plano de Governo Missao 2026  Finalcompressed.pdf" data-page="25" data-section="SUS Fila Zero" data-quote="Em “SUS Fila Zero” propomos uma agenda de inovação na área da saúde, com integração da inteligência artificial." data-how="Implantar a agenda SUS Fila Zero, trocando a fila cronológica por prioridade de risco e integrando inteligência artificial. O texto cita sistema semelhante ao DoctorSV, de El Salvador. O diagnóstico é morosidade das filas de regulação, falta de médicos no interior e prontuário desunificado. O caminho é inovar a gestão do acesso, não só construir hospital. O PDF apresenta a direção da fila por gravidade, com tecnologia, para os cerca de 75% que dependem só do SUS."></td>
-            <td class="cell-status" data-status="fav" data-candidate="Ronaldo Caiado" data-detail="Organizar o SUS com fila transparente e atendimento no tempo certo. As 'policlínicas regionais de Goiás' não são nomeadas neste PDF." data-pdf="Ronaldo Caiado - Plano de Governo Presidente.pdf" data-page="7" data-section="Compromissos nacionais para 2030" data-quote="Organizar o SUS para oferecer fila transparente, atendimento no tempo certo e cuidado regionalizado." data-how="Organizar o SUS para oferecer fila transparente, atendimento no tempo certo e cuidado regionalizado. Esse é um dos compromissos nacionais para 2030. O caminho é gestão da rede e da espera, com regionalização, não um mutirão isolado. O PDF não nomeia policlínicas estaduais neste trecho. Quem opera são União, estados e municípios sob a organização prometida do sistema."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Ronaldo Caiado" data-detail="Ação 1 — Zerar a espera evitável: Sistema Nacional de Acesso e Regulação Inteligente, fila por gravidade e meta de cortar 50% o tempo mediano até 2030." data-pdf="Ronaldo Caiado - Plano de Governo Presidente.pdf" data-page="77" data-section="Ação 1 — Zerar a espera evitável" data-quote="Criar um Sistema Nacional de Acesso e Regulação Inteligente que substitua progressivamente a fila passiva por uma jornada clínica rastreável." data-how="Criar o Sistema Nacional de Acesso e Regulação Inteligente, trocando a fila pela data do pedido por gravidade, risco e tempo já esperado. O cidadão acompanha pedido, prioridade e prazo. Centrais reaproveitam vaga ociosa e cancelamento. A meta 2030 é reduzir em pelo menos 50% o tempo mediano das filas prioritárias, com 2027 como linha de base. O caminho é sistema nacional + indicador público, não só 'fila transparente'."></td>
             <td class="cell-status" data-status="fav" data-candidate="Romeu Zema" data-detail="Reduzir filas do SUS com parcerias com clínicas e hospitais e gestão por inteligência artificial. O programa 'Opera Mais Minas' não aparece neste PDF." data-pdf="Romeu Zema - planogoverno10120.pdf" data-page="57" data-section="Reduzir filas do SUS" data-quote="Usar melhor a capacidade do setor privado para reduzir filas, reduzir a burocracia da saúde suplementar." data-how="Usar melhor a capacidade do setor privado para reduzir filas de consultas, exames e cirurgias, e reduzir a burocracia da saúde suplementar. Também cita gestão por inteligência artificial no resumo da célula. O diagnóstico é fila, orçamento acima de R$ 230 bilhões mal aplicado e atenção primária que ainda não alcança 72 milhões de brasileiros. O caminho é parceria com clínicas e hospitais privados e integração digital do prontuário. Quem paga continua sendo o SUS, comprando ociosidade e organizando a rede em torno do paciente."></td>
+          </tr>
+          <tr class="data-row" data-category="saude">
+            <td class="criteria-title">Atenção primária e Saúde da Família<span class="criteria-desc">Posto perto de casa, ESF, UBS ou meta de cobertura.</span><a class="criteria-help" href="#criterio-aps">O que é isso?</a></td>
+            <td class="cell-status" data-status="fav" data-candidate="Lula" data-detail="Mantém o Mais Médicos com fixação e medicina de família, integra a Atenção Primária ao resto do SUS e reforça equipes multiprofissionais na rede básica." data-pdf="Lula - 0806JOB838PTlivroplanodegovernocompressed.pdf" data-page="35" data-section="Mais Médicos e Atenção Primária" data-quote="O Programa Mais Médicos, que dobrou de tamanho em nossa gestão, seguirá o caminho de vinculação e fixação de profissionais, valorizando a formação de especialistas em medicina de família e comunidade dentro do programa." data-how="Seguir o Mais Médicos com vinculação e fixação, formando especialista em medicina de família. Também integra Atenção Primária, vigilância, farmácia e atenção especializada, com teleconsulta na rede básica e equipes multiprofissionais para uma população que envelhece. O caminho é médico de família no território + equipe que resolve na UBS. Quem opera são União e municípios, com indução federal."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Flávio Bolsonaro" data-detail="Ampliar a Estratégia Saúde da Família, levando o cuidado para perto de casa, e criar o Programa de Atendimento aos Idosos." data-pdf="Flavio Bolsonaro - DiretrizesPlanodeGoverno20272030versaofinal.pdf" data-page="37" data-section="Saúde da Família" data-quote="Vamos ampliar a Estratégia Saúde da Família, levando o cuidado para perto de casa, e criar o Programa de Atendimento aos Idosos, com atendimento facilitado e adequado a quem envelhece." data-how="Ampliar a ESF para o cuidado perto de casa e criar um programa próprio para o idoso, para ele não repetir o percurso cansativo do adulto. O caminho é expandir a equipe de família e abrir porta específica para quem envelhece. O PDF não fixa meta de cobertura percentual neste trecho."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Augusto Cury" data-detail="Item próprio: fortalecimento da atenção primária, com equipes multiprofissionais, prevenção e menos internação evitável." data-pdf="Augusto Cury - PLANO DE GOVERNOO BRASIL DOS NOSSOS SONHOS.pdf" data-page="44" data-section="Fortalecimento da atenção primária" data-quote="A atenção básica continuará sendo o principal eixo do Sistema Único de Saúde. Investiremos na prevenção de doenças, no acompanhamento das famílias e na ampliação das equipes multiprofissionais, reduzindo internações evitáveis." data-how="Manter a atenção básica como eixo do SUS, investir em prevenção e acompanhamento das famílias e ampliar equipes multiprofissionais para reduzir internação evitável. O caminho é equipe no território, não só hospital. O PDF não nomeia a ESF nem meta de cobertura neste trecho."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Renan Santos" data-detail="Meta de 80% de resolução na atenção primária, com sistema digital de saúde no modelo DoctorSV." data-pdf="Renan Santos - Plano de Governo Missao 2026  Finalcompressed.pdf" data-page="26" data-section="80% de resolução na atenção primária" data-quote="Tencionamos atingir uma média de 80% de resolução na atenção primária." data-how="Mirar 80% de resolução na atenção primária com um sistema digital que junta telemedicina, diagnóstico por IA e histórico permanente, no modelo do DoctorSV, de El Salvador. O diagnóstico é falta de médico no interior e prontuário desunificado. O caminho é resolver no posto com tecnologia, para a fila do especialista não nascer. Quem opera é a gestão digital do acesso, não uma ESF nomeada."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Ronaldo Caiado" data-detail="Nova geração da APS: ESF como porta de entrada, Programa Nacional de Crônicos e meta 2030 de 100% das equipes com teleconsultoria e 20% menos internações evitáveis." data-pdf="Ronaldo Caiado - Plano de Governo Presidente.pdf" data-page="78" data-section="Ação 2 — Um SUS preventivo e resolutivo" data-quote="A Estratégia Saúde da Família deve continuar sendo a principal porta de entrada do SUS, mas precisa evoluir de um modelo centrado em atender quem procura para outro capaz de conhecer sua população, identificar risco e buscar ativamente quem precisa." data-how="Evoluir a ESF para busca ativa, com Programa Nacional de Crônicos, UBS conectada e Centro de Comando da APS. A meta 2030 é 100% das equipes com teleconsultoria e estratificação de risco, e 20% menos internações sensíveis à APS. O caminho é vínculo + indicador, não só número de consulta."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Romeu Zema" data-detail="Fortalecer a ESF ligada à saúde digital como porta de entrada. O diagnóstico: a atenção primária ainda não alcança 72 milhões de brasileiros." data-pdf="Romeu Zema - planogoverno10120.pdf" data-page="58" data-section="Estratégia de Saúde da Família" data-quote="Fortalecer a Estratégia de Saúde da Família, de forma conectada à saúde digital, como porta de entrada do sistema de saúde, ampliando sua cobertura para que mais brasileiros tenham atendimento perto de casa." data-how="Fortalecer a ESF conectada à saúde digital e ampliar a cobertura, para o cuidado chegar perto de casa. O diagnóstico da p.57 diz que a atenção primária ainda não alcança 72 milhões e que um bom acompanhamento evitaria 3 milhões de internações ao ano. O caminho é ESF + vacina + prontuário nacional. O PDF não fixa percentual novo de cobertura neste trecho."></td>
+          </tr>
+          <tr class="data-row" data-category="saude">
+            <td class="criteria-title">Medicamentos e Farmácia Popular<span class="criteria-desc">Remédio gratuito, entrega em casa ou só indústria.</span><a class="criteria-help" href="#criterio-farmacia">O que é isso?</a></td>
+            <td class="cell-status" data-status="fav" data-candidate="Lula" data-detail="Manter o Farmácia Popular 100% gratuito, com 41 medicamentos e revisão contínua da lista, além de fraldas geriátricas." data-pdf="Lula - 0806JOB838PTlivroplanodegovernocompressed.pdf" data-page="36" data-section="Farmácia Popular" data-quote="Retomamos o Farmácia Popular, ampliando para 41 o número de medicamentos gratuitos distribuídos. Chegamos, em 2025, a 27,3 milhões de pessoas atendidas, 32% mais que em 2022. O programa será mantido, 100% gratuito." data-how="Manter o Farmácia Popular 100% gratuito, com revisão da lista e continuidade das fraldas geriátricas. Também ampliar pontos de retirada nas periferias. O caminho é programa federal de remédio grátis na farmácia credenciada. Quem recebe são os 27,3 milhões já atendidos e quem entrar na lista."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Flávio Bolsonaro" data-detail="Sistema de entrega de remédio em domicílio para idoso, pessoa com deficiência e doente crônico." data-pdf="Flavio Bolsonaro - DiretrizesPlanodeGoverno20272030versaofinal.pdf" data-page="38" data-section="Remédio à domicílio" data-quote="E um sistema de entrega de remédio em domicílio vai garantir que o idoso, a pessoa com deficiência e o doente crônico não precisem escolher entre buscar o tratamento e pagar o transporte." data-how="Levar o remédio até a casa de quem depende de tratamento contínuo, para o transporte não virar barreira. O caminho é logística de entrega, não o nome Farmácia Popular. O PDF não lista quantos itens nem quem paga a farmácia credenciada."></td>
+            <td class="cell-status" data-status="vague" data-candidate="Augusto Cury" data-detail="Ampliar a indústria nacional de medicamentos e vacinas. Não cria Farmácia Popular nem entrega em casa neste PDF." data-pdf="Augusto Cury - PLANO DE GOVERNOO BRASIL DOS NOSSOS SONHOS.pdf" data-page="41" data-section="Indústria farmacêutica" data-quote="Ampliaremos a capacidade nacional de pesquisa, desenvolvimento e fabricação de medicamentos, vacinas, equipamentos médicos e produtos biotecnológicos." data-how="O plano trata de soberania industrial: fabricar medicamento e vacina no Brasil para não depender do exterior. Não descreve Farmácia Popular, lista gratuita nem entrega domiciliar. Citar a fábrica sem o balcão de acesso deixa o critério só mencionado."></td>
+            <td class="cell-status" data-status="none" data-candidate="Renan Santos" data-detail="O capítulo de saúde trata de fila e sistema digital. 'Remédio amargo' neste PDF é o ajuste fiscal, não a farmácia do SUS." data-pdf="Renan Santos - Plano de Governo Missao 2026  Finalcompressed.pdf" data-page="" data-section="" data-quote="" data-how="Este PDF não descreve Farmácia Popular, entrega de remédio nem lista gratuita. A expressão remédio amargo no sumário é o capítulo de ajuste fiscal, não a assistência farmacêutica."></td>
+            <td class="cell-status" data-status="vague" data-candidate="Ronaldo Caiado" data-detail="Fortalece a produção nacional de medicamentos e a reconciliação na alta hospitalar. Não nomeia Farmácia Popular neste PDF." data-pdf="Ronaldo Caiado - Plano de Governo Presidente.pdf" data-page="75" data-section="Produção nacional de medicamentos" data-quote="fortalecer a produção nacional de medicamentos, vacinas, imunobiológicos e terapias avançadas." data-how="O plano fala em produção nacional e, na APS, em reconciliação de medicamentos depois da alta. Não nomeia Farmácia Popular, entrega em casa nem lista gratuita. O caminho impresso é indústria e cuidado clínico, não o balcão de remédio do SUS."></td>
+            <td class="cell-status" data-status="vague" data-candidate="Romeu Zema" data-detail="Cita logística de medicamentos na saúde indígena. Não há Farmácia Popular nem entrega nacional neste PDF." data-pdf="Romeu Zema - planogoverno10120.pdf" data-page="59" data-section="Saúde indígena" data-quote="organizando a logística de distribuição de medicamentos e de transporte ágil de pacientes para centros de média e alta complexidade, quando houver necessidade." data-how="O trecho organiza a logística de remédio e o transporte do paciente na saúde indígena. Não descreve Farmácia Popular nem entrega nacional para o crônico. O PDF menciona o tema só nesse recorte, sem programa de acesso geral."></td>
+          </tr>
+          <tr class="data-row" data-category="saude">
+            <td class="criteria-title">Saúde da mulher e maternidade<span class="criteria-desc">Pré-natal, câncer, parto ou programa nomeado.</span><a class="criteria-help" href="#criterio-saude-mulher">O que é isso?</a></td>
+            <td class="cell-status" data-status="fav" data-candidate="Lula" data-detail="Novo PAC com 39 maternidades e 27 Centros de Parto Normal; Farmácia Popular com absorventes e Implanon no SUS." data-pdf="Lula - 0806JOB838PTlivroplanodegovernocompressed.pdf" data-page="38" data-section="Maternidades e dignidade menstrual" data-quote="Com o Novo PAC, apoiamos a construção de 39 maternidades e 27 Centros de Parto Normal para dar maior segurança às gestantes. A Farmácia Popular passou a distribuir absorventes, garantindo a dignidade menstrual de 3,3 milhões de meninas e mulheres." data-how="Seguir o PAC de maternidade e centro de parto normal e manter absorvente e anticoncepcional (Implanon) no SUS. O caminho é obra + farmácia para gestante e mulher em idade fértil. Quem opera são União e redes locais com recurso do PAC."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Flávio Bolsonaro" data-detail="Saúde para Elas: prevenção sem fila longa, telemedicina, postos ampliados e Unidades Móveis de Saúde da Mulher, com barco para ribeirinha." data-pdf="Flavio Bolsonaro - DiretrizesPlanodeGoverno20272030versaofinal.pdf" data-page="21" data-section="Saúde para Elas" data-quote="Vamos cuidar da saúde da mulher de forma preventiva, sem fila longa, com atendimento perto de casa e também pelo celular, por telemedicina ou em postos de saúde que vamos ampliar e construir." data-how="Cuidar da mulher perto de casa e pelo celular, ampliar posto e criar Unidades Móveis de Saúde da Mulher — ônibus, caminhão e barco ribeirinho — com acesso também à saúde bucal. O caminho é unidade itinerante + telemedicina. O PDF não nomeia meta de mamografia neste trecho."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Augusto Cury" data-detail="Capítulo Saúde Integral da Mulher: câncer, materno-infantil, planejamento reprodutivo na lei, crônicas, saúde mental e atendimento humanizado." data-pdf="Augusto Cury - PLANO DE GOVERNOO BRASIL DOS NOSSOS SONHOS.pdf" data-page="90" data-section="Saúde integral da mulher" data-quote="A saúde da mulher precisa ser compreendida de maneira integral. Fortaleceremos políticas de: Prevenção e diagnóstico precoce do câncer; Saúde materno-infantil; Planejamento reprodutivo nos termos da legislação brasileira." data-how="Tratar a saúde da mulher no ciclo de vida: rastreio de câncer, materno-infantil, planejamento reprodutivo na lei, crônicas, saúde mental e atendimento humanizado. O caminho é um pacote de políticas, não uma obra nomeada. O PDF não fixa número de maternidade nem prazo de exame neste trecho."></td>
+            <td class="cell-status" data-status="none" data-candidate="Renan Santos" data-detail="O capítulo de saúde não formula pré-natal, maternidade nem rastreio de câncer da mulher." data-pdf="Renan Santos - Plano de Governo Missao 2026  Finalcompressed.pdf" data-page="" data-section="" data-quote="" data-how="Este PDF não descreve política de saúde da mulher, maternidade ou rastreio de câncer. O capítulo de saúde vai para fila e sistema digital, sem este caminho."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Ronaldo Caiado" data-detail="Rede do ciclo de vida: pré-natal, parto, puerpério, câncer de mama e colo, endometriose, climatério, com telemedicina, exames e prazos." data-pdf="Ronaldo Caiado - Plano de Governo Presidente.pdf" data-page="59" data-section="Saúde da mulher no ciclo de vida" data-quote="pré-natal, parto, puerpério, câncer de mama e colo, endometriose, climatério, saúde mental e violência. Garantir acesso regional, telemedicina, exames e prazos." data-how="Cobrir o ciclo — gestação, parto, câncer, endometriose, climatério e depressão pós-parto — com acesso regional, telemedicina, exame e prazo. O caminho é linha de cuidado com tempo máximo, não só um mutirão. Quem opera é a rede regional do SUS."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Romeu Zema" data-detail="Pré-natal completo para todas as gestantes, em qualquer lugar do país, com o conjunto de consultas e exames." data-pdf="Romeu Zema - planogoverno10120.pdf" data-page="58" data-section="Pré-natal de qualidade" data-quote="Garantir acompanhamento pré-natal de qualidade para todas as gestantes do Brasil: Assegurar que todas as gestantes, independentemente de onde vivam, realizem o conjunto completo de consultas e exames do pré-natal." data-how="Garantir o conjunto completo de consulta e exame do pré-natal a toda gestante, onde ela viva, para reduzir risco para mãe e bebê. O caminho é padronizar o pré-natal nacional. O PDF não nomeia maternidade nova nem rastreio de câncer neste trecho."></td>
           </tr>
           <tr class="data-row" data-category="saude">
             <td class="criteria-title">Saúde mental e prevenção do suicídio<span class="criteria-desc">Rede psicossocial, CAPS, RAPS ou equivalente.</span><a class="criteria-help" href="#criterio-mental">O que é isso?</a></td>
@@ -1263,7 +1583,7 @@
           </tr>
           <tr class="data-row" data-category="seguranca">
             <td class="criteria-title">Facções e crime organizado<span class="criteria-desc">Inteligência, presídios, bloqueio patrimonial e integração de forças.</span><a class="criteria-help" href="#criterio-faccoes">O que é isso?</a></td>
-            <td class="cell-status" data-status="vague" data-candidate="Lula" data-detail="Fortalecer o Sistema Único de Segurança Pública (SUSP), inteligência, controle de armas e cooperação em fronteiras. A 'PEC da Segurança' não é nomeada neste PDF." data-pdf="Lula - 0806JOB838PTlivroplanodegovernocompressed.pdf" data-page="30" data-section="SUSP e crime organizado" data-quote="A execução das políticas nacionais de segurança pública no âmbito do Sistema Único de Segurança Pública (SUSP). O Ministério fortalecerá a integração ... o enfrentamento ao crime organizado." data-how="O plano quer, uma vez aprovada a PEC da Segurança Pública proposta pelo Executivo, criar o Ministério da Segurança Pública para coordenar o Sistema Único de Segurança Pública. O ministério fortaleceria integração federativa, inteligência, enfrentamento ao crime organizado, prevenção da violência e direitos civis. Também cita controle de armas no resumo, câmeras corporais e policiamento de proximidade. Não detalha regime penal específico para facções. O PDF aponta coordenação e inteligência, mas não o instrumento penal de desmonte das organizações."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Lula" data-detail="Lei Antifação, asfixia financeira (R$ 35,8 bilhões), FICCOs e Pacto de Execução Penal. O caminho é lei já sancionada mais bloqueio de dinheiro e cooperação federativa." data-pdf="Lula - 0806JOB838PTlivroplanodegovernocompressed.pdf" data-page="27" data-section="Lei Antifação e asfixia financeira" data-quote="Com a Lei Antifação, sancionada em 2026, ampliamos nossa capacidade de enfrentar o crime organizado, as milícias e as redes criminosas. Manteremos a estratégia de asfixia financeira do crime organizado." data-how="Manter a Lei Antifação, a asfixia financeira — o texto cita R$ 35,8 bilhões de prejuízo às organizações desde 2023 — e ampliar as FICCOs. Também institui o Pacto Nacional de Execução Penal e barre candidaturas ligadas ao crime. O caminho é lei + dinheiro cortado + investigação integrada. Quem opera são União, estados e o sistema de justiça, nos marcos da Constituição."></td>
             <td class="cell-status" data-status="fav" data-candidate="Flávio Bolsonaro" data-detail="Declarar facções como organizações narcoterroristas; 5 novos presídios federais de segurança máxima no modelo de El Salvador, formando o complexo TREVA." data-pdf="Flavio Bolsonaro - DiretrizesPlanodeGoverno20272030versaofinal.pdf" data-page="13" data-section="Terrorista vai ser tratado como terrorista" data-quote="PCC, CV, milícias e todas as outras facções serão declaradas como organizações narcoterroristas." data-how="Declarar PCC, CV, milícias e demais facções como organizações narcoterroristas e combatê-las com força, inteligência e integração. O plano prevê 5 novos presídios federais de segurança máxima no modelo de El Salvador, formando com os atuais o complexo TREVA. Também bloquear ativos, desarticular lavagem e abater bandido armado com fuzil, segundo o texto. Consórcios com estados e municípios financiam inteligência, território, armamento e valorização policial. O caminho é nomear a facção como terror e isolar a cúpula no presídio federal."></td>
             <td class="cell-status" data-status="vague" data-candidate="Augusto Cury" data-detail="Enfatiza cultura da paz, prevenção da delinquência e o Projeto FATO (Força Alerta Total) contra incêndios. Não detalha regime penal para facções." data-pdf="Augusto Cury - PLANO DE GOVERNOO BRASIL DOS NOSSOS SONHOS.pdf" data-page="186" data-section="Projeto 18 — FATO" data-quote="PROJETO 18 - FATO: FORÇA ALERTA TOTAL. Segurança inteligente, integrada, preventiva e tecnológica para proteger a sociedade." data-how="O Projeto FATO (Força Alerta Total) quer integrar Polícia Federal, Polícia Militar, Polícia Civil e a FOCO municipal num sistema único de inteligência operacional. O objetivo é reduzir criminalidade com tecnologia, prevenção e resposta rápida, respeitando competências constitucionais. O resumo também enfatiza cultura da paz e prevenção da delinquência. Não detalha regime penal para facções nem presídio federal. O PDF descreve integração preventiva, mas não o caminho penal de desmonte das organizações."></td>
             <td class="cell-status" data-status="fav" data-candidate="Renan Santos" data-detail="Adotar o Direito Penal do Inimigo, Estado de Defesa em áreas sob comando de facções e Lei Antifacção, com banimento judicial de organizações criminosas." data-pdf="Renan Santos - Plano de Governo Missao 2026  Finalcompressed.pdf" data-page="11" data-section="Prendeu, matou? Direito Penal do Inimigo" data-quote="PRENDEU, MATOU? O Direito Penal do Inimigo e a guerra contra o crime." data-how="Adotar o Direito Penal do Inimigo, Estado de Defesa em áreas sob comando de facções e uma Lei Antifacção, com banimento judicial de organizações criminosas. O diagnóstico diz que PCC e CV funcionam como governos paralelos sobre cerca de 20% da população. O texto considera o garantismo penal pós-1988 inadequado para essa ameaça. O caminho é regime jurídico excepcional contra a organização, não só o crime comum. Quem é alvo são as facções tratadas como inimigo da soberania, não o delito isolado."></td>
@@ -1278,6 +1598,33 @@
             <td class="cell-status" data-status="vague" data-candidate="Renan Santos" data-detail="Endurece penas, trata crimes hediondos e aplica o Direito Penal do Inimigo. A redução da maioridade para 16 anos não aparece neste PDF." data-pdf="Renan Santos - Plano de Governo Missao 2026  Finalcompressed.pdf" data-page="11" data-section="Direito Penal do Inimigo (sem citar 16 anos)" data-quote="O Direito Penal do Inimigo e a guerra contra o crime." data-how="O plano endurece o enfrentamento penal pelo Direito Penal do Inimigo e pela guerra contra o crime, tratando facções e crimes graves como ameaça existencial. Não aparece neste PDF a redução da maioridade para 16 anos. O texto ataca o garantismo pós-1988, mas não diz o que acontece com o adolescente infrator. Falta o instrumento da idade penal, ainda que o rumo geral seja de endurecimento."></td>
             <td class="cell-status" data-status="fav" data-candidate="Ronaldo Caiado" data-detail="Trabalhar pela PEC da redução da maioridade penal para 16 anos em homicídio, tortura, estupro de vulnerável, roubo violento e hediondos. Saídas temporárias não são o eixo deste item no PDF." data-pdf="Ronaldo Caiado - Plano de Governo Presidente.pdf" data-page="20" data-section="Reduzir a maioridade penal" data-quote="Trabalhar fortemente pela aprovação da PEC da redução da maioridade penal para 16 (dezesseis) anos." data-how="Trabalhar pela aprovação da PEC da redução da maioridade penal para 16 anos. O redirecionamento vale para homicídio, tentativa, tortura, lesão corporal seguida de morte, estupro de vulnerável, roubo com violência e crimes da Lei de Combate ao Terrorismo Doméstico, com regime penal de adulto. Também agrava o furto de celular, equiparando-o ao roubo. O caminho é emenda constitucional mais mudança no Código Penal, no processo, na execução e no ECA. Saídas temporárias não são o eixo deste item."></td>
             <td class="cell-status" data-status="fav" data-candidate="Romeu Zema" data-detail="Reduzir a maioridade penal para 16 anos, com imputação excepcional de mais jovens em homicídio, estupro ou reincidência. As 'saídas temporárias' não são o destaque deste trecho." data-pdf="Romeu Zema - planogoverno10120.pdf" data-page="6" data-section="Reduzir a maioridade penal" data-quote="Reduzir a maioridade penal para 16 anos, assegurando a responsabilização criminal de adolescentes a partir dessa idade." data-how="Reduzir a maioridade penal para 16 anos, com imputação excepcional de pessoas ainda mais jovens em homicídio, estupro ou reincidência. Também reformar o Código Penal para penas duras em crimes violentos e hediondos, como homicídio, latrocínio, pedofilia e estupro. O caminho é idade penal mais baixa e pena proporcional à gravidade. Quem é alvo é o adolescente de 16 anos e, em casos graves, o ainda mais jovem. Saídas temporárias não são o destaque deste trecho."></td>
+          </tr>
+          <tr class="data-row" data-category="seguranca">
+            <td class="criteria-title">Sistema prisional<span class="criteria-desc">Presídio de máxima, vaga nova ou pacto de execução penal.</span><a class="criteria-help" href="#criterio-prisional">O que é isso?</a></td>
+            <td class="cell-status" data-status="fav" data-candidate="Lula" data-detail="Cumprir o Plano Pena Justa e criar o Pacto Nacional de Execução Penal, com governança entre União, estados e Justiça." data-pdf="Lula - 0806JOB838PTlivroplanodegovernocompressed.pdf" data-page="28" data-section="Sistema prisional e Pena Justa" data-quote="Cumpriremos as metas do Plano Pena Justa e instituiremos o Pacto Nacional de Execução Penal para o Enfrentamento ao Crime Organizado, fortalecendo a governança do sistema prisional e a cooperação entre União, estados e sistema de justiça." data-how="Tratar a gestão prisional como peça do combate ao crime organizado: cumprir metas do Plano Pena Justa e instituir um pacto nacional de execução penal. O PDF também cita apoio a estados para padrões nacionais e R$ 10 bilhões do Fundo para equipamentos. O caminho é pacto federativo e padrão de execução, não um complexo de máxima nomeado. Quem opera são União, estados e o sistema de justiça."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Flávio Bolsonaro" data-detail="5 presídios federais no modelo de El Salvador (complexo TREVA) e meio milhão de vagas novas em 4 anos, sem celular e sem visita íntima para chefes." data-pdf="Flavio Bolsonaro - DiretrizesPlanodeGoverno20272030versaofinal.pdf" data-page="14" data-section="Mais presídios, menos bandidos soltos" data-quote="O Brasil terá 5 novos presídios de segurança máxima no modelo adotado por El Salvador. Junto com os atuais 5 presídios federais, eles formarão o Complexo Federal de Segurança Máxima." data-how="Construir 5 presídios federais de máxima no modelo de El Salvador, formando o complexo TREVA com os 5 atuais. Chefes ficam sem celular, sem visita íntima e com visita monitorada. Em parceria com os estados, criar 500 mil vagas em 4 anos e zerar o déficit. O caminho é isolar a cúpula e ampliar vaga. Quem paga é a União, com convênio estadual."></td>
+            <td class="cell-status" data-status="none" data-candidate="Augusto Cury" data-detail="A palavra prisão neste PDF é metáfora (bolha digital, prisão ideológica). Não há proposta de presídio, vaga ou execução penal." data-pdf="Augusto Cury - PLANO DE GOVERNOO BRASIL DOS NOSSOS SONHOS.pdf" data-page="" data-section="" data-quote="" data-how="Este PDF não propõe presídio federal, vaga nova nem pacto de execução penal. A palavra prisão aparece como metáfora de bolha digital ou ideologia. Não há caminho para este critério."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Renan Santos" data-detail="Superpresídios de máxima em região remota, modelo CECOT de El Salvador, com blindagem eletromagnética e biometria para cortar o comando da facção de dentro da cadeia." data-pdf="Renan Santos - Plano de Governo Missao 2026  Finalcompressed.pdf" data-page="13" data-section="Superpresídios de segurança máxima" data-quote="As lideranças condenadas serão deslocadas a superpresídios de segurança máxima em regiões remotas, no modelo do CECOT salvadorenho, equipados com blindagem eletromagnética e biometria contínua, neutralizando o comando das facções a partir do cárcere." data-how="Levar a liderança condenada a superpresídio remoto no modelo CECOT, com bloqueio eletromagnético e biometria contínua. O objetivo é impedir que a facção seja mandada de dentro da cela. O caminho é isolamento tecnológico da cúpula. Quem é alvo é a liderança já condenada, não o preso comum."></td>
+            <td class="cell-status" data-status="vague" data-candidate="Ronaldo Caiado" data-detail="Lista 'controlar presídios' entre as prioridades da segurança, sem número de vagas, obra ou regime de isolamento." data-pdf="Ronaldo Caiado - Plano de Governo Presidente.pdf" data-page="16" data-section="Ministério da Segurança Pública" data-quote="A prioridade será recuperar territórios, proteger fronteiras, controlar presídios, elevar a investigação e retirar do crime seu patrimônio e sua capacidade de corromper instituições." data-how="O plano cita controlar presídios junto com fronteira e território. Não descreve presídio novo, meta de vaga, bloqueio de celular nem quem opera a unidade. O REDAD endurece a pena da liderança, mas o instrumento prisional em si fica sem desenho. Por isso o selo é Só cita."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Romeu Zema" data-detail="Presídios de máxima em região remota, regime diferenciado para isolar faccionado e terrorista, e troca da progressão rápida por prisão efetiva mais condicional monitorada." data-pdf="Romeu Zema - planogoverno10120.pdf" data-page="6" data-section="Presídios de segurança máxima" data-quote="Construir presídios de segurança máxima, em regiões remotas e isoladas com um regime diferenciado de detenção e estrutura capaz de conter terroristas e isolar os membros das facções." data-how="Construir presídios de máxima longe das redes das facções, com regime diferenciado. Também trocar a progressão rápida por tempo efetivo na cadeia, seguido de liberdade condicional com monitoramento. O caminho é isolar a liderança e fazer a pena ser cumprida. Quem opera é a União no presídio federal remoto."></td>
+          </tr>
+          <tr class="data-row" data-category="seguranca">
+            <td class="criteria-title">Fronteiras e tráfico transnacional<span class="criteria-desc">Tropa, scanner, porto ou cooperação com o país vizinho.</span><a class="criteria-help" href="#criterio-fronteira">O que é isso?</a></td>
+            <td class="cell-status" data-status="fav" data-candidate="Lula" data-detail="Controle de fronteiras e rotas do tráfico, cooperação internacional e asfixia financeira do crime transnacional." data-pdf="Lula - 0806JOB838PTlivroplanodegovernocompressed.pdf" data-page="13" data-section="Fronteiras e crimes transnacionais" data-quote="Avançamos na cooperação internacional para enfrentar crimes transnacionais, especialmente em fronteiras, rotas do tráfico e fluxos financeiros ilícitos." data-how="Combinar cooperação internacional, controle de fronteiras e corte das redes de financiamento do tráfico. O PDF liga isso à inteligência tática e ao SUSP. O caminho é diplomacia + fronteira + dinheiro do crime. Não nomeia uma tropa nova de elite; o instrumento é cooperação e asfixia financeira já em curso."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Flávio Bolsonaro" data-detail="Sistema Nacional de Fronteira com tropa de elite das Forças Armadas e ocupação permanente de portos e aeroportos contra a cocaína." data-pdf="Flavio Bolsonaro - DiretrizesPlanodeGoverno20272030versaofinal.pdf" data-page="13" data-section="Tropa de elite nas fronteiras" data-quote="Vamos criar o Sistema Nacional de Fronteira, uma tropa de elite do Exército, da Marinha e da Força Aérea Brasileira, equipada com armas de guerra, inteligência e tecnologia, responsável por criar um paredão na fronteira." data-how="Criar o Sistema Nacional de Fronteira com Exército, Marinha e Aeronáutica, para interceptar fuzil e droga por terra, porto e ar. Também ocupar de forma permanente portos e aeroportos com tropas especiais contra a cocaína. O diagnóstico é 1 policial por 100 km em 16 mil km de fronteira. O caminho é Força Armada na borda e no porto."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Augusto Cury" data-detail="Cooperação com organismos internacionais e países vizinhos contra tráfico, crime financeiro, terrorismo e lavagem." data-pdf="Augusto Cury - PLANO DE GOVERNOO BRASIL DOS NOSSOS SONHOS.pdf" data-page="46" data-section="Cooperação internacional" data-quote="O crime organizado atua além das fronteiras nacionais. Fortaleceremos a cooperação com organismos internacionais e países vizinhos para combater o tráfico internacional, crimes financeiros, terrorismo, lavagem de dinheiro e organizações criminosas transnacionais." data-how="Fortalecer a cooperação com organismos internacionais e países vizinhos contra tráfico, lavagem e crime transnacional, respeitando a competência de cada força. O caminho é acordo e integração, sem tropa de fronteira nomeada. Quem opera são PF e parceiros externos, no desenho do PDF."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Renan Santos" data-detail="Scanners 3D em portos, aeroportos e fronteiras secas, mais monitoramento aéreo, espacial e amazônico." data-pdf="Renan Santos - Plano de Governo Missao 2026  Finalcompressed.pdf" data-page="13" data-section="Portos, aeroportos e fronteiras" data-quote="retomar o controle estatal sobre portos, aeroportos e fronteiras secas com scanners tridimensionais e inteligência integrada; implementar sistemas de monitoramento aéreo, espacial e amazônico" data-how="Retomar o controle de portos, aeroportos e fronteiras secas com scanner 3D e inteligência integrada, e monitorar o ar, o espaço e a Amazônia. Também aperta a asfixia financeira das facções. O caminho é equipamento na borda, não só discurso de tropa. Quem opera é o Estado com tecnologia de inspeção."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Ronaldo Caiado" data-detail="Proteger fronteiras no pacote do Ministério da Segurança, com SISFRON, CINDACTA e câmeras de IA — o detalhe do equipamento está no capítulo de tecnologia." data-pdf="Ronaldo Caiado - Plano de Governo Presidente.pdf" data-page="16" data-section="Proteger fronteiras" data-quote="A prioridade será recuperar territórios, proteger fronteiras, controlar presídios, elevar a investigação e retirar do crime seu patrimônio." data-how="Colocar a proteção de fronteiras como prioridade do Ministério da Segurança e modernizar SISFRON e CINDACTA com câmeras de alta resolução e inteligência artificial. O caminho é ministério + sistema militar de vigilância. O PDF não detalha efetivo novo na faixa de fronteira neste trecho, mas nomeia os sistemas que fariam o trabalho."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Romeu Zema" data-detail="Ampliar a presença do Estado nos postos de fronteira e na Amazônia, integrando inteligência, vigilância e forças de segurança." data-pdf="Romeu Zema - planogoverno10120.pdf" data-page="38" data-section="Combater as ameaças que cruzam fronteiras" data-quote="Ampliar a presença do Estado brasileiro nos postos de fronteira e na Amazônia, integrando inteligência, vigilância e forças de segurança." data-how="Assumir protagonismo regional contra o crime que cruza a fronteira: mais presença nos postos e na Amazônia, com inteligência, vigilância e forças integradas. O diagnóstico cita crime transnacional e a crise venezuelana. O caminho é Estado na borda amazônica, sem nomear scanner ou tropa de elite."></td>
+          </tr>
+          <tr class="data-row" data-category="seguranca">
+            <td class="criteria-title">Câmeras, inteligência e reconhecimento facial<span class="criteria-desc">Câmera corporal, câmera de rua ou sistema nacional de dados.</span><a class="criteria-help" href="#criterio-cameras">O que é isso?</a></td>
+            <td class="cell-status" data-status="fav" data-candidate="Lula" data-detail="Estímulo a câmeras corporais com padrão nacional de uso, gestão e guarda da imagem, mais controle interno e externo da polícia." data-pdf="Lula - 0806JOB838PTlivroplanodegovernocompressed.pdf" data-page="30" data-section="Câmeras corporais" data-quote="Ampliaremos o programa de estímulos para uso de câmeras corporais, com padrões nacionais para utilização, gestão e preservação das imagens." data-how="Ampliar câmeras corporais com regra nacional de uso e arquivo da imagem, e fortalecer o controle interno e externo da atividade policial. Também moderniza SINESP, Infoseg e o Sistema de Inteligência. O caminho é filmar a abordagem e integrar dado — não um milhão de câmeras de rua. Quem define o padrão é a União, com os estados."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Flávio Bolsonaro" data-detail="Muralha Brasileira: reconhecimento facial nacional, mais de 1 milhão de câmeras em portos, aeroportos e áreas públicas." data-pdf="Flavio Bolsonaro - DiretrizesPlanodeGoverno20272030versaofinal.pdf" data-page="15" data-section="Luz, câmara, prisão" data-quote="Vamos implantar o Muralha Brasileira - um sistema nacional de reconhecimento facial integrado a bancos de dados criminais, inspirado no Smart Sampa [...] com mais de 1 milhão de novas câmeras espalhadas por todo o país." data-how="Implantar o Muralha Brasileira, com reconhecimento facial ligado a bancos criminais, no modelo do Smart Sampa e do Muralha Paulista. Também instalar mais de 1 milhão de câmeras em portos, aeroportos e áreas públicas. O caminho é vigiar o território em escala nacional. Quem é alvo é o foragido e o crime em espaço público."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Augusto Cury" data-detail="Câmeras inteligentes, reconhecimento facial (na lei), leitura de placa, drone e análise preditiva no Projeto FATO." data-pdf="Augusto Cury - PLANO DE GOVERNOO BRASIL DOS NOSSOS SONHOS.pdf" data-page="46" data-section="Tecnologia na segurança" data-quote="A segurança pública será fortalecida pelo uso de câmeras inteligentes, reconhecimento de padrões, análise preditiva, drones, monitoramento integrado e inteligência artificial." data-how="Usar câmeras inteligentes, reconhecimento de padrões, drone, análise preditiva e IA, no Projeto FATO, integrando PF, PM, Civil e a FOCO municipal. O PDF pede respeito à legislação no reconhecimento facial. O caminho é sala de comando tecnológica. Não há meta de número de câmeras."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Renan Santos" data-detail="Patrulhamento autônomo e reconhecimento facial em tempo real, com dado genético para crime hediondo." data-pdf="Renan Santos - Plano de Governo Missao 2026  Finalcompressed.pdf" data-page="13" data-section="Reconhecimento facial" data-quote="patrulhamento autônomo e reconhecimento facial em tempo real, integrado ao uso de dados genéticos e identificação facial para a resolução de crimes hediondos." data-how="Passar o combate do crime reativo para prevenção, com patrulha autônoma e reconhecimento facial em tempo real, cruzado com dado genético em hediondos. O caminho é identificar o autor pela face e pelo DNA. O PDF não diz o número de câmeras nem a regra de privacidade."></td>
+            <td class="cell-status" data-status="fav" data-candidate="Ronaldo Caiado" data-detail="Câmeras de alta resolução com IA que viram dado de investigação, mais SISFRON e CINDACTA; videomonitoramento com auditoria de viés." data-pdf="Ronaldo Caiado - Plano de Governo Presidente.pdf" data-page="18" data-section="Câmeras e SISFRON" data-quote="câmeras de alta resolução com software embarcado de Inteligência Artificial, que permite a transformação da imagem em dados de investigação [...] incluindo a modernização e ampliação do SISFRON" data-how="Modernizar SISFRON e CINDACTA e usar câmera de alta resolução com IA para virar dado de investigação. Em outro trecho, o videomonitoramento com reconhecimento facial deve ter auditoria permanente contra viés. O caminho é câmera militar e urbana com regra de diversidade. Quem opera são Exército, Aeronáutica e as polícias."></td>
+            <td class="cell-status" data-status="none" data-candidate="Romeu Zema" data-detail="Este PDF não propõe câmera corporal, reconhecimento facial nem sistema nacional de videomonitoramento." data-pdf="Romeu Zema - planogoverno10120.pdf" data-page="" data-section="" data-quote="" data-how="Este PDF não descreve câmera corporal, reconhecimento facial nem rede nacional de videomonitoramento. A segurança do plano vai para presídio, maioridade e fronteira, sem este instrumento."></td>
           </tr>
 
           <tr class="category-header-row" data-category="social">
@@ -1350,7 +1697,7 @@
   <footer class="border-top bg-white py-4 mt-3">
     <div class="container-xl text-center text-secondary small">
       <p class="mb-1">Todos os PDFs de propostas foram coletados no site oficial do TSE (DivulgaCandContas). Os resumos comparativos foram montados com inteligências artificiais, como o Gemini, e cada selo aponta para o capítulo e a página do plano.</p>
-      <p class="mb-0">Consulte a ficha de cada candidatura no <a href="https://divulgacandcontas.tse.jus.br" target="_blank" rel="noopener">TSE DivulgaCandContas</a>.</p>
+      <p class="mb-0">Consulte a ficha de cada candidatura no <a href="https://divulgacandcontas.tse.jus.br" target="_blank" rel="noopener">TSE DivulgaCandContas</a>. Também há o <a href="governadores/">comparativo para governador de Pernambuco</a>.</p>
     </div>
   </footer>
 
@@ -1419,6 +1766,14 @@
       "Renan Santos": "var(--c-renan)",
       "Ronaldo Caiado": "var(--c-caiado)",
       "Romeu Zema": "var(--c-zema)"
+    };
+    const SHORT_NAMES = {
+      "Lula": "Lula",
+      "Flávio Bolsonaro": "Flávio",
+      "Augusto Cury": "Cury",
+      "Renan Santos": "Renan",
+      "Ronaldo Caiado": "Caiado",
+      "Romeu Zema": "Zema"
     };
     const TSE = {
       "Lula": "https://divulgacandcontas.tse.jus.br/divulga/#/candidato/BR/BR/20322002026/280002542548/2026/BR",
@@ -1605,13 +1960,15 @@
 
     const rows = [...document.querySelectorAll("#tabela tbody tr")];
     const mobile = document.getElementById("mobile-list");
+    const themeTitles = {};
 
     rows.forEach((row, index) => {
       if (row.classList.contains("category-header-row")) {
         const wrap = document.createElement("h3");
-        wrap.className = "h6 text-secondary text-uppercase mt-2 mb-0 mobile-row";
+        wrap.className = "mobile-cat mobile-row";
         wrap.dataset.category = row.dataset.category;
         wrap.textContent = row.textContent.trim();
+        themeTitles[row.dataset.category] = wrap.textContent;
         mobile.appendChild(wrap);
         return;
       }
@@ -1625,20 +1982,24 @@
       const details = cells.map(td => `${td.dataset.detail || ""} ${td.dataset.quote || ""} ${td.dataset.section || ""}`).join(" ");
       card.dataset.search = `${name} ${desc} ${details} ${cells.map(td => td.dataset.candidate).join(" ")}`.toLowerCase();
       card.dataset.statuses = cells.map(td => td.dataset.status).join(" ");
+      const help = title.querySelector(".criteria-help");
       card.innerHTML = `
+        <p class="mobile-theme-tag">${themeTitles[row.dataset.category] || ""}</p>
         <h4 class="h6 mb-1">${name}</h4>
-        <p class="small text-secondary mb-2">${desc}</p>
-        ${title.querySelector(".criteria-help") ? `<a class="criteria-help d-inline-block mb-3" href="${title.querySelector(".criteria-help").getAttribute("href")}">O que é isso?</a>` : ""}
+        <p class="small text-secondary mb-1">${desc}</p>
+        ${help ? `<a class="criteria-help mobile-help" href="${help.getAttribute("href")}">O que é isso?</a>` : ""}
         <div class="vstack gap-2"></div>
       `;
       const stack = card.querySelector(".vstack");
       cells.forEach(td => {
         const btn = document.createElement("button");
         btn.type = "button";
-        btn.className = "btn btn-light d-flex justify-content-between align-items-center text-start mobile-detail-btn";
-        const page = td.dataset.page ? ` · p. ${td.dataset.page}` : "";
         const accent = ACCENTS[td.dataset.candidate];
-        btn.innerHTML = `<span class="small mobile-cand" style="--accent:${accent}">${td.dataset.candidate}${page}</span>${chipHtml(td.dataset.status)}`;
+        const shortName = SHORT_NAMES[td.dataset.candidate] || td.dataset.candidate;
+        btn.className = "mobile-detail-btn";
+        btn.style.setProperty("--accent", accent);
+        btn.innerHTML = `<span class="mobile-cand-line"><i class="mobile-dot" aria-hidden="true"></i><span class="mobile-cand-name">${shortName}</span>${td.dataset.page ? `<span class="mobile-page">p. ${td.dataset.page}</span>` : ""}</span>${chipHtml(td.dataset.status)}`;
+        btn.setAttribute("aria-label", `${td.dataset.candidate}: ${LABELS[td.dataset.status]}${td.dataset.page ? `, página ${td.dataset.page}` : ""}. Toque para ler.`);
         btn.dataset.index = td.dataset.index;
         stack.appendChild(btn);
       });
@@ -1698,6 +2059,15 @@
 
     document.getElementById("search").addEventListener("input", applyFilters);
     document.getElementById("statusFilter").addEventListener("change", applyFilters);
+
+    document.querySelectorAll("#navMain .nav-link").forEach(link => {
+      link.addEventListener("click", () => {
+        const nav = document.getElementById("navMain");
+        if (nav && nav.classList.contains("show") && window.bootstrap) {
+          bootstrap.Collapse.getOrCreateInstance(nav).hide();
+        }
+      });
+    });
 
     document.addEventListener("click", (event) => {
       const help = event.target.closest(".criteria-help");
